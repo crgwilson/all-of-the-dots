@@ -1,0 +1,19 @@
+#!/bin/bash
+distro=$(uname -s)
+
+cd $HOME
+yadm submodule update --recursive --init
+
+# Only happen on macos
+if [ "$distro" = "Darwin" ]; then
+  # I love me some good ol nested ifs
+  if ! command -v brew > /dev/null 2>&1; then
+    # Installing brew
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  # If we have a brewfile then brew bundle too
+  if [ -f "$HOME/Brewfile" ]; then
+    brew bundle --global
+  fi
+fi
