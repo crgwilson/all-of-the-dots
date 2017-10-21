@@ -1,0 +1,15 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+# Global vagrant settings!
+
+Vagrant.configure("2") do |config|
+  if Vagrant.has_plugin?('vagrant-cachier')
+    config.cache.scope = :box
+  end
+
+  config.vm.provider :virtualbox do |box|
+    box.memory = '1024'
+    box.cpus = '1'
+  end
+end
