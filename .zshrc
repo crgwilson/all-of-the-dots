@@ -16,10 +16,6 @@ source /usr/local/share/antigen/antigen.zsh
 # Number of days before auto update
 export UPDATE_ZSH_DAYS=7
 
-#################
-# Antigen Jank! #
-#################
-
 # Be sure to load oh-my-zsh for antigen
 antigen use oh-my-zsh
 
