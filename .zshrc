@@ -3,6 +3,7 @@
 ##################
 
 # Path to your oh-my-zsh installation.
+plugins=(git wd)
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -21,6 +22,7 @@ antigen use oh-my-zsh
 
 # Antigen packages, my dudes
 antigen bundles <<EOBUNDLES
+  aws
   git
   git-flow
   github
