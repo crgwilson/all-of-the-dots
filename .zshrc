@@ -57,6 +57,7 @@ antigen apply
 ###########################
 # Regular 'ol shell jank! #
 # #########################
+export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 export EDITOR='nvim'
 
 alias vi='nvim'
