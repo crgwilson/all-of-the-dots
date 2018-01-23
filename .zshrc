@@ -56,23 +56,7 @@ antigen apply
 
 ###########################
 # Regular 'ol shell jank! #
-# #########################
+###########################
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 export EDITOR='nvim'
 
-alias vi='nvim'
-alias vim='nvim'
-alias git a='git add -A'
-alias git cm='git commit -am'
-alias cd..='cd ..'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias c='clear'
-alias mkdir='mkdir -pv'
-alias now='date +"%T"'
-alias ping='ping -c 3'
-alias vu='vagrant up'
-alias vd='vagrant destroy -f'
-alias vp='vagrant provision'
-alias vagrant destroy='vagrant destroy -f'
