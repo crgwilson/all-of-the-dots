@@ -1,0 +1,63 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+
+consul1_addr = '192.168.100.100'
+consul2_addr = '192.168.100.101'
+zip_url = 'https://releases.hashicorp.com/consul/1.0.6/consul_1.0.6_linux_amd64.zip'
+
+Vagrant.configure('2') do |config|
+  config.vm.box = 'debian/stretch64'
+
+  config.vm.define 'consul1' do |c1|
+    c1.vm.hostname = 'consul1'
+    c1.vm.network :private_network, ip: consul1_addr
+    c1.vm.provision :file, source: 'files/consul', destination: '/tmp/consul-files'
+    c1.vm.provision :shell, inline: <<-SHELL
+      apt-get install unzip
+      wget -q #{zip_url}
+      unzip consul_1.0.6_linux_amd64.zip
+      cp consul /usr/local/bin/
+      cp /tmp/consul-files/etc/systemd/system/consul.service /etc/systemd/system
+      sed -ie 's/{{JOIN_ADDR}}/#{consul2_addr}/g' /etc/systemd/system/consul.service
+      sed -ie 's/{{LISTEN_ADDR}}/#{consul1_addr}/g' /etc/systemd/system/consul.service
+      systemctl start consul
+    SHELL
+  end
+
+  config.vm.define 'consul2' do |c2|
+    c2.vm.hostname = 'consul2'
+    c2.vm.network :private_network, ip: consul2_addr
+    c2.vm.provision :file, source: 'files/consul', destination: '/tmp/consul-files'
+    c2.vm.provision :shell, inline: <<-SHELL
+      apt-get install unzip
+      wget -q #{zip_url}
+      unzip consul_1.0.6_linux_amd64.zip
+      cp consul /usr/local/bin/
+      cp /tmp/consul-files/etc/systemd/system/consul.service /etc/systemd/system
+      sed -i -e 's/{{JOIN_ADDR}}/#{consul1_addr}/g' /etc/systemd/system/consul.service
+      sed -ie 's/{{LISTEN_ADDR}}/#{consul2_addr}/g' /etc/systemd/system/consul.service
+      systemctl start consul
+    SHELL
+  end
+
+  config.vm.define 'nginx' do |n|
+    n.vm.hostname = 'nginx'
+    n.vm.network :private_network, ip: '192.168.100.103'
+    n.vm.network :forwarded_port, gust_ip: '192.168.100.103', guest: 80, host: 8000
+    n.vm.provision :file, source: 'files/nginx', destination: '/tmp/nginx-files'
+    n.vm.provision :shell, inline: <<-SHELL
+      apt-get -y update
+      apt-get -y install nginx
+      mkdir /etc/iptables.d
+      cp /tmp/nginx-files/etc/iptables.d/nginx.rules /etc/iptables.d/nginx.rules
+      cp /tmp/nginx-files/etc/network/if-pre-up.d/iptables /etc/network/if-pre-up.d/iptables
+      chmod +x /etc/network/if-pre-up.d/iptables
+      iptables-restore < /etc/iptables.d/nginx.rules
+      cp /tmp/nginx-files/etc/nginx/sites-available/consul /etc/nginx/sites-available/
+      ln -s /etc/nginx/sites-available/consul /etc/nginx/sites-enabled/
+      rm /etc/nginx/sites-enabled/default
+      systemctl restart nginx
+    SHELL
+  end
+end

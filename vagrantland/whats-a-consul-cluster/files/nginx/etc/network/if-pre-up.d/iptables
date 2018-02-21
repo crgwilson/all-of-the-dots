@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Loop through all files in /etc/iptables.d directory
+
+for f in /etc/iptables.d/*.rules
+do
+  /sbin/iptables-restore < $f
+done

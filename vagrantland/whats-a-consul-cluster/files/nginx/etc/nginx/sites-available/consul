@@ -1,0 +1,14 @@
+upstream consul_cluster {
+  server consul1:8500;
+  server consul2:8500;
+}
+
+server {
+  listen      80;
+  server_name consul-cluster;
+
+  location / {
+    proxy_bind 192.168.100.103;
+    proxy_pass http://consul_cluster;
+  }
+}
