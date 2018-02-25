@@ -23,6 +23,7 @@ Plug 'elzr/vim-json'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'rodjek/vim-puppet'
 Plug 'pearofducks/ansible-vim'
+Plug 'https://github.com/m-kat/aws-vim'
 
 call plug#end()
 
