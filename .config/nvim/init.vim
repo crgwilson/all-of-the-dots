@@ -24,6 +24,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'rodjek/vim-puppet'
 Plug 'pearofducks/ansible-vim'
 Plug 'https://github.com/m-kat/aws-vim'
+Plug 'junegunn/fzf'
 
 call plug#end()
 
@@ -41,3 +42,10 @@ set number
 set shiftwidth=2
 set tabstop=2
 set expandtab
+
+" spell check in markdown
+augroup markdownSpell
+    autocmd!
+    autocmd FileType markdown setlocal spell
+    autocmd BufRead,BufNewFile *.md setlocal spell
+augroup END
