@@ -61,3 +61,6 @@ alias vp='vagrant provision'
 alias vs='vagrant status'
 alias vss='vagrant ssh'
 alias vagrant destroy='vagrant destroy -f'
+alias start-docker='open --background -a Docker'
+alias stop-docker='test -z "$(docker ps -q 2>/dev/null)" && osascript -e "quit app \"Docker\""'
+
