@@ -27,7 +27,7 @@ cheat () {
   if [ -z "$CHEAT_LANG" ] || [ -z "$CHEAT_QUESTION" ]; then
     cheat_help
   else
-    curl cht.sh/$CHEAT_LANG/$CHEAT_QUESTION
+    curl cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}
   fi
 }
 
