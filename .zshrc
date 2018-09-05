@@ -61,3 +61,4 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 export EDITOR='nvim'
 
 source ~/.zsh_profile
+

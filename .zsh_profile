@@ -5,10 +5,31 @@ export CFLAGS=-I$(xcrun --show-sdk-path)/usr/include
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
+export PACKER_CACHE_DIR=$HOME/packer_cache
+
+export GOPATH=$HOME/go
+
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+
+cheat () {
+  cheat_help() {
+    echo "curl cht.sh! but be lazy about it..."
+    echo "Along with the command 'cheat', enter the programming language you're dealing with, and you question."
+    echo "Example: cheat bash 'what are computers'"
+  }
+
+  CHEAT_LANG=$1
+  CHEAT_QUESTION="${@:2}"
+
+  if [ -z "$CHEAT_LANG" ] || [ -z "$CHEAT_QUESTION" ]; then
+    cheat_help
+  else
+    curl cht.sh/$CHEAT_LANG/$CHEAT_QUESTION
+  fi
+}
 
 sox () {
   sox_help() { echo "Helper utility to toggle the MacOS SOCKS proxy. Pass on or off to set proxy state." }
@@ -63,4 +84,5 @@ alias vss='vagrant ssh'
 alias vagrant destroy='vagrant destroy -f'
 alias start-docker='open --background -a Docker'
 alias stop-docker='test -z "$(docker ps -q 2>/dev/null)" && osascript -e "quit app \"Docker\""'
+alias refresh-dns='sudo killall -HUP mDNSResponder'
 
