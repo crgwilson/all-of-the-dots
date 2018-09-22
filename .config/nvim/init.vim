@@ -27,6 +27,7 @@ Plug 'https://github.com/m-kat/aws-vim'
 Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 call plug#end()
 
@@ -47,6 +48,12 @@ set completeopt-=preview
 " python2 and python3 respectively, otherwise autocomplete won't work
 let g:python_host_prog = '/Users/cwilson/.pyenv/versions/nvim2/bin/python'
 let g:python3_host_prog = '/Users/cwilson/.pyenv/versions/nvim3/bin/python'
+
+" deoplete-go settings
+" NOTE: This one requires gocode installed
+" Assuming your GOPATH is set just run `go get -u github.com/mdempsky/gocode`
+let g:deoplete#sources#go#gocode_binary = '/Users/cwilson/go/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " vim settings
 syntax on
