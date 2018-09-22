@@ -27,6 +27,7 @@ cheat () {
   if [ -z "$CHEAT_LANG" ] || [ -z "$CHEAT_QUESTION" ]; then
     cheat_help
   else
+    echo "curling cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}"
     curl cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}
   fi
 }
@@ -85,4 +86,5 @@ alias vagrant destroy='vagrant destroy -f'
 alias start-docker='open --background -a Docker'
 alias stop-docker='test -z "$(docker ps -q 2>/dev/null)" && osascript -e "quit app \"Docker\""'
 alias refresh-dns='sudo killall -HUP mDNSResponder'
+alias t=todolist
 
