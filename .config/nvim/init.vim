@@ -25,6 +25,8 @@ Plug 'rodjek/vim-puppet'
 Plug 'pearofducks/ansible-vim'
 Plug 'https://github.com/m-kat/aws-vim'
 Plug 'junegunn/fzf'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
@@ -35,6 +37,16 @@ let g:airline_theme='luna'
 " ansible-vim settings
 let g:ansible_unindent_after_newline=1
 let g:ansible_attribute_highlight='ob'
+
+" deoplete settings
+let g:deoplete#enable_at_startup = 1
+set completeopt-=preview
+
+" deoplete jedi settings
+" NOTE: The below lines must be pointed at existing pyenv virtual envs for
+" python2 and python3 respectively, otherwise autocomplete won't work
+let g:python_host_prog = '/Users/cwilson/.pyenv/versions/nvim2/bin/python'
+let g:python3_host_prog = '/Users/cwilson/.pyenv/versions/nvim3/bin/python'
 
 " vim settings
 syntax on
