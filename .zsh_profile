@@ -50,6 +50,7 @@ awssh () {
   ssh -l admin -F ssh.config $1
 }
 
+# AWS Account (Easily switch between profiles)
 awsacc () {
   if [ -z "$1" ]; then
     echo $AWS_PROFILE
@@ -60,8 +61,24 @@ awsacc () {
   fi
 }
 
+# Get Private IP of EC2 Instance by name
+awsip () {
+  aws ec2 describe-instances --filters Name=tag:Name,Values=$1 --query "Reservations[].Instances[].PrivateIpAddress" --region $2 --output text
+}
+
+# EC2 Describe by name
+ec2d () {
+  aws ec2 describe-instances --filters Name=tag:Name,Values=$1 --query "Reservations[].Instances[]" --region $2 --output table
+}
+
+# Generate Password
 gpw() {
   pwgen -Bsy $1 1 |pbcopy |pbpaste; echo “Has been copied to clipboard”
+}
+
+# Delete Known Host (by line number)
+dkh() {
+  sed -i.bak -e "$1d" ~/.ssh/known_hosts
 }
 
 alias vi='nvim'
@@ -82,6 +99,7 @@ alias vd='vagrant destroy -f'
 alias vp='vagrant provision'
 alias vs='vagrant status'
 alias vss='vagrant ssh'
+alias vgs='vagrant global-status'
 alias vagrant destroy='vagrant destroy -f'
 alias start-docker='open --background -a Docker'
 alias stop-docker='test -z "$(docker ps -q 2>/dev/null)" && osascript -e "quit app \"Docker\""'
