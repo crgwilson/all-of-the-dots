@@ -28,6 +28,7 @@ Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -54,6 +55,13 @@ let g:python3_host_prog = '/Users/cwilson/.pyenv/versions/nvim3/bin/python'
 " Assuming your GOPATH is set just run `go get -u github.com/mdempsky/gocode`
 let g:deoplete#sources#go#gocode_binary = '/Users/cwilson/go/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" ale settings
+" specify specific linters to load here
+" linters available: https://github.com/w0rp/ale#supported-languages
+let g:ale_linters = {
+\  'python': ['flake8'],
+\}
 
 " vim settings
 syntax on
