@@ -57,6 +57,10 @@ let g:deoplete#sources#go#gocode_binary = '/Users/cwilson/go/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " ale settings
+let g:ale_lint_delay = 2000
+" having both better-whitespace and ale complain about trailing whitespace is
+" a bit much...
+let b:ale_warn_about_trailing_whitespace = 0
 " specify specific linters to load here
 " linters available: https://github.com/w0rp/ale#supported-languages
 let g:ale_linters = {
