@@ -14,6 +14,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+subnet-scan () {
+  nmap -sP $1
+}
+
 cheat () {
   cheat_help() {
     echo "curl cht.sh! but be lazy about it..."
@@ -44,6 +48,14 @@ sox () {
     sox_help
     ;;
   esac
+}
+
+sox-ssh () {
+  ssh -D 8080 $1
+}
+
+vnc-ssh () {
+  ssh $1 -L 5901:127.0.0.1:5901
 }
 
 awssh () {
@@ -79,6 +91,30 @@ gpw() {
 # Delete Known Host (by line number)
 dkh() {
   sed -i.bak -e "$1d" ~/.ssh/known_hosts
+}
+
+# Install cwd's requirements.txt into venvs used for deoplete
+# NOTE: This function assumes the venvs being used for deoplete for python2 and 3
+#       are named 'nvim2' and 'nvim3' respectively. This can be set in your nvim
+#       config.
+venv-init() {
+  ~/.pyenv/versions/2.7.10/envs/nvim2/bin/pip install -r requirements.txt
+  ~/.pyenv/versions/3.6.4/envs/nvim3/bin/pip install -r requirements.txt
+}
+
+# Listen on udp socket and print
+los() {
+  nc -u -l $1
+}
+
+# Generate an aes key w/ openssl
+aes-key() {
+  openssl rand -out out.key 32
+}
+
+# Wrap an aes key with a given RSAES OAEP SHA1 wrapping key
+wrap-aes-key() {
+  openssl rsautl -encrypt -in $1 -oaep -inkey $2 -pubin -keyform DER -out $1.enc
 }
 
 alias vi='nvim'

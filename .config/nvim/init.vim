@@ -28,7 +28,9 @@ Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'sebastianmarkow/deoplete-rust',
 Plug 'w0rp/ale'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -42,6 +44,7 @@ let g:ansible_attribute_highlight='ob'
 
 " deoplete settings
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#jedi#ignore_errors = 1
 set completeopt-=preview
 
 " deoplete jedi settings
@@ -57,7 +60,7 @@ let g:deoplete#sources#go#gocode_binary = '/Users/cwilson/go/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " ale settings
-let g:ale_lint_delay = 2000
+let g:ale_lint_delay = 1000
 " having both better-whitespace and ale complain about trailing whitespace is
 " a bit much...
 let b:ale_warn_about_trailing_whitespace = 0
@@ -66,6 +69,7 @@ let b:ale_warn_about_trailing_whitespace = 0
 let g:ale_linters = {
 \  'python': ['flake8'],
 \}
+let g:ale_linters = {'rust': ['rls']}
 
 " vim settings
 syntax on
