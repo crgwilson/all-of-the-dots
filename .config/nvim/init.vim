@@ -68,8 +68,8 @@ let b:ale_warn_about_trailing_whitespace = 0
 " linters available: https://github.com/w0rp/ale#supported-languages
 let g:ale_linters = {
 \  'python': ['flake8'],
+\  'rust': ['rls'],
 \}
-let g:ale_linters = {'rust': ['rls']}
 
 " vim settings
 syntax on
