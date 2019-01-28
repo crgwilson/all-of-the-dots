@@ -142,12 +142,38 @@ gen-priv-key() {
     help
   fi
 
-  if [ "$TYPE" is "rsa"]; then
+  if [ "$TYPE" = "rsa" ]; then
     openssl genrsa -out $NAME 4096
-  elif [ "$TYPE" is "ecc"]; then
+  elif [ "$TYPE" = "ecc" ]; then
     openssl ecparam -out $NAME -name secp384r1 -genkey
   else
     help
+  fi
+}
+
+# TODO: Make this function less stupid
+encrypt-priv-key() {
+  help() {
+    echo "Encrypt an OpenSSL private key with a passphrase"
+    echo "Args:"
+    echo "  1. The path of the file to encrypt"
+    echo "  2. The type of key we're encrypting (ecc or rsa) *Defaults to rsa*"
+  }
+
+  if [ -z "$2" ]; then
+    TYPE="rsa"
+  else
+    TYPE=$2
+  fi
+
+  if [ -z "$1" ]; then
+    help
+  else
+    if [ "$TYPE" = "ecc" ]; then
+      openssl ec -in $1 -out $1 -aes256
+    else
+      openssl $TYPE -in $1 -out $1 -aes256
+    fi
   fi
 }
 
@@ -197,4 +223,5 @@ alias dic='docker rmi $(docker images --filter "dangling=true" -q)'
 alias pgadmin='open /Applications/pgAdmin\ 4.app'
 alias refresh-dns='sudo killall -HUP mDNSResponder'
 alias t=todolist
-
+alias read-csr='openssl req -text -noout -verify -in'
+alias read-cert='`openssl x509 -noout -text -in'
