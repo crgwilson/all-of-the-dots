@@ -224,4 +224,4 @@ alias pgadmin='open /Applications/pgAdmin\ 4.app'
 alias refresh-dns='sudo killall -HUP mDNSResponder'
 alias t=todolist
 alias read-csr='openssl req -text -noout -verify -in'
-alias read-cert='`openssl x509 -noout -text -in'
+alias read-cert='openssl x509 -noout -text -in'

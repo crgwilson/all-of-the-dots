@@ -1,5 +1,11 @@
 # This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
-	name = crgwilson
-	email = craigjwilson93@gmail.com
+  name = Craig Wilson
+  signingkey = 9FA923C9
+  email = craigjwilson93@gmail.com
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
