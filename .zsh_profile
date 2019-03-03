@@ -2,6 +2,8 @@ export LDFLAGS=-L/usr/local/opt/zlib/lib
 export CPPFLAGS=-I/usr/local/opt/zlib/include
 export CFLAGS=-I$(xcrun --show-sdk-path)/usr/include
 
+export GPG_TTY=$(tty)
+
 export PYENV_ROOT=$HOME/.pyenv
 export GOPATH=$HOME/go
 
@@ -225,3 +227,6 @@ alias refresh-dns='sudo killall -HUP mDNSResponder'
 alias t=todolist
 alias read-csr='openssl req -text -noout -verify -in'
 alias read-cert='openssl x509 -noout -text -in'
+alias cert-serial='openssl x509 -serial -noout -in'
+alias jcat='python -m json.tool'
+alias shrug='echo "¯\_(ツ)_/¯"'

@@ -8,6 +8,7 @@ endif
 " Muh plugins
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'nanotech/jellybeans.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
@@ -24,19 +25,60 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'rodjek/vim-puppet'
 Plug 'pearofducks/ansible-vim'
 Plug 'https://github.com/m-kat/aws-vim'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'sebastianmarkow/deoplete-rust',
 Plug 'w0rp/ale'
 Plug 'hashivim/vim-terraform'
+Plug 'scrooloose/nerdtree'
+Plug 'AndrewRadev/splitjoin.vim' " Adds gS and gJ to split / join lines
+Plug 'ap/vim-css-color'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
+" jellybeans settings
+colorscheme jellybeans
+let g:jellybeans_use_term_background_color = 1
+
 " vim-airline settings
 let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
+let g:airline_theme='jellybeans'
+
+" nerdtree settings
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeWinSize = 31
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeCascadeOpenSingleChildDir = 1
+
+map <F1> :call NERDTreeToggleAndFind()<cr>
+map <F2> :NERDTreeToggle<CR>
+
+function! NERDTreeToggleAndFind()
+  if (exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1)
+    execute ':NERDTreeClose'
+  else
+    execute ':NERDTreeFind'
+  endif
+endfunction
+
+" fzf settings
+let g:fzf_nvim_statusline = 0
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" fuzzy find files with space
+nnoremap <silent> <space> :Files<CR>
 
 " ansible-vim settings
 let g:ansible_unindent_after_newline=1
@@ -71,13 +113,35 @@ let g:ale_linters = {
 \  'rust': ['rls'],
 \}
 
+" ultisnips settings
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir = '~/.config/nvim/snippets'
+
 " vim settings
 syntax on
 set number
+
 set shiftwidth=2
 set tabstop=2
 set expandtab
+set softtabstop=2 " remove <Tab> symbols as it was spaces
+set shiftwidth=2  " indent size for << and >>
+set shiftround
 
+set lazyredraw
+set mouse=""
+
+set ignorecase
+set smartcase
+set cursorline
+
+" navigate splits w/ ctrl + direction
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" groups
 " spell check in markdown
 augroup markdownSpell
     autocmd!
