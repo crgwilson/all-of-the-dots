@@ -11,6 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'nanotech/jellybeans.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-endwise'
 Plug 'vim-airline/vim-airline'
@@ -37,7 +38,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'AndrewRadev/splitjoin.vim' " Adds gS and gJ to split / join lines
 Plug 'ap/vim-css-color'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 call plug#end()
@@ -128,12 +129,20 @@ set softtabstop=2 " remove <Tab> symbols as it was spaces
 set shiftwidth=2  " indent size for << and >>
 set shiftround
 
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+
 set lazyredraw
 set mouse=""
 
 set ignorecase
 set smartcase
 set cursorline
+
+set splitbelow
+set splitright
 
 " navigate splits w/ ctrl + direction
 map <C-j> <C-W>j
