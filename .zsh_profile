@@ -16,26 +16,55 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-subnet-scan () {
-  nmap -sP $1
+
+##########
+# NeoVim #
+##########
+
+# -------
+# Aliases
+# -------
+alias vi='nvim'
+alias vim='nvim'
+
+
+#######
+# SSH #
+#######
+
+# ---------
+# Functions
+# ---------
+
+# Delete Known Host (by line number)
+dkh() {
+  sed -i.bak -e "$1d" ~/.ssh/known_hosts
 }
 
-cheat () {
-  cheat_help() {
-    echo "curl cht.sh! but be lazy about it..."
-    echo "Along with the command 'cheat', enter the programming language you're dealing with, and you question."
-    echo "Example: cheat bash 'what are computers'"
-  }
+sox-ssh () {
+  ssh -D 8080 $1
+}
 
-  CHEAT_LANG=$1
-  CHEAT_QUESTION="${@:2}"
+vnc-ssh () {
+  ssh $1 -L 5901:127.0.0.1:5901
+}
 
-  if [ -z "$CHEAT_LANG" ] || [ -z "$CHEAT_QUESTION" ]; then
-    cheat_help
-  else
-    echo "curling cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}"
-    curl cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}
-  fi
+
+##############
+# Networking #
+##############
+
+# -------
+# Aliases
+# -------
+alias refresh-dns='sudo killall -HUP mDNSResponder'
+
+# ---------
+# Functions
+# ---------
+
+subnet-scan () {
+  nmap -sP $1
 }
 
 sox () {
@@ -52,14 +81,26 @@ sox () {
   esac
 }
 
-sox-ssh () {
-  ssh -D 8080 $1
+# Listen on udp socket and print
+los() {
+  nc -u -l $1
 }
 
-vnc-ssh () {
-  ssh $1 -L 5901:127.0.0.1:5901
-}
 
+#######
+# AWS #
+#######
+
+# -------
+# Aliases
+# -------
+
+alias ec2ls="aws ec2 describe-instances --query 'Reservations[].Instances[].{Name:Tags[?Key==\`Name\`]|[0].Value, Environment:Tags[?Key==\`Environment\`]|[0].Value, Purpose:Tags[?Key==\`Purpose\`]|[0].Value, ID:InstanceId, AZ:Placement.AvailabilityZone, PrivateIP:PrivateIpAddress, PublicIP:PublicIpAddress}' --output table --region"
+alias ec2-reboot="aws ec2 reboot-instances"
+
+# ---------
+# Functions
+# ---------
 awssh () {
   ssh -l admin -F ssh.config $1
 }
@@ -90,16 +131,45 @@ gpw() {
   pwgen -Bsy $1 1 |pbcopy |pbpaste; echo “Has been copied to clipboard”
 }
 
-# Delete Known Host (by line number)
-dkh() {
-  sed -i.bak -e "$1d" ~/.ssh/known_hosts
-}
 
+##########
+# Docker #
+##########
+
+# -------
+# Aliases
+# -------
+# Docker aliases
+alias start-docker='open --background -a Docker'
+alias stop-docker='test -z "$(docker ps -q 2>/dev/null)" && osascript -e "quit app \"Docker\""'
+alias dic='docker rmi $(docker images --filter "dangling=true" -q)'
+
+# Docker compose aliases
+alias dkc='docker-compose'
+alias dkcu='dkc up'
+alias dkcd='dkc down'
+alias dkcp='dkc ps'
+
+# ---------
+# Functions
+# ---------
 docker-shell() {
   container=`docker container ls | sed -n 2p | awk '{print $1}'`
   docker exec -it $container /bin/bash
 }
 
+docker-ip() {
+  docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
+}
+
+
+##########
+# Python #
+##########
+
+# ---------
+# Functions
+# ---------
 # Install cwd's requirements.txt into venvs used for deoplete
 # NOTE: This function assumes the venvs being used for deoplete for python2 and 3
 #       are named 'nvim2' and 'nvim3' respectively. This can be set in your nvim
@@ -109,11 +179,23 @@ venv-init() {
   ~/.pyenv/versions/3.6.4/envs/nvim3/bin/pip install -r requirements.txt
 }
 
-# Listen on udp socket and print
-los() {
-  nc -u -l $1
-}
 
+###########
+# OpenSSL #
+###########
+
+# -------
+# Aliases
+# -------
+alias read-csr='openssl req -text -noout -verify -in'
+alias read-cert='openssl x509 -noout -text -in'
+alias cert-serial='openssl x509 -serial -noout -in'
+alias encrypt-file='openssl enc -aes-256-cbc -salt -in file.txt -out file.txt.enc'
+alias decrypt-file='openssl enc -aes-256-cbc -d -in file.txt.enc -out file.txt'
+
+# ---------
+# Functions
+# ---------
 # Generate an aes key w/ openssl
 aes-key() {
   openssl rand -out out.key 32
@@ -199,18 +281,14 @@ gen-csr() {
   fi
 }
 
-alias vi='nvim'
-alias vim='nvim'
-alias git a='git add -A'
-alias git cm='git commit -am'
-alias cd..='cd ..'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias c='clear'
-alias mkdir='mkdir -pv'
-alias now='date +"%T"'
-alias ping='ping -c 3'
+
+###########
+# Vagrant #
+###########
+
+# -------
+# Aliases
+# -------
 alias vu='vagrant up'
 alias vr='vd && vu'
 alias vd='vagrant destroy -f'
@@ -219,14 +297,54 @@ alias vs='vagrant status'
 alias vss='vagrant ssh'
 alias vgs='vagrant global-status'
 alias vagrant destroy='vagrant destroy -f'
-alias start-docker='open --background -a Docker'
-alias stop-docker='test -z "$(docker ps -q 2>/dev/null)" && osascript -e "quit app \"Docker\""'
-alias dic='docker rmi $(docker images --filter "dangling=true" -q)'
+
+
+########
+# Misc #
+########
+
+# -------
+# Aliases
+# -------
+
+# Traversal aliases
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Stuff that should be in my git config
+alias git a='git add -A'
+alias git cm='git commit -am'
+
+alias c='clear'
+alias mkdir='mkdir -pv'
+alias now='date +"%T"'
 alias pgadmin='open /Applications/pgAdmin\ 4.app'
-alias refresh-dns='sudo killall -HUP mDNSResponder'
 alias t=todolist
-alias read-csr='openssl req -text -noout -verify -in'
-alias read-cert='openssl x509 -noout -text -in'
-alias cert-serial='openssl x509 -serial -noout -in'
 alias jcat='python -m json.tool'
+alias ping='ping -c 3'
+
+# Nonsense
 alias shrug='echo "¯\_(ツ)_/¯"'
+
+# ---------
+# Functions
+# ---------
+cheat () {
+  cheat_help() {
+    echo "curl cht.sh! but be lazy about it..."
+    echo "Along with the command 'cheat', enter the programming language you're dealing with, and you question."
+    echo "Example: cheat bash 'what are computers'"
+  }
+
+  CHEAT_LANG=$1
+  CHEAT_QUESTION="${@:2}"
+
+  if [ -z "$CHEAT_LANG" ] || [ -z "$CHEAT_QUESTION" ]; then
+    cheat_help
+  else
+    echo "curling cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}"
+    curl cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}
+  fi
+}
