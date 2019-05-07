@@ -126,6 +126,37 @@ ec2d () {
   aws ec2 describe-instances --filters Name=tag:Name,Values=$1 --query "Reservations[].Instances[]" --region $2 --output table
 }
 
+aws-tag() {
+  help() {
+    echo "Tag an AWS resource"
+    echo "Args:"
+    echo "  1. AWS region"
+    echo "  2. Resource ID"
+    echo "  3. Tag Name"
+    echo "  4. Tag Value"
+  }
+  if [ -z "$4" ]; then
+    help
+  else
+    aws ec2 create-tags --region $1 --resources $2 --tags "Key=$3,Value=$4"
+  fi
+}
+
+aws-untag() {
+  help() {
+    echo "Untag an AWS resource"
+    echo "Args:"
+    echo "  1. AWS region"
+    echo "  2. Resource ID"
+    echo "  3. Tag Name"
+  }
+  if [ -z "$3" ]; then
+    help
+  else
+    aws ec2 delete-tags --region $1 --resources $2 --tags "Key=$3"
+  fi
+}
+
 # Generate Password
 gpw() {
   pwgen -Bsy $1 1 |pbcopy |pbpaste; echo “Has been copied to clipboard”
