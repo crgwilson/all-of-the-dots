@@ -11,6 +11,8 @@ export PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$GOPATH/bin:$PATH
 
 export PACKER_CACHE_DIR=$HOME/packer_cache
 
+export SPACESHIP_VENV_SHOW=false
+export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
@@ -95,7 +97,7 @@ los() {
 # Aliases
 # -------
 
-alias ec2ls="aws ec2 describe-instances --query 'Reservations[].Instances[].{Name:Tags[?Key==\`Name\`]|[0].Value, Environment:Tags[?Key==\`Environment\`]|[0].Value, Purpose:Tags[?Key==\`Purpose\`]|[0].Value, ID:InstanceId, AZ:Placement.AvailabilityZone, PrivateIP:PrivateIpAddress, PublicIP:PublicIpAddress}' --output table --region"
+alias ec2ls="aws ec2 describe-instances --query 'sort_by(Reservations[].Instances[].{Name:Tags[?Key==\`Name\`]|[0].Value, Environment:Tags[?Key==\`Environment\`]|[0].Value, Purpose:Tags[?Key==\`Purpose\`]|[0].Value, ID:InstanceId, AZ:Placement.AvailabilityZone, PrivateIP:PrivateIpAddress, PublicIP:PublicIpAddress, State:State.Name}, &Name)' --output table --region"
 alias ec2-reboot="aws ec2 reboot-instances"
 
 # ---------
@@ -154,6 +156,20 @@ aws-untag() {
     help
   else
     aws ec2 delete-tags --region $1 --resources $2 --tags "Key=$3"
+  fi
+}
+
+ec2-inspect() {
+  help() {
+    echo "Describe an EC2 instance"
+    echo "Args:"
+    echo "  1. AWS region"
+    echo "  2. EC2 ID"
+  }
+  if [ -z "$2" ]; then
+    help
+  else
+    aws ec2 describe-instances --filters "Name=instance-id,Values=$2" --output table --region $1
   fi
 }
 
