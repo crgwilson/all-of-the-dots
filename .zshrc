@@ -23,6 +23,7 @@ antigen use oh-my-zsh
 # Antigen packages, my dudes
 antigen bundles <<EOBUNDLES
   aws
+  ansible
   git
   git-flow
   github
@@ -37,13 +38,18 @@ antigen bundles <<EOBUNDLES
   chrissicool/zsh-256color
   web-search
   colored-man-pages
+  cargo
+  python
+  docker
+  golang
+  docker-compose
+  zsh_reload
   hlissner/zsh-autopair
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-completions
   zsh-users/zsh-history-substring-search
   zsh-users/zsh-syntax-highlighting
 EOBUNDLES
-
 
 # Freakin powerline is busted with iterm2 again so all the fancy characters
 # in spaceship don't currently work
@@ -60,6 +66,5 @@ export EDITOR='nvim'
 
 source ~/.zsh_profile
 source $HOME/.cargo/env
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
