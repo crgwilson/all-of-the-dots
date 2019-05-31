@@ -3,7 +3,7 @@
 ##################
 
 # Path to your oh-my-zsh installation.
-plugins=(git wd)
+plugins=()
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -28,24 +28,22 @@ antigen bundles <<EOBUNDLES
   github
   pip
   gem
-  brew
+  wd
   bundler
   osx
   tmux
   tmuxinator
-  command-not-found
-  dnf
   jsontools
-  desync/vagrant-zsh-completion
-  chrissiscool/zsh-256color
+  chrissicool/zsh-256color
   web-search
   colored-man-pages
   hlissner/zsh-autopair
   zsh-users/zsh-autosuggestions
-  zsh-users/syntax-highlighting
   zsh-users/zsh-completions
   zsh-users/zsh-history-substring-search
+  zsh-users/zsh-syntax-highlighting
 EOBUNDLES
+
 
 # Freakin powerline is busted with iterm2 again so all the fancy characters
 # in spaceship don't currently work
