@@ -38,8 +38,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'AndrewRadev/splitjoin.vim' " Adds gS and gJ to split / join lines
 Plug 'ap/vim-css-color'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'chrisbra/NrrwRgn'
 " Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'tomtom/tcomment_vim'
 
 call plug#end()
 
@@ -110,6 +112,7 @@ let b:ale_warn_about_trailing_whitespace = 0
 " specify specific linters to load here
 " linters available: https://github.com/w0rp/ale#supported-languages
 let g:ale_linters = {
+\  'bash': ['shellcheck'],
 \  'python': ['flake8'],
 \  'rust': ['rls'],
 \}
@@ -119,6 +122,7 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir = '~/.config/nvim/snippets'
 
 " vim settings
+" let mapleader=","
 syntax on
 set number
 

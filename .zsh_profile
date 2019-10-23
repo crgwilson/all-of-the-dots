@@ -7,7 +7,7 @@ export GPG_TTY=$(tty)
 export PYENV_ROOT=$HOME/.pyenv
 export GOPATH=$HOME/go
 
-export PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$GOPATH/bin:$PATH
+export PATH=/usr/local/opt/openssl@1.1/bin:$PYENV_ROOT/shims:$PYENV_ROOT/bin:$GOPATH/bin:$PATH
 
 export PACKER_CACHE_DIR=$HOME/packer_cache
 
@@ -344,6 +344,19 @@ alias vs='vagrant status'
 alias vss='vagrant ssh'
 alias vgs='vagrant global-status'
 alias vagrant destroy='vagrant destroy -f'
+
+
+############
+# Molecule #
+############
+
+# -------
+# Aliases
+# -------
+alias ml='molecule login'
+alias mt='molecule test'
+alias mc='molecule converge'
+alias md='molecule destroy --all'
 
 
 ########
