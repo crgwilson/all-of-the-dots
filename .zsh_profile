@@ -190,6 +190,7 @@ gpw() {
 alias start-docker='open --background -a Docker'
 alias stop-docker='test -z "$(docker ps -q 2>/dev/null)" && osascript -e "quit app \"Docker\""'
 alias dic='docker rmi $(docker images --filter "dangling=true" -q)'
+alias drd='docker run -it --rm debian:9'
 
 # Docker compose aliases
 alias dkc='docker-compose'
@@ -367,6 +368,8 @@ alias md='molecule destroy --all'
 # Aliases
 # -------
 
+alias get_top_open_files="lsof | awk '{print $1}' | uniq -c | sort -rn | head"
+
 # Traversal aliases
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -387,6 +390,8 @@ alias ping='ping -c 3'
 
 # Nonsense
 alias shrug='echo "¯\_(ツ)_/¯"'
+alias weather='curl wttr.in'
+alias party='curl parrot.live'
 
 # ---------
 # Functions
@@ -408,3 +413,5 @@ cheat () {
     curl cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}
   fi
 }
+
+ulimit -n 4096
