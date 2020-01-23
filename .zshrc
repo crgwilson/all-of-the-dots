@@ -22,7 +22,6 @@ antigen use oh-my-zsh
 
 # Antigen packages, my dudes
 antigen bundles <<EOBUNDLES
-  aws
   ansible
   git
   git-flow
@@ -65,6 +64,6 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 export EDITOR='nvim'
 
 source ~/.zsh_profile
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

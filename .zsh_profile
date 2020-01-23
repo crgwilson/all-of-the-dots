@@ -224,7 +224,7 @@ docker-ip() {
 #       config.
 venv-init() {
   ~/.pyenv/versions/2.7.10/envs/nvim2/bin/pip install -r requirements.txt
-  ~/.pyenv/versions/3.6.4/envs/nvim3/bin/pip install -r requirements.txt
+  ~/.pyenv/versions/3.8.1/envs/nvim3/bin/pip install -r requirements.txt
 }
 
 
