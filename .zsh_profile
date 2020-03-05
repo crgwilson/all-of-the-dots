@@ -7,11 +7,16 @@ export GPG_TTY=$(tty)
 export PYENV_ROOT=$HOME/.pyenv
 export GOPATH=$HOME/go
 
-export PATH=/usr/local/opt/openssl@1.1/bin:$PYENV_ROOT/shims:$PYENV_ROOT/bin:$GOPATH/bin:$PATH
+export PATH=/usr/local/opt/openssl@1.1/bin:$PYENV_ROOT/shims:$PYENV_ROOT/bin:$GOPATH/bin:/usr/local/lib/ruby/gems/2.7.0/bin:/usr/local/opt/sqlite/bin:$PATH
 
 export PACKER_CACHE_DIR=$HOME/packer_cache
 
 export SPACESHIP_VENV_SHOW=false
+# export SPACESHIP_DOCKER_SHOW=true
+export SPACESHIP_DOCKER_CONTEXT_SHOW=false
+
+export AWS_PAGER=""
+
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -118,6 +123,10 @@ awsacc () {
   fi
 }
 
+awsid () {
+  aws ec2 describe-security-groups --group-names 'Default' --query 'SecurityGroups[0].OwnerId' --output text --region us-east-1
+}
+
 # Get Private IP of EC2 Instance by name
 awsip () {
   aws ec2 describe-instances --filters Name=tag:Name,Values=$1 --query "Reservations[].Instances[].PrivateIpAddress" --region $2 --output text
@@ -190,7 +199,9 @@ gpw() {
 alias start-docker='open --background -a Docker'
 alias stop-docker='test -z "$(docker ps -q 2>/dev/null)" && osascript -e "quit app \"Docker\""'
 alias dic='docker rmi $(docker images --filter "dangling=true" -q)'
-alias drd='docker run -it --rm debian:9'
+alias drd9='docker run -it --rm debian:9'
+alias drd10='docker run -it --rm debian:10'
+alias drc8='docker run -it --rm centos:8'
 
 # Docker compose aliases
 alias dkc='docker-compose'
@@ -360,6 +371,16 @@ alias mc='molecule converge'
 alias md='molecule destroy --all'
 
 
+#############
+# Terraform #
+#############
+
+# -------
+# Aliases
+# -------
+alias tf='terraform'
+
+
 ########
 # Misc #
 ########
@@ -386,7 +407,7 @@ alias now='date +"%T"'
 alias pgadmin='open /Applications/pgAdmin\ 4.app'
 alias t=todolist
 alias jcat='python -m json.tool'
-alias ping='ping -c 3'
+alias ping='/sbin/ping -c 3'
 
 # Nonsense
 alias shrug='echo "¯\_(ツ)_/¯"'

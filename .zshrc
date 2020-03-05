@@ -33,6 +33,7 @@ antigen bundles <<EOBUNDLES
   osx
   tmux
   tmuxinator
+  terraform
   jsontools
   chrissicool/zsh-256color
   web-search
@@ -64,6 +65,6 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 export EDITOR='nvim'
 
 source ~/.zsh_profile
-# source $HOME/.cargo/env
+source $HOME/.cargo/env
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
