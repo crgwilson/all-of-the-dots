@@ -64,6 +64,7 @@ let g:NERDTreeCascadeOpenSingleChildDir = 1
 
 map <F1> :call NERDTreeToggleAndFind()<cr>
 map <F2> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 function! NERDTreeToggleAndFind()
   if (exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1)
@@ -72,6 +73,8 @@ function! NERDTreeToggleAndFind()
     execute ':NERDTreeFind'
   endif
 endfunction
+
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " fzf settings
 let g:fzf_nvim_statusline = 0
@@ -139,7 +142,7 @@ set nofoldenable
 set foldlevel=1
 
 set lazyredraw
-set mouse=""
+set mouse=
 
 set ignorecase
 set smartcase

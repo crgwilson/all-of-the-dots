@@ -408,6 +408,7 @@ alias pgadmin='open /Applications/pgAdmin\ 4.app'
 alias t=todolist
 alias jcat='python -m json.tool'
 alias ping='/sbin/ping -c 3'
+alias grip='~/.pyenv/versions/grip/bin/grip'
 
 # Nonsense
 alias shrug='echo "¯\_(ツ)_/¯"'
