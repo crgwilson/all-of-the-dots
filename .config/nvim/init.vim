@@ -31,6 +31,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'Shougo/deoplete-clangx'
 Plug 'sebastianmarkow/deoplete-rust',
 Plug 'w0rp/ale'
 Plug 'hashivim/vim-terraform'
@@ -118,6 +119,7 @@ let g:ale_linters = {
 \  'bash': ['shellcheck'],
 \  'python': ['flake8'],
 \  'rust': ['rls'],
+\  'c': ['clang'],
 \}
 
 " ultisnips settings
