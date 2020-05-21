@@ -1,8 +1,8 @@
 [submodule "submodules/fonts"]
 	path = submodules/fonts
 	url = https://github.com/powerline/fonts.git
-[submodule "/Users/craigw93/.pyenv"]
-	path = /Users/craigw93/.pyenv
+[submodule ".pyenv"]
+	path = .pyenv
 	url = git@github.com:pyenv/pyenv.git
 [submodule "submodules/pyenv-virtualenv"]
 	path = submodules/pyenv-virtualenv
