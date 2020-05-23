@@ -55,6 +55,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='jellybeans'
 
 " nerdtree settings
+let g:loaded_clipboard_provider = 1  " https://github.com/neovim/neovim/issues/11033
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeWinSize = 31
@@ -99,8 +100,8 @@ set completeopt-=preview
 " deoplete jedi settings
 " NOTE: The below lines must be pointed at existing pyenv virtual envs for
 " python2 and python3 respectively, otherwise autocomplete won't work
-let g:python_host_prog = '/Users/cwilson/.pyenv/versions/nvim2/bin/python'
-let g:python3_host_prog = '/Users/cwilson/.pyenv/versions/nvim3/bin/python'
+let g:python_host_prog = $HOME . '/.pyenv/versions/nvim2/bin/python'
+let g:python3_host_prog = $HOME . '/.pyenv/versions/nvim3/bin/python'
 
 " deoplete-go settings
 " NOTE: This one requires gocode installed
@@ -123,13 +124,13 @@ let g:ale_linters = {
 \}
 
 " ultisnips settings
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetsDir = '~/.config/nvim/snippets'
 
 " vim settings
 " let mapleader=","
 syntax on
-set number
+set relativenumber
 
 set shiftwidth=2
 set tabstop=2
@@ -153,6 +154,22 @@ set cursorline
 set splitbelow
 set splitright
 
+" undo stuff
+if !isdirectory($HOME . '/.config/nvim/undo')
+  call mkdir($HOME . '/.config/nvim/undo', 'p')
+endif
+set undodir=~/.config/nvim/undo
+set undofile
+set undoreload=10000
+
+" backup stuff
+if !isdirectory($HOME . '/.config/nvim/backup')
+  call mkdir($HOME . '/.config/nvim/backup', 'p')
+endif
+set backupdir=~/.config/nvim/backup
+set backupext=.bkp
+set backup
+
 " navigate splits w/ ctrl + direction
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -160,6 +177,11 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " groups
+" augroup highlight_yank
+"     autocmd!
+"     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+" augroup END
+
 " spell check in markdown
 augroup markdownSpell
     autocmd!
