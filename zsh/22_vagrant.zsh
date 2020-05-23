@@ -1,6 +1,6 @@
-###########
-# Vagrant #
-###########
+################
+# Vagrant jank #
+################
 
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 

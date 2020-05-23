@@ -1,6 +1,6 @@
-#################
-# Antigen Jank! #
-#################
+################
+# Antigen Jank #
+################
 
 # Antigen source path
 source /usr/local/share/antigen/antigen.zsh

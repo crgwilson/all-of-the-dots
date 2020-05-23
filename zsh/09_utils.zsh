@@ -1,6 +1,6 @@
-##############
-# Misc utils #
-##############
+#####################
+# Misc utils / jank #
+#####################
 
 alias get_top_open_files="lsof | awk '{print $1}' | uniq -c | sort -rn | head"
 alias c='clear'
