@@ -1,11 +1,15 @@
 # This is Git's per-user configuration file.
 [user]
   name = Craig Wilson
-  signingkey = 9FA923C9
+  # signingkey = 9FA923C9
   email = craigjwilson93@gmail.com
 
-[commit]
-	gpgsign = true
+# [commit]
+# 	gpgsign = true
+#
+# [gpg]
+# 	program = gpg
 
-[gpg]
-	program = gpg
+[alias]
+  a = add -A
+  cm = commit -m
