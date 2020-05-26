@@ -40,7 +40,7 @@ Plug 'AndrewRadev/splitjoin.vim' " Adds gS and gJ to split / join lines
 Plug 'ap/vim-css-color'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'chrisbra/NrrwRgn'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tomtom/tcomment_vim'
 Plug 'rrethy/vim-illuminate'
@@ -127,6 +127,7 @@ let g:ale_linters = {
 " ultisnips settings
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetsDir = '~/.config/nvim/snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " illuminate settings
 let g:Illuminate_ftblacklist = ['nerdtree', 'md']
