@@ -44,6 +44,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tomtom/tcomment_vim'
 Plug 'rrethy/vim-illuminate'
+Plug 'kergoth/vim-bitbake'
 
 call plug#end()
 
