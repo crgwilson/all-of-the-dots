@@ -43,6 +43,7 @@ Plug 'chrisbra/NrrwRgn'
 " Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tomtom/tcomment_vim'
+Plug 'rrethy/vim-illuminate'
 
 call plug#end()
 
@@ -126,6 +127,10 @@ let g:ale_linters = {
 " ultisnips settings
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetsDir = '~/.config/nvim/snippets'
+
+" illuminate settings
+let g:Illuminate_ftblacklist = ['nerdtree', 'md']
+hi link illuminatedWord Visual
 
 " vim settings
 " let mapleader=","
