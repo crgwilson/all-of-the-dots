@@ -57,7 +57,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='jellybeans'
 
 " nerdtree settings
-let g:loaded_clipboard_provider = 1  " https://github.com/neovim/neovim/issues/11033
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeWinSize = 31
