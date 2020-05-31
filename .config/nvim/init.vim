@@ -45,6 +45,7 @@ Plug 'honza/vim-snippets'
 Plug 'tomtom/tcomment_vim'
 Plug 'rrethy/vim-illuminate'
 Plug 'kergoth/vim-bitbake'
+Plug 'psliwka/vim-smoothie'
 
 call plug#end()
 
