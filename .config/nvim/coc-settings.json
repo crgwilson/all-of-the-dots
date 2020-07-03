@@ -1,0 +1,35 @@
+{
+  "coc.preferences.autoTrigger": "always",
+
+  "suggest.enablePreview": true,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.defaultSortMethod": "alphabetical",
+  "suggest.maxPreviewWidth": 80,
+
+  "signature.enable": true,
+  "signature.preferShownAbove": false,
+  "signature.macWindowHeight": 16,
+
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.checkCurrentLine": true,
+
+  "python.autoUpdateLanguageServer": true,
+  "python.jediEnabled": false,
+
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.pyenv/versions/3.8.1/envs/nvim3/bin/black",
+
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "~/.pyenv/versions/3.8.1/envs/nvim3/bin/flake8",
+
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
+    }
+  }
+}
