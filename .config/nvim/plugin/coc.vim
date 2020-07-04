@@ -11,7 +11,6 @@ let g:coc_global_extensions = [
   \ 'coc-yaml',
   \ 'coc-yank',
   \ ]
-"
 
 " Snarfed from https://github.com/neoclide/coc.nvim
 " TextEdit might fail if hidden is not set.
@@ -125,3 +124,7 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" Use pyenv to determine which python interpreter to use
+let pyenv_python_path = split(system('pyenv which python'), '\n')[-1]
+call coc#config('python', {'pythonPath': pyenv_python_path})
