@@ -25,6 +25,11 @@
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "~/.pyenv/versions/3.8.1/envs/nvim3/bin/flake8",
 
+  "go.goplsOptions": {
+    "hoverKind": "FullDocumentation",
+    "completeUnimported": true
+  },
+
   "languageserver": {
     "terraform": {
       "command": "terraform-lsp",
