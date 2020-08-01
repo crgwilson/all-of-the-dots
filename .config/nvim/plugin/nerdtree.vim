@@ -7,6 +7,7 @@ let g:NERDTreeChDirMode = 2
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeCascadeOpenSingleChildDir = 1
+let g:NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 map <F1> :call NERDTreeToggleAndFind()<cr>
 map <F2> :NERDTreeToggle<CR>
