@@ -79,6 +79,7 @@ nnoremap <c-n> :call OpenTerminal()<CR>
 " vim settings
 " let mapleader=","
 syntax on
+set number
 set relativenumber
 
 set shiftwidth=2
