@@ -5,3 +5,112 @@ endsnippet
 snippet reveal "MyPy reveal_type()" b
 reveal_type(${1:item})
 endsnippet
+
+snippet apiresource "Flask-restful API resource class (For object operations)"
+class ${1:name}(Resource):
+    def get(self, id: int) -> Any:
+        """
+            Example request:
+
+                GET /${2:endpoint}/1 HTTP/1.1
+                Host: api.example.com
+                Accept: application/json, text/javascript
+
+            Example response:
+
+                HTTP/1.1 200 OK
+                Content-Type: application/json
+
+                {
+                    ...TODO...
+                }
+        """
+        pass
+
+    def put(self, id: int, data: ApiRequestData) -> Any:
+        """
+            Example request:
+
+                PUT /${2:endpoint}/1 HTTP/1.1
+                Host: api.example.com
+                Accept: application/json, text/javascript
+
+                {
+                    ...TODO...
+                }
+
+            Example response:
+
+                HTTP/1.1 200 OK
+                Content-Type: application/json
+
+                {
+                    ...TODO...
+                }
+        """
+        pass
+
+    def delete(self, id: int) -> Any:
+        """
+            Example request:
+
+                DELETE /${1:item}/1 HTTP/1.1
+                Host: api.example.com
+                Accept: application/json, text/javascript
+
+            Example response:
+
+                HTTP/1.1 200 OK
+                Content-Type: application/json
+
+                {
+                    "message": "Success"
+                }
+        """
+        pass
+endsnippet
+
+snippet apilistresource "Flask-restful list resoruce (for endpoint root)"
+class ${1:name}List(Resource):
+    def get(self) -> Any:
+        """
+            Example request:
+
+                GET /${2:endpoint} HTTP/1.1
+                Host: api.example.com
+                Accept: application/json, text/javascript
+
+            Example response:
+
+                HTTP/1.1 200 OK
+                Content-Type: application/json
+
+                {
+                    ...TODO...
+                }
+        """
+        pass
+
+    def post(self, data: ApiRequestData) -> Any:
+        """
+            Example request:
+
+                POST /${2:endpoint} HTTP/1.1
+                Host: api.example.com
+                Accept: application/json, text/javascript
+
+                {
+                    ...TODO...
+                }
+
+            Example response:
+
+                HTTP/1.1 200 OK
+                Content-Type: application/json
+
+                {
+                    ...TODO...
+                }
+        """
+        pass
+endsnippet
