@@ -19,7 +19,7 @@
     "copyOnSelect": false,
     "copyFormatting": false,
     "snapToGridOnResize": true,
-
+    
     // A profile specifies a command to execute paired with information about how it should look and feel.
     // Each one of them will appear in the 'New Tab' dropdown,
     //   and can be invoked from the commandline with `wt.exe -p xxx`
@@ -28,7 +28,7 @@
     {
         "defaults":
         {
-            "fontFace": "Cascadia Code PL",
+            "fontFace": "SauceCodePro Nerd Font",
             "fontSize": 12,
             "antialiasingMode": "grayscale",
             "cursorShape": "emptyBox",
@@ -149,7 +149,8 @@
         // To learn more about panes, visit https://aka.ms/terminal-panes
         { "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+d" },
 
-        { "command": { "action": "unbound" }, "keys": "ctrl+=" },
+        { "command": { "action": "unbound" }, "keys": "ctrl+=" }, 
         { "command": { "action": "unbound" }, "keys": "ctrl+-" }
     ]
 }
+

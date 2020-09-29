@@ -54,6 +54,7 @@ Plug 'honza/vim-snippets'
 " Nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
