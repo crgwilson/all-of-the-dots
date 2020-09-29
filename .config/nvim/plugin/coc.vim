@@ -128,3 +128,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " Use pyenv to determine which python interpreter to use
 let pyenv_python_path = split(system('pyenv which python'), '\n')[-1]
 call coc#config('python', {'pythonPath': pyenv_python_path})
+
+let g:coc_filetype_map = {
+\ 'yaml.ansible': 'yaml',
+\ }
