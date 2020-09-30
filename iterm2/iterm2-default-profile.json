@@ -30,13 +30,17 @@
     "Red Component" : 0.70913255214691162
   },
   "Ansi 9 Color" : {
-    "Green Component" : 0.084504462778568268,
+    "Green Component" : 0.084504462778568296,
     "Blue Component" : 0.23225757479667664,
     "Red Component" : 0.95941102504730225
   },
-  "Horizontal Spacing" : 1,
+  "Ansi 2 Color" : {
+    "Green Component" : 0.7455558180809021,
+    "Blue Component" : 0.42409399151802063,
+    "Red Component" : 0.42339208722114563
+  },
   "Right Option Key Sends" : 0,
-  "Rows" : 45,
+  "Rows" : 55,
   "Default Bookmark" : "No",
   "Cursor Guide Color" : {
     "Red Component" : 0.70213186740875244,
@@ -85,7 +89,7 @@
     "Blue Component" : 0.28167051076889038,
     "Red Component" : 0
   },
-  "Columns" : 175,
+  "Columns" : 215,
   "Idle Code" : 0,
   "Ansi 13 Color" : {
     "Green Component" : 0.30289158225059509,
@@ -94,7 +98,7 @@
   },
   "Custom Command" : "No",
   "ASCII Anti Aliased" : true,
-  "Non Ascii Font" : "SourceCodeProForPowerline-Regular 12",
+  "Non Ascii Font" : "SauceCodeProNerdFontComplete-Regular 12",
   "Vertical Spacing" : 1,
   "Use Bold Font" : true,
   "Option Key Sends" : 2,
@@ -320,14 +324,10 @@
     "Blue Component" : 0.14145714044570923,
     "Red Component" : 0.81926977634429932
   },
-  "Ansi 2 Color" : {
-    "Green Component" : 0.7455558180809021,
-    "Blue Component" : 0.42409399151802063,
-    "Red Component" : 0.42339208722114563
-  },
+  "Custom Directory" : "No",
   "Ansi 3 Color" : {
     "Green Component" : 0.46751424670219421,
-    "Blue Component" : 0.023484811186790466,
+    "Blue Component" : 0.023484811186790459,
     "Red Component" : 0.64746475219726562
   },
   "Ansi 4 Color" : {
@@ -346,12 +346,12 @@
     "Blue Component" : 0.52502274513244629,
     "Red Component" : 0.14679534733295441
   },
-  "Normal Font" : "SourceCodeProForPowerline-Regular 14",
-  "Custom Directory" : "No",
+  "Normal Font" : "SauceCodeProNerdFontComplete-Regular 14",
   "Ansi 0 Color" : {
     "Green Component" : 0.15575926005840302,
     "Blue Component" : 0.19370138645172119,
     "Red Component" : 0
   },
-  "Guid" : "B8544D9C-B76C-4EEF-A5BB-20BD72FB54DF"
+  "Guid" : "B8544D9C-B76C-4EEF-A5BB-20BD72FB54DF",
+  "Horizontal Spacing" : 1
 }
