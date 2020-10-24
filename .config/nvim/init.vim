@@ -26,6 +26,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'rrethy/vim-illuminate'
 
+" For sittin in trees (needs nvim nightly)
+Plug 'nvim-treesitter/nvim-treesitter'
+
 " For git integration
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
