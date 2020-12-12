@@ -6,7 +6,8 @@
 # Aliases
 # -------
 
-alias ping='/sbin/ping -c 3'
+alias ping='ping -c 3'
+alias knockknock='nmap -sn'
 
 # ---------
 # Functions
