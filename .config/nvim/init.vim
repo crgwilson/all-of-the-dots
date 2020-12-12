@@ -59,6 +59,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 
+Plug 'crgwilson/cheat.nvim'
+
 call plug#end()
 
 " jellybeans settings

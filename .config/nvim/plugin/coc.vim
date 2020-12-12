@@ -10,6 +10,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-yaml',
   \ 'coc-yank',
+  \ 'coc-lua',
   \ ]
 
 " Snarfed from https://github.com/neoclide/coc.nvim
