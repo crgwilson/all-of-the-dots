@@ -61,6 +61,8 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'crgwilson/cheat.nvim'
 
+Plug 'tweekmonster/startuptime.vim'
+
 call plug#end()
 
 " jellybeans settings
