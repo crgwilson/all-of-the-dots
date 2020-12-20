@@ -29,6 +29,12 @@ awsacc () {
   fi
 }
 
+awscost () {
+  local date=$(date +%Y-%m-%d)
+  echo "### Current cost ###"
+  aws ce get-cost-and-usage --time-period Start=2020-12-01,End=2020-12-31 --granularity MONTHLY --metrics UnblendedCost | grep -i amount | xargs
+}
+
 awsid () {
   aws ec2 describe-security-groups --group-names 'Default' --query 'SecurityGroups[0].OwnerId' --output text --region us-east-1
 }
