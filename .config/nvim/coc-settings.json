@@ -1,6 +1,11 @@
 {
   "coc.preferences.autoTrigger": "always",
 
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "terraform"
+  ],
+
   "suggest.enablePreview": true,
   "suggest.triggerAfterInsertEnter": true,
   "suggest.defaultSortMethod": "alphabetical",
