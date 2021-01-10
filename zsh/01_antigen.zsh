@@ -17,7 +17,6 @@ antigen bundles <<EOBUNDLES
   pip
   gem
   wd
-  bundler
   osx
   tmux
   tmuxinator
