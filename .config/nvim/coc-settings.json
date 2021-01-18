@@ -35,6 +35,9 @@
   // coc-yaml
   "yaml.format.enable": true,
 
+  // coc-sql
+  "sql.database": "postgresql",
+
   "go.goplsOptions": {
     "hoverKind": "FullDocumentation",
     "completeUnimported": true
