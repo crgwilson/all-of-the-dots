@@ -27,7 +27,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'rrethy/vim-illuminate'
 
 " For sittin in trees (needs nvim nightly)
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " For git integration
 Plug 'tpope/vim-fugitive'
