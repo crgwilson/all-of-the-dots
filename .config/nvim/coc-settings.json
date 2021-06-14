@@ -43,6 +43,15 @@
     "completeUnimported": true
   },
 
+  // coc-java
+  "java.home": "/usr/lib/jvm/java-11-openjdk-amd64",
+  "java.imports.gradle.wrapper.checksums": [
+    {
+      "sha256": "9c633ee2790e17798acbb79f8ce1bebe2e1a8c9716a2f4c970edca3f3a401dd8",
+      "allowed": true
+    }
+  ],
+
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
