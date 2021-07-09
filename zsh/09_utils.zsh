@@ -36,3 +36,12 @@ cheat () {
     curl cht.sh/$CHEAT_LANG/${CHEAT_QUESTION// /+}
   fi
 }
+
+sweep () {
+  rm -rf /tmp/go.*
+  rm -rf /tmp/go-build*
+  rm -rf /tmp/coc.nvim-*
+  rm -rf /tmp/node-client*
+  rm -rf /tmp/gradle-worker-classpath*
+  rm -rf /tmp/pytest-of-$(whoami)
+}
