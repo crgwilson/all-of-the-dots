@@ -114,3 +114,32 @@ class ${1:name}List(Resource):
         """
         pass
 endsnippet
+
+snippet param-test "Parametrized pytest test" b
+@pytest.mark.parametrize(
+    "arg1,arg2",
+    [
+        (1, 1),
+    ]
+)
+def ${1:name}(arg1, arg2) -> None:
+    ...
+endsnippet
+
+snippet setup "Standard setup.py" b
+from setuptools import setup
+
+setup()
+endsnippet
+
+snippet fixture "Pytest fixture" b
+@pytest.fixture
+def ${1:name}() -> Any:
+    ...
+endsnippet
+
+snippet no-requests "Pytest fixture to prevent requests from actually making calls" b
+@pytest.fixture(autouse=True)
+def no_requests(monkeypatch):
+    monkeypatch.delattr("requests.sessions.Session.request")
+endsnippet

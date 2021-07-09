@@ -1,0 +1,37 @@
+snippet setupcfg "Standard setup.cfg" b
+[metadata]
+name = ${1:name}
+version = 0.0.1
+description = ${2:description}
+long_description = file: README.md
+long_description_content_type = text/markdown
+url = https://github.com/crgwilson/${1:name}
+license = MIT
+license_file = LICENSE
+
+[options]
+packages = find:
+python_requires = >=3.8.1
+
+[options.entry_points]
+console_scripts = ${1:name}.main:main
+
+[options.packages.find]
+exclude = tests*
+
+[flake8]
+max-complexity = 10
+max-line-length = 100
+
+# Tell flake8-import-order which modules are "local"
+application-import-names = ${1:name},tests
+
+[isort]
+profile=black
+
+[mypy]
+warn_return_any = True
+disallow_untyped_defs = True
+follow_imports = silent
+ignore_missing_imports = True
+endsnippet
