@@ -6,6 +6,14 @@ snippet reveal "MyPy reveal_type()" b
 reveal_type(${1:item})
 endsnippet
 
+snippet climain "Standard main func for a minimal cli" b
+from typing import Optional, Sequence
+
+
+def main(argv: Optional[Sequence[str]] = None) -> int:
+    return 0
+endsnippet
+
 snippet apiresource "Flask-restful API resource class (For object operations)"
 class ${1:name}(Resource):
     def get(self, id: int) -> Any:
