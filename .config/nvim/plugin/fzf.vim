@@ -6,4 +6,7 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 " fuzzy find files with space
-nnoremap <silent> <space><space> :Files<CR>
+nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <space>fg :Rg<CR>
+nnoremap <silent> <space>fc :Commands<CR>
+nnoremap <silent> <space>fs :Snippets<CR>

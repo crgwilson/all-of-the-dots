@@ -85,7 +85,7 @@ endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
 
 " vim settings
-" let mapleader=","
+let mapleader=" "
 syntax on
 set number
 set relativenumber
@@ -130,3 +130,5 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+nnoremap <C-s> :w<cr>

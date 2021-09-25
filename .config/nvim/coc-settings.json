@@ -21,9 +21,7 @@
   // coc-snippets
   "snippets.priority": 100,
 
-  // coc-python
-  "python.autoUpdateLanguageServer": true,
-  "python.jediEnabled": false,
+  // coc-pyright
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "black",
   "python.formatting.blackArgs": [],
