@@ -7,6 +7,6 @@ let g:fzf_action = {
 
 " fuzzy find files with space
 nnoremap <silent> <leader>ff :Files<CR>
-nnoremap <silent> <space>fg :Rg<CR>
-nnoremap <silent> <space>fc :Commands<CR>
-nnoremap <silent> <space>fs :Snippets<CR>
+nnoremap <silent> <leader>fg :Rg<CR>
+nnoremap <silent> <leader>fc :Commands<CR>
+nnoremap <silent> <leader>fs :Snippets<CR>
