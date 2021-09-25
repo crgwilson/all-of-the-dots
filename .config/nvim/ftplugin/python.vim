@@ -3,3 +3,4 @@ function! Pytest()
 endfunction
 
 :command! Pytest :call Pytest()
+nnoremap <silent> <leader>t :Pytest<CR>
