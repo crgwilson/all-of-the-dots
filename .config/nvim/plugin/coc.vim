@@ -62,9 +62,14 @@ endfunction
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+" Format the current buffer
+nnoremap <silent> <leader>F :Format<CR>
+
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" TODO: Disabled for now since `black` doesn't support formatting selection
+"       and black is mostly what I use
+" xmap <leader>F  <Plug>(coc-format-selected)
+" nmap <leader>F  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -134,3 +139,4 @@ call coc#config('python', {'pythonPath': pyenv_python_path})
 let g:coc_filetype_map = {
 \ 'yaml.ansible': 'yaml',
 \ }
+

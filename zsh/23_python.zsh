@@ -5,6 +5,9 @@
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
+alias ac='. venv/bin/activate'
+alias deac='deactivate'
+
 # Automagically activate pyenv-virtualenvs when a .python-version file is present
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
