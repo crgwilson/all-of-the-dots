@@ -49,6 +49,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'ap/vim-css-color'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'kergoth/vim-bitbake'
+Plug 'joukevandermaas/vim-ember-hbs'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'SirVer/ultisnips'

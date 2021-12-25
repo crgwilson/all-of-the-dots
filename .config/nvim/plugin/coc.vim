@@ -12,6 +12,7 @@ let g:coc_global_extensions = [
   \ 'coc-yank',
   \ 'coc-lua',
   \ 'coc-java',
+  \ 'coc-tsserver',
   \ ]
 
 " Snarfed from https://github.com/neoclide/coc.nvim
