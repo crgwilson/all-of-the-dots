@@ -62,7 +62,7 @@ keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').git_branches()<
 keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>", options)
 keymap("n", "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>", options)
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", options)
--- TODO: Snippets
+-- TODO: Snippets, code actions, renames
 
--- nerdtree
-keymap("n", "<F1>", ":NERDTreeToggle<cr>", options)
+-- nvim-tree
+keymap("n", "<F1>", ":NvimTreeToggle<cr>", options)

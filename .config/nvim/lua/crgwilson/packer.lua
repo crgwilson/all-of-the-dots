@@ -56,8 +56,8 @@ return require("packer").startup(function(use)
 
   -- icons
   use({
-    "ryanoasis/vim-devicons",
-    commit = "a2258658661e42dd4cdba4958805dbad1fe29ef4"
+    "kyazdani42/nvim-web-devicons",
+    commit="8d2c5337f0a2d0a17de8e751876eeb192b32310e"
   })
 
   -- status line
@@ -228,12 +228,8 @@ return require("packer").startup(function(use)
 
   -- nerdtree
   use({
-    "scrooloose/nerdtree",
-    commit = "fc85a6f07c2cd694be93496ffad75be126240068"
-  })
-  use({
-    "Xuyuanp/nerdtree-git-plugin",
-    commit = "e1fe727127a813095854a5b063c15e955a77eafb"
+    "kyazdani42/nvim-tree.lua",
+    commit="f43b8af8f40004e476cc43d178b82350b3249d1a"
   })
 
   -- fuzzy finding
