@@ -38,18 +38,17 @@ keymap("n", "<C-k>", "<C-W>k", options)
 keymap("n", "<C-h>", "<C-W>h", options)
 keymap("n", "<C-l>", "<C-W>l", options)
 
--- resize splits with ctrl+arrows
-keymap("n", "<C-Up>", ":resize -2<cr>", options)
-keymap("n", "<C-Down>", ":resize +2<cr>", options)
-keymap("n", "<C-Left>", ":vertical resize -2<cr>", options)
-keymap("n", "<C-Right>", ":vertical resize +2<cr>", options)
-
--- cycle between tabs
+-- cycle through buffers
 keymap("n", "<S-l>", ":bnext<cr>", options)
 keymap("n", "<S-h>", ":bprevious<cr>", options)
 
--- press jk fast to enter
--- keymap("i", "jk", "<ESC>", options)
+-- cycle through tabs
+keymap("n", "<Left>", ":tabprevious<cr>", options)
+keymap("n", "<Right>", ":tabnext<cr>", options)
+keymap("n", "<leader>1", "1gt", options)
+keymap("n", "<leader>2", "2gt", options)
+keymap("n", "<leader>3", "3gt", options)
+keymap("n", "<leader>4", "4gt", options)
 
 -- stay in indent mode
 keymap("v", "<", "<gv", options)
