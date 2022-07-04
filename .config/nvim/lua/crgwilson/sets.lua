@@ -37,3 +37,10 @@ vim.opt.undoreload = 10000
 -- no backups
 vim.opt.backup = false
 vim.opt.writebackup = false
+
+vim.cmd([[
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END
+]])
