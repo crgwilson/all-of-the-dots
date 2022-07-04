@@ -20,7 +20,12 @@ local options = {
 keymap("t", "<Esc>", [[<C-\><C-n>]], options)
 
 -- start terminal in insert mode
-vim.cmd([[au BufEnter * if &buftype == 'terminal' | :startinsert | endif]])
+vim.api.nvim_create_autocmd(
+  "BufEnter", {
+    pattern = "*",
+    command = "if &buftype == 'terminal' | :startinsert | endif"
+  }
+)
 function open_terminal()
   vim.cmd("split term://zsh")
   vim.cmd("resize 10")

@@ -14,12 +14,14 @@ end
 
 -- Reload nvim whenever plugins.lua is save
 -- TODO: Might need to do this in a smarter way in the future
-vim.cmd([[
-  augroup packerUserConfig
-    autocmd!
-    autocmd BufWritePost packer.lua source <afile> | PackerSync
-  augroup end
-]])
+local packer_augroup = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
+vim.api.nvim_create_autocmd(
+  "BufWritePost", {
+    pattern = "packer.lua",
+    command = "source <afile> | PackerSync",
+    group = packer_augroup
+  }
+)
 
 -- Make sure packer actually works
 local ok, packer = pcall(require, "packer")

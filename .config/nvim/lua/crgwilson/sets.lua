@@ -38,9 +38,11 @@ vim.opt.undoreload = 10000
 vim.opt.backup = false
 vim.opt.writebackup = false
 
-vim.cmd([[
-  augroup highlight_yank
-      autocmd!
-      au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-  augroup END
-]])
+local highlight_yank = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
+vim.api.nvim_create_autocmd(
+  "TextYankPost", {
+    pattern = "*",
+    command = 'silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}',
+    group = highlight_yank
+  }
+)
