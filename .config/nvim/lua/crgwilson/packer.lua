@@ -2,12 +2,12 @@ local fn = vim.fn
 local installer = require("crgwilson.utils.installer")
 
 -- Installing packer.nvim if it is not already present
-local packerWasInstalled = false
-local installPath = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_was_installed = false
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
-if fn.empty(fn.glob(installPath)) > 0 then
-  installer.installFromGit("https://github.com/wbthomason/packer.nvim", installPath)
-  packerWasInstalled = true
+if fn.empty(fn.glob(install_path)) > 0 then
+  installer.install_from_git("https://github.com/wbthomason/packer.nvim", install_path)
+  packer_was_installed = true
 
   vim.cmd([[packadd packer.nvim]])
 end
@@ -263,7 +263,7 @@ return require("packer").startup(function(use)
   })
 
   -- Install all plugins if packer was just installed
-  if packerWasInstalled then
+  if packer_was_installed then
     require("packer").sync()
   end
 end)

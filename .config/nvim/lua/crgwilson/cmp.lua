@@ -1,6 +1,16 @@
 local cmp_ok, cmp = pcall(require, "cmp")
 local luasnip_ok, luasnip = pcall(require, "luasnip")
 
+if not cmp_ok then
+  vim.notify("Could not load cmp, lsp will be broken", 2)
+  return
+end
+
+if not luasnip_ok then
+  vim.notify("Could not load luasnip, snippets will be broken", 2)
+  return
+end
+
 -- just in case I ever want to use this
 -- local kind_icons = {}
 

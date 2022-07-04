@@ -1,14 +1,13 @@
 vim.opt.termguicolors = true
 
-vim.cmd("let g:jellybeans_overrides = {'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none'}}")
+local colorscheme = "jellybeans"
+local has_configs, colorscheme_configs = pcall(require, "crgwilson.colorschemes." .. colorscheme)
+if has_configs then
+  colorscheme_configs.setup()
+end
 
--- tried pcalling vim.cmd here, but that spits out more error messages than I'd like
-vim.cmd [[
-try
-  colorscheme jellybeans
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  echo 'Could not find intended colorscheme, it may not be installed'
-  set background=dark
-endtry
-]]
+local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+if not ok then
+  vim.notify("Could not find colorscheme jellybeans", 2)
+  vim.cmd("colorscheme default")
+end

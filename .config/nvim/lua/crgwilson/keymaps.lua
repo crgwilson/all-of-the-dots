@@ -21,11 +21,11 @@ keymap("t", "<Esc>", [[<C-\><C-n>]], options)
 
 -- start terminal in insert mode
 vim.cmd([[au BufEnter * if &buftype == 'terminal' | :startinsert | endif]])
-function openTerminal()
+function open_terminal()
   vim.cmd("split term://zsh")
   vim.cmd("resize 10")
 end
-keymap("n", "<C-n>", ":lua openTerminal()<CR>", options)
+keymap("n", "<C-n>", ":lua open_terminal()<CR>", options)
 
 -- navigate between splits with ctrl+movement keys
 keymap("n", "<C-j>", "<C-W>j", options)
