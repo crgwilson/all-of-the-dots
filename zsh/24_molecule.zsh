@@ -5,7 +5,7 @@
 # -------
 # Aliases
 # -------
-alias ml='molecule login'
-alias mt='molecule test'
-alias mc='molecule converge'
-alias md='molecule destroy --all'
+alias ml='ANSIBLE_FORCE_COLOR=true molecule login'
+alias mt='ANSIBLE_FORCE_COLOR=true molecule test'
+alias mc='ANSIBLE_FORCE_COLOR=true molecule converge'
+alias md='ANSIBLE_FORCE_COLOR=true molecule destroy --all'
