@@ -6,8 +6,6 @@
 # Aliases
 # -------
 
-alias ping='ping -c 3'
-alias knockknock='nmap -sn'
 
 # ---------
 # Functions

@@ -5,11 +5,6 @@
 # -------
 # Aliases
 # -------
-alias read-csr='openssl req -text -noout -verify -in'
-alias read-cert='openssl x509 -noout -text -in'
-alias cert-serial='openssl x509 -serial -noout -in'
-alias encrypt-file='openssl enc -aes-256-cbc -salt -in file.txt -out file.txt.enc'
-alias decrypt-file='openssl enc -aes-256-cbc -d -in file.txt.enc -out file.txt'
 
 # ---------
 # Functions

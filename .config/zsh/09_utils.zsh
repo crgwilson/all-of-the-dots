@@ -2,15 +2,7 @@
 # Misc utils / jank #
 #####################
 
-alias get_top_open_files="lsof | awk '{print $1}' | uniq -c | sort -rn | head"
-alias c='clear'
-alias mkdir='mkdir -pv'
-alias now='date +"%T"'
-
 # Nonsense
-alias shrug='echo "¯\_(ツ)_/¯"'
-alias weather='curl wttr.in'
-alias party='curl parrot.live'
 
 # ---------
 # Functions

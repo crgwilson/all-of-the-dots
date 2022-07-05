@@ -2,14 +2,10 @@
 # AWS jank #
 ############
 
-export AWS_PAGER=""
-
 # -------
 # Aliases
 # -------
 
-alias ec2ls="aws ec2 describe-instances --query 'sort_by(Reservations[].Instances[].{Name:Tags[?Key==\`Name\`]|[0].Value, Environment:Tags[?Key==\`Environment\`]|[0].Value, Purpose:Tags[?Key==\`Purpose\`]|[0].Value, ID:InstanceId, AZ:Placement.AvailabilityZone, PrivateIP:PrivateIpAddress, PublicIP:PublicIpAddress, State:State.Name}, &Name)' --output table --region"
-alias ec2-reboot="aws ec2 reboot-instances"
 
 # ---------
 # Functions
