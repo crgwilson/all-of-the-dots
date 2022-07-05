@@ -1,0 +1,194 @@
+# Docs: https://starship.rs/advanced-config/#custom-pre-prompt-and-pre-execution-commands-in-cmd
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# The full list enabled by $all:
+# format = """
+#   $username\
+#   $hostname\
+#   $localip\
+#   $shlvl\
+#   $singularity\
+#   $kubernetes\
+#   $directory\
+#   $vcsh\
+#   $git_branch\
+#   $git_commit\
+#   $git_state\
+#   $git_metrics\
+#   $git_status\
+#   $hg_branch\
+#   $docker_context\
+#   $package\
+#   $buf\
+#   $c\
+#   $cmake\
+#   $cobol\
+#   $container\
+#   $daml\
+#   $dart\
+#   $deno\
+#   $dotnet\
+#   $elixir\
+#   $elm\
+#   $erlang\
+#   $golang\
+#   $haskell\
+#   $helm\
+#   $java\
+#   $julia\
+#   $kotlin\
+#   $lua\
+#   $nim\
+#   $nodejs\
+#   $ocaml\
+#   $perl\
+#   $php\
+#   $pulumi\
+#   $purescript\
+#   $python\
+#   $rlang\
+#   $red\
+#   $ruby\
+#   $rust\
+#   $scala\
+#   $swift\
+#   $terraform\
+#   $vlang\
+#   $vagrant\
+#   $zig\
+#   $nix_shell\
+#   $conda\
+#   $spack\
+#   $memory_usage\
+#   $aws\
+#   $gcloud\
+#   $openstack\
+#   $azure\
+#   $env_var\
+#   $crystal\
+#   $custom\
+#   $sudo\
+#   $cmd_duration\
+#   $line_break\
+#   $jobs\
+#   $battery\
+#   $time\
+#   $status\
+#   $shell\
+#   $character"""
+format = "$all"
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+[battery]
+disabled = true
+
+[buf]
+disabled = true
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+vimcmd_symbol = "[➜](bold blue)"
+vimcmd_replace_one_symbol = "[➜](bold purple)"
+vimcmd_replace_symbol = "[➜](bold purple)"
+vimcmd_visual_symbol = "[➜](bold yellow)"
+
+[cobol]
+disabled = true
+
+[crystal]
+disabled = true
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[php]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[rlang]
+disabled = true
+
+[raku]
+disabled = true
+
+[red]
+disabled = true
+
+[shell]
+disabled = true
+
+[shlvl]
+disabled = true
+
+[singularity]
+disabled = true
+
+[spack]
+disabled = true
+
+[status]
+disabled = true
+
+[sudo]
+disabled = true
+
+[swift]
+disabled = true
+
+[time]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vcsh]
+disabled = true
+
+[zig]
+disabled = true
+
+[package]
+disabled = true
