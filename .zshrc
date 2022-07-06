@@ -1,1 +1,1 @@
-for f in ~/.config/zsh/*; do source $f; done
+for f in ~/.config/zsh/*.zsh; do source $f; done
