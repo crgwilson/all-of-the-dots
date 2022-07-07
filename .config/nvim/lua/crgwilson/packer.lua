@@ -63,14 +63,7 @@ return require("packer").startup(function(use)
   })
 
   -- status line
-  use({
-    "vim-airline/vim-airline",
-    commit = "91b67e3ca2d7bc66544724f9c702265c564a1f2e"
-  })
-  use({
-    "vim-airline/vim-airline-themes",
-    commit = "97cf3e6e638f936187d5f6e9b5eb1bdf0a4df256"
-  })
+  -- TODO: Find a new status line since vim-airline was freaking out with alacritty
 
   -- snippets
   use({

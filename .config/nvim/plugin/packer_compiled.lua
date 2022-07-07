@@ -224,16 +224,6 @@ _G.packer_plugins = {
     path = "/home/cwilson/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
-  ["vim-airline"] = {
-    loaded = true,
-    path = "/home/cwilson/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
-  },
-  ["vim-airline-themes"] = {
-    loaded = true,
-    path = "/home/cwilson/.local/share/nvim/site/pack/packer/start/vim-airline-themes",
-    url = "https://github.com/vim-airline/vim-airline-themes"
-  },
   ["vim-better-whitespace"] = {
     loaded = true,
     path = "/home/cwilson/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",

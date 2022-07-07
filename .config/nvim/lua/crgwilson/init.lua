@@ -1,6 +1,5 @@
 require("crgwilson.packer")
 require("crgwilson.colorscheme")
-require("crgwilson.vim-airline")  -- TODO: remove this
 require("crgwilson.vim-illuminate")
 require("crgwilson.cmp")
 require("crgwilson.lsp")
