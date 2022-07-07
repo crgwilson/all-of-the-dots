@@ -1,0 +1,12 @@
+---
+- src: https://github.com/crgwilson/ansible-role-brew
+  version: main
+  name: crgwilson.brew
+
+- src: https://github.com/crgwilson/ansible-role-git
+  version: master
+  name: crgwilson.git
+
+- src: https://github.com/crgwilson/ansible-role-pyenv
+  version: master
+  name: crgwilson.pyenv

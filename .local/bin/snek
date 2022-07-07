@@ -1,0 +1,135 @@
+#!/usr/bin/env python3
+import argparse
+import os
+import re
+from sys import stderr
+
+from typing import Sequence, Optional, Tuple, List
+
+
+HOME = os.environ.get("HOME")
+USER_BIN = os.environ.get("USER_LOCAL_BIN") or f"{HOME}/.local/bin"
+PYENV_ROOT = os.environ.get("PYENV_ROOT") or f"{HOME}/.local/opt/pyenv"
+PYENV_BIN = f"{PYENV_ROOT}/bin"
+PYENV_VERSIONS = f"{PYENV_ROOT}/versions"
+
+
+def get_pyenv_versions() -> List[str]:
+    results = []
+
+    for dir in os.listdir(PYENV_VERSIONS):
+        if os.path.isdir(f"{PYENV_VERSIONS}/{dir}"):
+            results.append(dir)
+
+    return results
+
+
+def create_link(version: str) -> None:
+    major_minor = ".".join(version.split(".")[0:2])
+    target_path = f"{USER_BIN}/python{major_minor}"
+    if os.path.islink(target_path):
+        os.unlink(target_path)
+
+    os.symlink(
+        f"{PYENV_VERSIONS}/{version}/bin/python",
+        target_path,
+    )
+    print(f"Created {target_path}")
+
+
+def get_links() -> List[Tuple[str, str]]:
+    result = []
+
+    pattern = re.compile(r"^python\d\.\d$")
+    for f in os.listdir(USER_BIN):
+        abs_f = os.path.abspath(f"{USER_BIN}/{f}")
+
+        if os.path.islink(abs_f) and pattern.match(f):
+            result.append(
+                (abs_f, os.path.abspath(os.readlink(abs_f)))
+            )
+
+    return result
+
+
+def cleanup() -> None:
+    links = get_links()
+    for link in links:
+        os.unlink(link[0])
+        print(f"Removed {link[0]}")
+
+
+def print_links() -> None:
+    links = get_links()
+    for link in links:
+        print(f"{link[0]} -> {link[1]}")
+
+
+def print_python_versions() -> None:
+    versions = get_pyenv_versions()
+    for v in versions:
+        print(v)
+
+
+def can_run() -> bool:
+    for d in (USER_BIN, PYENV_ROOT, PYENV_BIN, PYENV_VERSIONS):
+        if not os.path.isdir(d):
+            return False
+
+    return True
+
+
+def main(argv: Optional[Sequence[str]] = None) -> int:
+    if not can_run():
+        print(
+            "Found missing pre-reqs, please validate environment"
+        )
+        return 1
+
+    parser = argparse.ArgumentParser(prog="snek")
+    parser.add_argument(
+        "-l",
+        "--list",
+        action="store_true",
+        default=False,
+        help="List what python versions I'm currently using",
+    )
+    parser.add_argument(
+        "-p",
+        "--python-versions",
+        action="store_true",
+        default=False,
+        help="List all currently available python versions",
+    )
+    parser.add_argument(
+        "-u",
+        "--use",
+        type=str,
+        required=False,
+        help="Link a python version from pyenv/versions to my bin directory",
+    )
+    parser.add_argument(
+        "-c",
+        "--clean",
+        action="store_true",
+        default=False,
+        help="Clean up all links and start fresh",
+    )
+    args = parser.parse_args(argv)
+
+    if args.list:
+        print_links()
+    elif args.python_versions:
+        print_python_versions()
+    elif args.use:
+        create_link(args.use)
+    elif args.clean:
+        cleanup()
+    else:
+        parser.print_help(stderr)
+
+    return 0
+
+
+if __name__ == "__main__":
+    SystemExit(main())

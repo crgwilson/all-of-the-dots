@@ -41,6 +41,9 @@ export GPG_TTY=$(tty)
 # Java
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 
+# pyenv
+export PYENV_ROOT="$USER_LOCAL_OPT/pyenv"
+
 # AWS
 export AWS_PAGER=""  # I don't remember what this is for...
 

@@ -1,0 +1,65 @@
+---
+- hosts: localhost
+  vars:
+    username: "{{ ansible_user_id }}"
+    user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+    user_bin: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_BIN') }}"
+    user_lib: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_LIB') }}"
+    user_opt: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_OPT') }}"
+    user_tmp: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_TMP') }}"
+
+    xdg_data_home: "{{ lookup('ansible.builtin.env', 'XDG_DATA_HOME') }}"
+    xdg_state_home: "{{ lookup('ansible.builtin.env', 'XDG_STATE_HOME') }}"
+    xdg_config_home: "{{ lookup('ansible.builtin.env', 'XDG_CONFIG_HOME') }}"
+    xdg_cache_home: "{{ lookup('ansible.builtin.env', 'XDG_CACHE_HOME') }}"
+
+    user_workspace: "{{ user_home }}/workspace"
+    mps_workspace: "{{ user_workspace }}/mps"
+    dashboards_workspace: "{{ user_workspace }}/dashboards"
+
+    brew_owner: "{{ username }}"
+    brew_group: "{{ username }}"
+    brew_tmp_dir: "{{ user_tmp }}"
+    brew_install_prefix: "{{ user_opt }}"
+
+    pyenv_user: "{{ username }}"
+    pyenv_group: "{{ username }}"
+    pyenv_install_directory: "{{ user_opt }}/pyenv"
+    pyenv_version: v2.3.2
+    pyenv_plugins: {}
+
+  pre_tasks:
+    - name: Create necessary user directories
+      file:
+        path: "{{ item }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0755
+        state: directory
+      loop:
+        - "{{ user_home }}"
+        - "{{ user_bin }}"
+        - "{{ user_lib }}"
+        - "{{ user_opt }}"
+        - "{{ user_tmp }}"
+        - "{{ xdg_data_home }}"
+        - "{{ xdg_state_home }}"
+        - "{{ xdg_config_home }}"
+        - "{{ xdg_cache_home }}"
+        - "{{ user_workspace }}"
+        - "{{ mps_workspace }}"
+        - "{{ dashboards_workspace }}"
+
+  roles:
+    - role: crgwilson.pyenv
+      become: true
+
+  #   - role: crgwilson.brew
+  #     tags:
+  #       - brew
+
+  tasks:
+    - name: Change my default shell to zsh
+      user:
+        name: "{{ username }}"
+        shell: "/usr/bin/zsh"
