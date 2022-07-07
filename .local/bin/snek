@@ -40,7 +40,7 @@ def create_link(version: str) -> None:
 def get_links() -> List[Tuple[str, str]]:
     result = []
 
-    pattern = re.compile(r"^python\d\.\d$")
+    pattern = re.compile(r"^python\d+\.\d+$")
     for f in os.listdir(USER_BIN):
         abs_f = os.path.abspath(f"{USER_BIN}/{f}")
 
