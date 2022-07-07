@@ -18,7 +18,7 @@ export XDG_STATE_HOME="$USER_LOCAL_HOME/state"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-export PATH="$USER_LOCAL_BIN:$PATH"
+export PATH="$PATH:$USER_LOCAL_BIN"
 
 # zsh history
 export HISTFILE="$XDG_CACHE_HOME/zsh/zsh_history"

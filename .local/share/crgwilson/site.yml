@@ -34,6 +34,12 @@
     starship_owner: "{{ username }}"
     starship_group: "{{ username }}"
 
+    golang_owner: "{{ username }}"
+    golang_group: "{{ username }}"
+    golang_install_dir: "{{ user_opt }}"
+    golang_install_bin_dir: "{{ user_bin }}"
+    golang_tmp_dir: "{{ user_tmp }}"
+
     pyenv_user: "{{ username }}"
     pyenv_group: "{{ username }}"
     pyenv_install_directory: "{{ user_opt }}/pyenv"
@@ -66,11 +72,12 @@
     - role: crgwilson.starship
       tags:
         - starship
-
     - role: crgwilson.yadm
       tags:
         - yadm
-
+    - role: crgwilson.golang
+      tags:
+        - go
     - role: crgwilson.pyenv
       become: true
 

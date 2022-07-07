@@ -11,6 +11,10 @@
   version: main
   name: crgwilson.starship
 
+- src: https://github.com/crgwilson/ansible-role-golang
+  version: main
+  name: crgwilson.golang
+
 - src: https://github.com/crgwilson/ansible-role-git
   version: master
   name: crgwilson.git
