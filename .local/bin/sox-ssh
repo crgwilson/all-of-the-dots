@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+
+ssh -D 8080 "$1"

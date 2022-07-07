@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+
+sed -i.bak -e "$1d" ~/.ssh/known_hosts

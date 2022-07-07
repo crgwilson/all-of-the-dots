@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+
+ssh $1 -L 5901:127.0.0.1:5901
