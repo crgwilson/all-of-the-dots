@@ -22,6 +22,11 @@
     brew_tmp_dir: "{{ user_tmp }}"
     brew_install_prefix: "{{ user_opt }}"
 
+    starship_install_prefix: "{{ user_bin }}"
+    starship_tmp_dir: "{{ user_tmp }}"
+    starship_owner: "{{ username }}"
+    starship_group: "{{ username }}"
+
     pyenv_user: "{{ username }}"
     pyenv_group: "{{ username }}"
     pyenv_install_directory: "{{ user_opt }}/pyenv"
@@ -51,6 +56,8 @@
         - "{{ dashboards_workspace }}"
 
   roles:
+    - role: crgwilson.starship
+
     - role: crgwilson.pyenv
       become: true
 
