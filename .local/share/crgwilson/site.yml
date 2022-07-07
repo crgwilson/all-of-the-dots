@@ -89,3 +89,23 @@
       user:
         name: "{{ username }}"
         shell: "/usr/bin/zsh"
+
+    - name: Install python packages I tend to use a lot
+      pip:
+        name:
+          - ansible
+          - ansible-lint
+          - tox
+          - black
+          - mypy
+          - isort
+          - flake8
+          - flake8-bandit
+          - flake8-black
+          - flake8-bugbear
+          - flake8-import-order
+          - flake8-docstrings
+          - pytest
+          - grip
+        executable: pip3
+        extra_args: --user

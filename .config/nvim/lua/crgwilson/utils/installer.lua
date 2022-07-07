@@ -1,7 +1,7 @@
 local fn = vim.fn
-local installer = {}
+local M = {}
 
-function installer.install_from_git(repo, path)
+function M.install_from_git(repo, path)
   fn.system({
     "git",
     "clone",
@@ -16,4 +16,4 @@ function installer.install_from_git(repo, path)
   )
 end
 
-return installer
+return M
