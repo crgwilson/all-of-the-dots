@@ -17,10 +17,17 @@
     mps_workspace: "{{ user_workspace }}/mps"
     dashboards_workspace: "{{ user_workspace }}/dashboards"
 
+    # Why was I so inconsistent with how all these roles work ;_;
     brew_owner: "{{ username }}"
     brew_group: "{{ username }}"
     brew_tmp_dir: "{{ user_tmp }}"
     brew_install_prefix: "{{ user_opt }}"
+
+    # TODO: yadm tmp dir variable
+    yadm_install_prefix: "{{ user_opt }}"
+    yadm_bin_dir: "{{ user_bin }}"
+    yadm_owner: "{{ username }}"
+    yadm_group: "{{ username }}"
 
     starship_install_prefix: "{{ user_bin }}"
     starship_tmp_dir: "{{ user_tmp }}"
@@ -57,6 +64,12 @@
 
   roles:
     - role: crgwilson.starship
+      tags:
+        - starship
+
+    - role: crgwilson.yadm
+      tags:
+        - yadm
 
     - role: crgwilson.pyenv
       become: true
@@ -66,6 +79,12 @@
   #       - brew
 
   tasks:
+    # - name: Install my dotfiles
+    #   yadm:
+    #     repo: git@github.com:crgwilson/all-of-the-dots.git
+    #     dest: "{{ user_home }}"
+    #     update: false
+
     - name: Change my default shell to zsh
       user:
         name: "{{ username }}"

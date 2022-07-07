@@ -3,6 +3,10 @@
   version: main
   name: crgwilson.brew
 
+- src: https://github.com/crgwilson/ansible-role-yadm
+  version: main
+  name: crgwilson.yadm
+
 - src: https://github.com/crgwilson/ansible-role-starship
   version: main
   name: crgwilson.starship
