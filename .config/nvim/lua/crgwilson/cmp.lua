@@ -11,9 +11,6 @@ if not luasnip_ok then
   return
 end
 
--- just in case I ever want to use this
--- local kind_icons = {}
-
 require("luasnip/loaders/from_vscode").lazy_load()
 
 cmp.setup({
@@ -35,12 +32,10 @@ cmp.setup({
         fallback()
       end
     end
-    -- ["<CR>"] = cmp.mapping.confirm { select = true },
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
-      -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",

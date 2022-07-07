@@ -42,7 +42,8 @@ local function lsp_keymaps(bufnr)
   api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "gK", "<cmd>lua vim.lsp.buf.signature_help()<cr>", options)
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
+  api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting{async = true}<cr>", options)
+  -- TODO: Organize imports!
 end
 
 local function on_attach(client, bufnr)
@@ -67,32 +68,14 @@ for _, server in pairs(servers) do
   lspconfig[server].setup(options)
 end
 
--- setup
 local lsp_config = {
   virtual_text = true,
   update_in_insert = true,
   underline = true,
   severity_sort = true,
-  -- float = {
-  --   focusable = false,
-  --   style = "minimal",
-  --   border = "rounded",
-  --   source = "always",
-  --   header = "",
-  --   prefix = "",
-  -- }
 }
 
 vim.diagnostic.config(lsp_config)
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
---   border = "rounded",
---   width = 60,
--- })
---
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
---   border = "rounded",
---   width = 60,
--- })
 
 -- null-ls
 local null_ls_ok, null_ls = pcall(require, "null-ls")
@@ -107,7 +90,7 @@ null_ls.setup({
   debug = false,
   sources = {
     -- ansible
-    diagnostics.ansiblelint,
+    -- diagnostics.ansiblelint,
 
     -- python
     diagnostics.flake8,
