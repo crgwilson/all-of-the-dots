@@ -4,16 +4,16 @@
     username: "{{ ansible_user_id }}"
     user_group: "{{ username }}"
 
-    user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
-    user_bin: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_BIN') }}"
-    user_lib: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_LIB') }}"
-    user_opt: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_OPT') }}"
-    user_tmp: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_TMP') }}"
+    user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"  # /home/cwilson
+    user_bin: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_BIN') }}"  # /home/cwilson/.local/bin
+    user_lib: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_LIB') }}"  # /home/cwilson/.local/lib
+    user_opt: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_OPT') }}"  # /home/cwilson/.local/opt
+    user_tmp: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_TMP') }}"  # /home/cwilson/.local/tmp
 
-    xdg_data_home: "{{ lookup('ansible.builtin.env', 'XDG_DATA_HOME') }}"
-    xdg_state_home: "{{ lookup('ansible.builtin.env', 'XDG_STATE_HOME') }}"
-    xdg_config_home: "{{ lookup('ansible.builtin.env', 'XDG_CONFIG_HOME') }}"
-    xdg_cache_home: "{{ lookup('ansible.builtin.env', 'XDG_CACHE_HOME') }}"
+    xdg_data_home: "{{ lookup('ansible.builtin.env', 'XDG_DATA_HOME') }}"  # /home/cwilson/.local/share
+    xdg_state_home: "{{ lookup('ansible.builtin.env', 'XDG_STATE_HOME') }}"  # /home/cwilson/.local/state
+    xdg_config_home: "{{ lookup('ansible.builtin.env', 'XDG_CONFIG_HOME') }}"  # /home/cwilson/.config
+    xdg_cache_home: "{{ lookup('ansible.builtin.env', 'XDG_CACHE_HOME') }}"  # /home/cwilson/.cache
 
     user_workspace: "{{ user_home }}/workspace"
     mps_workspace: "{{ user_workspace }}/mps"
@@ -71,6 +71,10 @@
         - "{{ dashboards_workspace }}"
 
   roles:
+    - role: crgwilson.brew
+      when: ansible_system == "Darwin"
+      tags:
+        - brew
     - role: crgwilson.starship
       tags:
         - starship
@@ -83,16 +87,13 @@
     - role: crgwilson.pyenv
       become: true
 
-  #   - role: crgwilson.brew
-  #     tags:
-  #       - brew
-
   tasks:
-    # - name: Install my dotfiles
-    #   yadm:
-    #     repo: git@github.com:crgwilson/all-of-the-dots.git
-    #     dest: "{{ user_home }}"
-    #     update: false
+    - name: Install my dotfiles
+      yadm:
+        repo: git@github.com:crgwilson/all-of-the-dots.git
+        dest: "{{ user_home }}"
+        update: false
+
     - name: Check if git-number is already there
       stat:
         path: "{{ user_bin }}/git-number"
