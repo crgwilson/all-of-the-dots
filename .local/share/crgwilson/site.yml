@@ -113,6 +113,7 @@
           - flake8-import-order
           - flake8-docstrings
           - pytest
+          - yamllint
           - grip
         executable: pip3
         extra_args: --user
