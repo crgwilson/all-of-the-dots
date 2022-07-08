@@ -2,6 +2,8 @@
 - hosts: localhost
   vars:
     username: "{{ ansible_user_id }}"
+    user_group: "{{ username }}"
+
     user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
     user_bin: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_BIN') }}"
     user_lib: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_LIB') }}"
@@ -19,7 +21,7 @@
 
     # Why was I so inconsistent with how all these roles work ;_;
     brew_owner: "{{ username }}"
-    brew_group: "{{ username }}"
+    brew_group: "{{ user_group }}"
     brew_tmp_dir: "{{ user_tmp }}"
     brew_install_prefix: "{{ user_opt }}"
 
@@ -27,21 +29,21 @@
     yadm_install_prefix: "{{ user_opt }}"
     yadm_bin_dir: "{{ user_bin }}"
     yadm_owner: "{{ username }}"
-    yadm_group: "{{ username }}"
+    yadm_group: "{{ user_group }}"
 
     starship_install_prefix: "{{ user_bin }}"
     starship_tmp_dir: "{{ user_tmp }}"
     starship_owner: "{{ username }}"
-    starship_group: "{{ username }}"
+    starship_group: "{{ user_group }}"
 
     golang_owner: "{{ username }}"
-    golang_group: "{{ username }}"
+    golang_group: "{{ user_group }}"
     golang_install_dir: "{{ user_opt }}"
     golang_install_bin_dir: "{{ user_bin }}"
     golang_tmp_dir: "{{ user_tmp }}"
 
     pyenv_user: "{{ username }}"
-    pyenv_group: "{{ username }}"
+    pyenv_group: "{{ user_group }}"
     pyenv_install_directory: "{{ user_opt }}/pyenv"
     pyenv_version: v2.3.2
     pyenv_plugins: {}
@@ -51,7 +53,7 @@
       file:
         path: "{{ item }}"
         owner: "{{ username }}"
-        group: "{{ username }}"
+        group: "{{ user_group }}"
         mode: 0755
         state: directory
       loop:
@@ -91,6 +93,57 @@
     #     repo: git@github.com:crgwilson/all-of-the-dots.git
     #     dest: "{{ user_home }}"
     #     update: false
+    - name: Check if git-number is already there
+      stat:
+        path: "{{ user_bin }}/git-number"
+      register: git_number_stat
+
+    - name: Setup git-number
+      block:
+        - name: Clone the git-number repo
+          git:
+            repo: https://github.com/holygeek/git-number
+            version: master
+            dest: "{{ xdg_data_home }}/git-number"
+        - name: Link git-number to bin
+          file:
+            src: "{{ xdg_data_home }}/git-number/{{ item }}"
+            dest: "{{ user_bin }}/{{ item }}"
+            owner: "{{ username }}"
+            group: "{{ user_group }}"
+            state: link
+          loop:
+            - git-number
+            - git-list
+            - git-id
+      when: not git_number_stat.stat.exists
+
+
+    - name: Check if fzf is already there
+      stat:
+        path: "{{ user_bin }}/fzf"
+      register: fzf_stat
+
+    - name: Setup fzf
+      block:
+        - name: Clone the fzf repo
+          git:
+            repo: https://github.com/junegunn/fzf.git
+            version: 0.30.0
+            dest: "{{ xdg_data_home }}/fzf"
+        - name: Install fzf
+          command: "{{ xdg_data_home }}/fzf/install --bin"
+        - name: Link fzf to bin
+          file:
+            src: "{{ xdg_data_home }}/fzf/bin/{{ item }}"
+            dest: "{{ user_bin }}/{{ item }}"
+            owner: "{{ username }}"
+            group: "{{ user_group }}"
+            state: link
+          loop:
+            - fzf
+            - fzf-tmux
+      when: not fzf_stat.stat.exists
 
     - name: Change my default shell to zsh
       user:
