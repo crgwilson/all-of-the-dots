@@ -30,7 +30,7 @@ export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
 
 # Antigen
-export ADOTDIR=$XDG_DATA_HOME/antigen
+export ADOTDIR=$XDG_CACHE_HOME/antigen
 
 # Use nvim by default
 export EDITOR='nvim'

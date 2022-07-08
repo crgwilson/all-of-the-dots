@@ -88,11 +88,17 @@
       become: true
 
   tasks:
-    - name: Install my dotfiles
-      yadm:
-        repo: git@github.com:crgwilson/all-of-the-dots.git
-        dest: "{{ user_home }}"
-        update: false
+    - name: Check if antigen is already there
+      stat:
+        path: "{{ xdg_data_home }}/antigen/bin/antigen.zsh"
+      register: antigen_stat
+
+    - name: Install antigen
+      git:
+        repo: https://github.com/zsh-users/antigen
+        version: v2.2.3
+        dest: "{{ xdg_data_home }}/antigen"
+      when: not antigen_stat.stat.exists
 
     - name: Check if git-number is already there
       stat:
@@ -145,6 +151,12 @@
             - fzf
             - fzf-tmux
       when: not fzf_stat.stat.exists
+
+    - name: Install my dotfiles
+      yadm:
+        repo: git@github.com:crgwilson/all-of-the-dots.git
+        dest: "{{ user_home }}"
+        update: false
 
     - name: Change my default shell to zsh
       user:
