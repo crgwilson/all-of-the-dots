@@ -48,6 +48,19 @@
     pyenv_version: v2.3.2
     pyenv_plugins: {}
 
+    common_packages:
+      - wget
+      - curl
+      - vim
+      - shellcheck
+      - awscli
+      - nmap
+      - tmux
+      - netcat
+      - tree
+      - htop
+      - tcpdump
+
   pre_tasks:
     - name: Create necessary user directories
       file:
@@ -88,6 +101,18 @@
       become: true
 
   tasks:
+    - name: Install packages (Debian)
+      apt:
+        name: "{{ common_packages }} + {{ ['build-essential'] }}"
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install packages (MacOS)
+      brew:
+        name: "{{ common_packages }} + {{ ['openssl'] }}"
+        state: present
+      when: ansible_os_family == "Darwin"
+
     - name: Check if antigen is already there
       stat:
         path: "{{ xdg_data_home }}/antigen/bin/antigen.zsh"
@@ -183,3 +208,9 @@
           - grip
         executable: pip3
         extra_args: --user
+
+    - name: Clone neovim source
+      git:
+        repo: https://github.com/neovim/neovim
+        version: v0.7.2
+        dest: "{{ user_home }}/neovim"
