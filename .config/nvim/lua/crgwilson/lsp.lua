@@ -31,6 +31,11 @@ lspinstaller.setup({
   ensure_installed = servers,
 })
 
+function lsp_format()
+  vim.lsp.buf.formatting{async = true}
+  vim.notify("Formatted buffer", 1)
+end
+
 local function lsp_keymaps(bufnr)
   local options = {
     noremap = true,
@@ -42,7 +47,7 @@ local function lsp_keymaps(bufnr)
   api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "gK", "<cmd>lua vim.lsp.buf.signature_help()<cr>", options)
-  api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting{async = true}<cr>", options)
+  api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua lsp_format()<cr>", options)
   -- TODO: Organize imports!
 end
 
