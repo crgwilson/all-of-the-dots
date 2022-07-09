@@ -55,7 +55,7 @@ keymap("v", "<", "<gv", options)
 keymap("v", ">", ">gv", options)
 
 -- easy way to save
-keymap("n", "<C-s>", ":w<CR>", options)
+keymap("n", "<C-s>", ":w<cr>", options)
 
 -- telescope.nvim
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", options)

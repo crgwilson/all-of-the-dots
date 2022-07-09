@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/cwilson/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/cwilson/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/cwilson/.local/share/nvim/site/pack/packer/start/null-ls.nvim",

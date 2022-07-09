@@ -63,7 +63,10 @@ return require("packer").startup(function(use)
   })
 
   -- status line
-  -- TODO: Find a new status line since vim-airline was freaking out with alacritty
+  use({
+    "nvim-lualine/lualine.nvim",
+    commit="c15e3b4c9eb7015dd58688b3d9bb1d659a49d3d1"
+  })
 
   -- snippets
   use({
