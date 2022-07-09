@@ -16,6 +16,7 @@ alias read-cert='openssl x509 -noout -text -in'
 alias cert-serial='openssl x509 -serial -noout -in'
 alias encrypt-file='openssl enc -aes-256-cbc -salt -in file.txt -out file.txt.enc'
 alias decrypt-file='openssl enc -aes-256-cbc -d -in file.txt.enc -out file.txt'
+alias openssl256sum='openssl dgst -sha256'
 
 # network troubleshooting
 alias ping='ping -c 3'
@@ -24,6 +25,18 @@ alias knockknock='nmap -sn'
 # python
 alias ac='. venv/bin/activate'
 alias deac='deactivate'
+
+pyac() {
+  if [ -e "./activate" ]; then
+    source ./activate
+  elif [ -d "./venv" ]; then
+    source ./venv/bin/activate
+  else
+    local stripped_pwd="${PWD##*/}"
+    local activate_script_path="${stripped_pwd//_trunk}/activate"
+    source "$activate_script_path"
+  fi
+}
 
 # go
 alias gt='go test'
@@ -89,6 +102,7 @@ alias shrug='echo "¯\_(ツ)_/¯"'
 alias weather='curl wttr.in'
 alias party='curl parrot.live'
 alias jcat='python -m json.tool'
+alias halp='cat ~/notes/halp|fzf'
 
 case $(uname -s) in
   Darwin)
@@ -122,3 +136,17 @@ case $(uname -s) in
   *)
     ;;
 esac
+
+lscomma() {
+  ls -p $1 | grep -v / | tr '\n' ','
+}
+
+lsspace() {
+  ls -p $1 | grep -v / | tr '\n' ' '
+}
+
+# FOR WORK, DON'T CHECK IN ANYTHING IMPORTANT
+alias shellme="ssh $WORK_SHELL_HOST"
+alias devme="ssh $WORK_DEV_HOST"
+alias oc='oncall'
+alias onq='oncall query --now --type primary'

@@ -18,8 +18,6 @@ export XDG_STATE_HOME="$USER_LOCAL_HOME/state"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-export PATH="$USER_LOCAL_BIN:$PATH"
-
 # zsh history
 export HISTFILE="$XDG_CACHE_HOME/zsh/zsh_history"
 export SAVEHIST=10000
@@ -39,7 +37,9 @@ export EDITOR='nvim'
 export GPG_TTY=$(tty)
 
 # Java
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+if [ -d "/usr/lib/jvm/java-11-openjdk-amd64" ]; then
+  export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+fi
 
 # pyenv
 export PYENV_ROOT="$USER_LOCAL_OPT/pyenv"
@@ -56,3 +56,10 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # Hashicorp Packer
 export PACKER_CACHE_DIR="$XDG_CACHE_HOME/packer_cache"
+
+# Volta
+export VOLTA_HOME="$USER_LOCAL_OPT/volta"
+export VOLTA_BIN="$VOLTA_HOME/bin"
+
+# Path
+export PATH="$USER_LOCAL_BIN:$VOLTA_BIN:$PATH"

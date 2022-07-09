@@ -1,5 +1,3 @@
-#############
-# Rust jank #
-#############
-
-source $HOME/.cargo/env
+if [ -f "$HOME/.cargo/env" ]; then
+  source $HOME/.cargo/env
+fi
