@@ -70,3 +70,4 @@ keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>
 
 -- nvim-tree
 keymap("n", "<F1>", ":NvimTreeToggle<cr>", options)
+keymap("n", "<leader>t", ":NvimTreeToggle<cr>", options)
