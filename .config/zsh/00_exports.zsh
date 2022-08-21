@@ -63,3 +63,7 @@ export VOLTA_BIN="$VOLTA_HOME/bin"
 
 # Path
 export PATH="$USER_LOCAL_BIN:$VOLTA_BIN:$PATH"
+
+# WORK
+export WORK_SHELL_HOST=""
+export WORK_DEV_HOST=""

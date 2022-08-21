@@ -8,7 +8,7 @@ vim.cmd([[
 
 vim.api.nvim_set_keymap(
   "n",
-  "<leader>t",
+  "<leader>T",
   ":Pytest",
   { noremap = true, silent = true }
 )

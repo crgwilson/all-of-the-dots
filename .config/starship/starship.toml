@@ -192,3 +192,6 @@ disabled = true
 
 [package]
 disabled = true
+
+[java]
+disabled = true

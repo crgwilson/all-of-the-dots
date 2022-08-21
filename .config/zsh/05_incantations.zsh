@@ -1,9 +1,3 @@
-# add color to common utilities by default
-alias ls="ls --color=auto --group-directories-first"
-alias grep="grep --color=auto"
-alias diff="diff --color=auto"
-alias ip="ip -color=auto"
-
 # use neovim
 alias v="nvim"
 alias vi="nvim"
@@ -117,6 +111,8 @@ case $(uname -s) in
       alias pgadmin='open /Applications/pgAdmin\ 4.app'
       alias refresh-dns='sudo killall -HUP mDNSResponder'
 
+      alias ls="ls -G"
+
       sox () {
         sox_help() { echo "Helper utility to toggle the MacOS SOCKS proxy. Pass on or off to set proxy state." }
         case "$1" in
@@ -132,6 +128,11 @@ case $(uname -s) in
 
     ;;
   Linux)
+    # add color to common utilities by default
+    alias ls="ls --color=auto --group-directories-first"
+    alias grep="grep --color=auto"
+    alias diff="diff --color=auto"
+    alias ip="ip -color=auto"
     ;;
   *)
     ;;
