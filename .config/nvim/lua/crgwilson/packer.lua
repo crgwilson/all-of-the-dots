@@ -77,6 +77,10 @@ return require("packer").startup(function(use)
     "rafamadriz/friendly-snippets",  -- general collection of snippets to use
     commit="2ef6e939450102ac21de6cfe6c643891cda3d693"
   })
+  use({
+    "crgwilson/mysnips",
+    commit = "c982b9b56dde600045be0f0825430d2994b02f9c"
+  })
 
   -- lsp
   use({
