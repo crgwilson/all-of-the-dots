@@ -93,6 +93,13 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
   debug = false,
+  root_dir = require("null-ls.utils").root_pattern(
+    ".null-ls-root",
+    "setup.cfg",
+    "package.json",
+    "Makefile",
+    ".git"
+  ),
   sources = {
     -- ansible
     -- diagnostics.ansiblelint,
