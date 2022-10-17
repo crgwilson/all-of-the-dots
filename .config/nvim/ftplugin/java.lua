@@ -51,12 +51,12 @@ local config = {
   }),
 
   -- Here you can configure eclipse.jdt.ls specific settings
-	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-	-- for a list of options
+  -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+  -- for a list of options
   settings = {
     java = {
       -- configuration {
-			-- 	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+      --  -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
       --   -- And search for `interface RuntimeOption`
       --   -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
       --   runtimes = {
@@ -68,7 +68,7 @@ local config = {
       --       name = "JavaSE-17",
       --       path = "/usr/lib/jvm/java-17-openjdk/",
       --     },
-			-- 	}
+      --  }
       -- }
     }
   },
