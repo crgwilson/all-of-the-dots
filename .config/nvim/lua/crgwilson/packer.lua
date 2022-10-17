@@ -116,6 +116,10 @@ return require("packer").startup(function(use)
     commit="d2c5d9cef4bf310ed3e14e2a8a0dd0f0fec13ac8"
   })
   use({
+    "mfussenegger/nvim-jdtls",  -- Java is a special snowflake and jdtls doesn't work well with lsp-installer & lspconfig
+    commit="faf7ec2df507e16082afc4ef6b18813863f68dd8"
+  })
+  use({
     "jose-elias-alvarez/null-ls.nvim",  -- language server providing formatting & linting
     commit="a2b7bf89663c78d58a5494efbb791819a24bb025"
   })
