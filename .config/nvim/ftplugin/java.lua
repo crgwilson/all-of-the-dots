@@ -1,5 +1,4 @@
 -- TODO:
---  - Auto install JDK 17
 --  - nvim DAP for debugging
 local jdtls_ok, jdtls = pcall(require, "jdtls")
 local jdtls_setup_ok, jdtls_setup = pcall(require, "jdtls.setup")
@@ -14,7 +13,6 @@ lspinstaller.ensure_installed({
 })
 
 local home = vim.env.HOME
-local java_bin = "/opt/jdk17/bin/java"
 local jdtls_dir = home .. "/.local/share/nvim/lsp_servers/jdtls/"
 local jdtls_plugins_dir = jdtls_dir .. "plugins/"
 local eclipse_equinox_launcher = vim.fn.glob(jdtls_plugins_dir .. "org.eclipse.equinox.launcher_*.jar")
@@ -26,6 +24,18 @@ local jdtls_config = "config_mac"
 if vim.loop.os_uname().sysname == "Linux" then
   jdtls_config = "config_linux"
 end
+
+local installer = require("crgwilson.utils.installer")
+local jdk_17_install_url = "https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz"
+local jdk_17_install_path = home .. "/.local/opt/jdk17"
+if vim.fn.empty(vim.fn.glob(jdk_17_install_path)) > 0 then
+  vim.notify("Could not find JDK 17, installing it")
+  installer.install_from_tar(
+    jdk_17_install_url,
+    jdk_17_install_path
+  )
+end
+local java_bin = jdk_17_install_path .. "/bin/java"
 
 local config = {
   cmd = {
