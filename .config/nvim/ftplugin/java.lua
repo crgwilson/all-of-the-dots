@@ -19,15 +19,20 @@ local eclipse_equinox_launcher = vim.fn.glob(jdtls_plugins_dir .. "org.eclipse.e
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local jdtls_workspace_dir = home .. "/.cache/jdtls/workspace/" .. project_name
 
--- TODO: Move OS detecting into a utils module
+local jdk_17_install_path = home .. "/.local/opt/jdk17"
+
+local jdk_17_install_url = "https://download.oracle.com/java/17/latest/jdk-17_macos-x64_bin.tar.gz"
+local jdk_17_java_bin = jdk_17_install_path .. "/Contents/Home/bin/java"
 local jdtls_config = "config_mac"
+
+-- TODO: Move OS detecting into a utils module
 if vim.loop.os_uname().sysname == "Linux" then
+  jdk_17_java_bin = jdk_17_install_path .. "/bin/java"
+  jdk_17_install_url = "https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz"
   jdtls_config = "config_linux"
 end
 
 local installer = require("crgwilson.utils.installer")
-local jdk_17_install_url = "https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz"
-local jdk_17_install_path = home .. "/.local/opt/jdk17"
 if vim.fn.empty(vim.fn.glob(jdk_17_install_path)) > 0 then
   vim.notify("Could not find JDK 17, installing it")
   installer.install_from_tar(
@@ -35,11 +40,10 @@ if vim.fn.empty(vim.fn.glob(jdk_17_install_path)) > 0 then
     jdk_17_install_path
   )
 end
-local java_bin = jdk_17_install_path .. "/bin/java"
 
 local config = {
   cmd = {
-    java_bin,
+    jdk_17_java_bin,
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -65,21 +69,51 @@ local config = {
   -- for a list of options
   settings = {
     java = {
-      -- configuration {
-      --  -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-      --   -- And search for `interface RuntimeOption`
-      --   -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
-      --   runtimes = {
-      --     {
-      --       name = "JavaSE-11",
-      --       path = "/usr/lib/jvm/java-11-openjdk/",
-      --     },
-      --     {
-      --       name = "JavaSE-17",
-      --       path = "/usr/lib/jvm/java-17-openjdk/",
-      --     },
-      --  }
-      -- }
+      -- home = "/Library/Java/JavaVirtualMachines/jdk11.0.13.8-msft.jdk/Contents/Home",
+      errors = {
+        incompleteClassPath = {
+          severity = "warning"
+        }
+      },
+      configuration = {
+        -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+        -- And search for `interface RuntimeOption`
+        -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
+        -- runtimes = {
+        --   {
+        --     name = "JavaSE-1.8",
+        --     path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home"
+        --   },
+        --   {
+        --     name = "JavaSE-11",
+        --     path = "/Library/Java/JavaVirtualMachines/jdk11.0.13.8-msft.jdk/Contents/Home"
+        --   }
+        -- }
+      },
+      trace = {
+        server = "off"  -- off, messages, or verbose
+      },
+      import = {
+        gradle = {
+          wrapper = {
+            enabled = true,
+            checksums = {}
+          }
+        },
+        maven = {
+          enabled = false
+        },
+        exclusions = {
+          "**/node_modules/**",
+          "**/.metadata/**",
+          "**/archtype-resources/**",
+          "**/META-INF/maven/**",
+          "/**/test/**"
+        }
+      },
+      format = {
+        enabled = true
+      }
     }
   },
 
