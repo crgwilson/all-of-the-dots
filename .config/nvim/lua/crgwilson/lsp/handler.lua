@@ -24,6 +24,7 @@ local function set_lsp_keymaps(bufnr)
   api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", options)
+  api.nvim_buf_set_keymap(bufnr, "n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "gK", "<cmd>lua vim.lsp.buf.signature_help()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua lsp_format()<cr>", options)
   -- TODO: Organize imports!
