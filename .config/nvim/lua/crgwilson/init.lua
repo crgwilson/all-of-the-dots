@@ -1,5 +1,6 @@
 require("crgwilson.packer")
 require("crgwilson.colorscheme")
+require("crgwilson.vim-better-whitespace")
 require("crgwilson.vim-illuminate")
 require("crgwilson.cmp")
 require("crgwilson.lsp")

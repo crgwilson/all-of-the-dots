@@ -1,4 +1,3 @@
--- local pluginUtils = require("crgwilson.utils.plugins")
 local keymap = vim.api.nvim_set_keymap
 
 vim.g.mapleader = " "
