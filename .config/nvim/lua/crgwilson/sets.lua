@@ -1,6 +1,9 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.list = true
+vim.opt.listchars:append "eol:↴"
+
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
 vim.opt.softtabstop = 2  -- remove <Tab> characters
