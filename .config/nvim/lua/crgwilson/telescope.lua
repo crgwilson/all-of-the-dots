@@ -9,5 +9,6 @@ telescope.setup({
     prompt_prefix = ">",
     disable_devicons = false,
     color_devicons = true,
+    path_display = { truncate = 2 },
   }
 })

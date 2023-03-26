@@ -1,6 +1,8 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.hlsearch = false
+
 vim.opt.list = true
 vim.opt.listchars:append "eol:↴"
 
