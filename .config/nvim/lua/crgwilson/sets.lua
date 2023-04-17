@@ -13,9 +13,8 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 
 vim.opt.foldmethod = "indent"
-vim.opt.foldnestmax = 10
-vim.opt.foldenable = false
-vim.opt.foldlevel = 1
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99
 
 vim.opt.lazyredraw = true
 vim.opt.mouse = ""

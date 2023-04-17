@@ -47,9 +47,10 @@ local config = {
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
+    "-Dlog.protocol=true",
     "-Dlog.level=ALL",
     "-noverify",
-    "-Xmx1G",
+    "-Xmx4G",
     "--add-modules=ALL-SYSTEM",
     "--add-opens", "java.base/java.util=ALL-UNNAMED",
     "--add-opens", "java.base/java.lang=ALL-UNNAMED",
@@ -69,6 +70,29 @@ local config = {
   -- for a list of options
   settings = {
     java = {
+      autobuild = { enabled = false },
+      signatureHelp = { enabled = true },
+      completion = {
+        favoriteStaticMembers = {
+          "io.crate.testing.Asserts.assertThat",
+          "org.assertj.core.api.Asserions.assertThat",
+          "org.assertj.core.api.Assertions.assertThatThrownBy",
+          "org.assertj.core.api.Assertions.assertThatExceptionOfType",
+          "org.assertj.core.apo.Assertions.catchThrowable",
+          "org.junit.jupiter.api.Assertions.*",
+          "java.util.Obhects.requireNonNull",
+          "java.util.Objects.requireNonNullElse",
+          "org.mockito.Mockito.*",
+        },
+        filteredTypes = {
+          "com.sun.*",
+          "io.micrometer.shaded.*",
+          "java.awt.*",
+          "jdk.*",
+          "sun.*",
+        }
+      },
+
       -- home = "/Library/Java/JavaVirtualMachines/jdk11.0.13.8-msft.jdk/Contents/Home",
       errors = {
         incompleteClassPath = {
