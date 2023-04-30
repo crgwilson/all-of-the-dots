@@ -22,7 +22,7 @@ local servers = {
   "terraformls",
   "tsserver",
   "vimls",
-  "yamlls",
+  -- "yamlls",
 }
 
 lspinstaller.ensure_installed(servers)

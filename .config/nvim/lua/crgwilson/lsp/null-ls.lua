@@ -10,7 +10,6 @@ function M.setup()
   local diagnostics = null_ls.builtins.diagnostics
 
   null_ls.setup({
-    -- Set this to true for null-ls debugging
     debug = false,
 
     root_dir = require("null-ls.utils").root_pattern(

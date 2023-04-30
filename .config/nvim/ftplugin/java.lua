@@ -6,7 +6,7 @@ if not jdtls_ok or not jdtls_setup_ok then
   return
 end
 
-local lsphander = require("crgwilson.lsp.handler")
+local lsphandler = require("crgwilson.lsp.handler")
 local lspinstaller = require("crgwilson.lsp.installer")
 lspinstaller.ensure_installed({
   "jdtls",
@@ -153,8 +153,21 @@ local config = {
   },
 }
 
+-- Hack to override the handler's on_attach function to do
+-- special snowflake jdtls things
+local default_handler = lsphandler.get_default_options()
+local default_on_attach = default_handler["on_attach"]
+local function on_attach_java(client, bufnr)
+  default_on_attach(client, bufnr)
+  jdtls_setup.add_commands()
+end
+
 jdtls.start_or_attach(vim.tbl_deep_extend(
   "force",
-  lsphander.get_default_options(),
+  {
+    on_attach = on_attach_java,
+    capabilities = default_handler["capabilities"]
+  },
   config
 ))
+jdtls_setup.add_commands()
