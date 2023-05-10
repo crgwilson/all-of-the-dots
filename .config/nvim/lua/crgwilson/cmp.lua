@@ -22,9 +22,9 @@ cmp.setup({
   mapping = {
     ["<Up>"] = cmp.mapping.select_prev_item(),
     ["<Down>"] = cmp.mapping.select_next_item(),
-    ["<Left>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-    ["<Right>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<Left>"] = cmp.mapping(cmp.mapping.scroll_docs(-1)),
+    ["<Right>"] = cmp.mapping(cmp.mapping.scroll_docs(1)),
+    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete()),
     ["<CR>"] = function(fallback)
       if cmp.visible() and cmp.get_active_entry() then
         cmp.confirm()
@@ -52,9 +52,10 @@ cmp.setup({
     { name = "path" },
   },
   view = {
-    entries = true,
+    entries = "native",
   },
-  experimental = {
-    ghost_text = true,
-  }
+  -- This is throwing an error for some reason
+  -- experimental = {
+  --   ghost_text = true,
+  -- }
 })

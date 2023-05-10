@@ -1,5 +1,6 @@
 require("crgwilson.packer")
 require("crgwilson.colorscheme")
+require("crgwilson.nvim-web-devicons")
 require("crgwilson.vim-illuminate")
 require("crgwilson.cmp")
 require("crgwilson.lsp")

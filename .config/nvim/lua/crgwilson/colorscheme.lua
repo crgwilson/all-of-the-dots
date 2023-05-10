@@ -1,6 +1,6 @@
 vim.opt.termguicolors = true
 
-local colorscheme = "tokyonight"
+local colorscheme = "tokyonight-night"
 local has_configs, colorscheme_configs = pcall(require, "crgwilson.colorschemes." .. colorscheme)
 if has_configs then
   colorscheme_configs.setup()

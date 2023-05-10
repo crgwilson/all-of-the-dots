@@ -5,12 +5,12 @@ end
 
 local api = vim.api
 
-local capabilities = cmp.update_capabilities(
+local capabilities = cmp.default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
 function lsp_format()
-  vim.lsp.buf.formatting{async = true}
+  vim.lsp.buf.format{async = true}
   vim.notify("Formatted buffer", 1)
 end
 
@@ -27,7 +27,6 @@ local function set_lsp_keymaps(bufnr)
   api.nvim_buf_set_keymap(bufnr, "n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "gK", "<cmd>lua vim.lsp.buf.signature_help()<cr>", options)
   api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua lsp_format()<cr>", options)
-  -- TODO: Organize imports!
 end
 
 local function on_attach(client, bufnr)

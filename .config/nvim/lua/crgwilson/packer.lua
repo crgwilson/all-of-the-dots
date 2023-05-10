@@ -39,7 +39,7 @@ return require("packer").startup(function(use)
   -- plugin manager (after first time bootstrap)
   use({
     "wbthomason/packer.nvim",
-    commit="d268d2e083ca0abd95a57dfbcc5d5637a615e219"
+    commit="ed2d5c9c17f4df2eeaca4878145fecc9669e0138"
   })
 
   -- colorschemes
@@ -53,29 +53,29 @@ return require("packer").startup(function(use)
   })
   use({
     "folke/tokyonight.nvim",
-    commit="8223c970677e4d88c9b6b6d81bda23daf11062bb"
+    commit="df13e3268a44f142999fa166572fe95a650a0b37"
   })
 
   -- icons
   use({
-    "kyazdani42/nvim-web-devicons",
-    commit="8d2c5337f0a2d0a17de8e751876eeb192b32310e"
+    "nvim-tree/nvim-web-devicons",
+    commit="986875b7364095d6535e28bd4aac3a9357e91bbe"
   })
 
   -- status line
   use({
     "nvim-lualine/lualine.nvim",
-    commit="c15e3b4c9eb7015dd58688b3d9bb1d659a49d3d1"
+    commit="84ffb80e452d95e2c46fa29a98ea11a240f7843e"
   })
 
   -- snippets
   use({
     "L3MON4D3/LuaSnip",  -- my snippet engine
-    commit="295cc9e422060b3200234b42cbee6dde1dfee765"
+    commit="b4bc24c4925aeb05fd47d2ee9b24b7f73f5d7e32"
   })
   use({
     "rafamadriz/friendly-snippets",  -- general collection of snippets to use
-    commit="2ef6e939450102ac21de6cfe6c643891cda3d693"
+    commit="10f741908e56ce47cf6b3440e3f04b4fdc0da2f2"
   })
   use({
     "crgwilson/mysnips",
@@ -85,59 +85,63 @@ return require("packer").startup(function(use)
   -- lsp
   use({
     "hrsh7th/nvim-cmp",  -- main completion engine
-    commit="9897465a7663997b7b42372164ffc3635321a2fe"
+    commit="935b4069ce73b60ba9075bf05ee6ab50ed3af1a9"
   })
   use({
     "hrsh7th/cmp-nvim-lsp",  -- completion source for the built-in nvim lsp client
-    commit="affe808a5c56b71630f17aa7c38e15c59fd648a8"
+    commit="0e6b2ed705ddcff9738ec4ea838141654f12eeef"
   })
   use({
     "hrsh7th/cmp-buffer",  -- completion source for words in current buffer
-    commit="62fc67a2b0205136bc3e312664624ba2ab4a9323"
+    commit="3022dbc9166796b644a841a02de8dd1cc1d311fa"
   })
   use({
     "hrsh7th/cmp-path",  -- completion source for fs paths
-    commit="981baf9525257ac3269e1b6701e376d6fbff6921"
+    commit="91ff86cd9c29299a64f968ebb45846c485725f23"
   })
   use({
     "saadparwaiz1/cmp_luasnip",  -- completion source for luasnip
-    commit="a9de941bcbda508d0a45d28ae366bb3f08db2e36"
+    commit="18095520391186d634a0045dacaa346291096566"
   })
   use({
     "hrsh7th/cmp-nvim-lua",  -- completion source for nvim lua api
-    commit="d276254e7198ab7d00f117e88e223b4bd8c02d21"
+    commit="f12408bdb54c39c23e67cab726264c10db33ada8"
   })
   use({
     "neovim/nvim-lspconfig",  -- collection of nvim lsp client configs for various lsp servers
-    commit="b9c375c385765ea42418f7994354bdecc1036765"
+    commit="8356319af6e8012a5797b647e946b377d1ba3d9c"
   })
   use({
     "williamboman/mason.nvim",
-    commit="47fdf54d622bde33391fe7fed6f5b74d0846b7c8"
+    commit="a51391311e86c295fc7611be2beb58859e93f21b"
   })
   use({
     "williamboman/mason-lspconfig.nvim",
-    commit="53f3a8bdcb77d4a95b082fd57e12173f353c6c3e"
+    commit="90a8bbf106b85b76951a34c542058ffa807de2b1"
   })
   use({
     "mfussenegger/nvim-jdtls",  -- Java is a special snowflake and jdtls doesn't work well with lsp-installer & lspconfig
-    commit="faf7ec2df507e16082afc4ef6b18813863f68dd8"
+    commit="355de7458fd63ccef9c6485d952ea118ba2cb46a"
+  })
+  use({
+    "mfussenegger/nvim-dap",
+    commit="6cedcb527e264c8f25e86afa8dae74c6692dee51"
   })
   use({
     "jose-elias-alvarez/null-ls.nvim",  -- language server providing formatting & linting
-    commit="a2b7bf89663c78d58a5494efbb791819a24bb025"
+    commit="71797bb303ac99a4435592e15068f127970513d7"
   })
   use({
     "onsails/lspkind-nvim",  -- inline symbols
-    commit="57e5b5dfbe991151b07d272a06e365a77cc3d0e7"
+    commit="57610d5ab560c073c465d6faf0c19f200cb67e6e"
   })
   use({
-    "glepnir/lspsaga.nvim",  -- code actions, hover docstrings, and other junk too
-    commit="6d430d4f257a7628ab906bafd6b6661344d49f36"
+    "nvimdev/lspsaga.nvim",  -- code actions, hover docstrings, and other junk too
+    commit="76696bed4397c3b58563c246dc1f7856ed4af023"
   })
   use({
     "simrat39/symbols-outline.nvim",  -- nerdtree like tree of symbols (I will probably never use this)
-    commit="15ae99c27360ab42e931be127d130611375307d5"
+    commit="512791925d57a61c545bc303356e8a8f7869763c"
   })
 
   -- general behavior
@@ -191,8 +195,6 @@ return require("packer").startup(function(use)
     "tpope/vim-fugitive",
     commit="f809dde0e719f89a6fb5cb80f3be65f5cbc1d1fe"
   })
-  -- I don't use this and probably don't need it
-  -- use({ "junegunn/gv.vim" })
 
   -- language syntax (how many of these are necessary with treesitter?)
   use({
@@ -238,21 +240,21 @@ return require("packer").startup(function(use)
 
   -- nerdtree
   use({
-    "kyazdani42/nvim-tree.lua",
-    commit="f43b8af8f40004e476cc43d178b82350b3249d1a"
+    "nvim-tree/nvim-tree.lua",
+    commit="270c95556cad96d18ca547d86ae65927334b108b"
   })
 
   -- fuzzy finding
   use({
     "nvim-telescope/telescope.nvim",
-    commit="f8047b8bc9e2fdc06cc3b5d3d7701f1299f3b6e4",
+    commit="d77b37f4520e5fc2cf4c74c12e42ed4b589bd367",
     requires={ {"nvim-lua/plenary.nvim"} }
   })
 
   -- treesitter
   use({
     "nvim-treesitter/nvim-treesitter",
-    commit="f75e27c2170ef4cc83cc9fa10a82c84ec82f5021",
+    commit="6e8ad92031ff3b07db8980ab4a5491d1c40398ea",
     run=":TSUpdate"
   })
 
