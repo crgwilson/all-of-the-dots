@@ -46,16 +46,13 @@ cmp.setup({
     end
   },
   sources = {
+    { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
   },
   view = {
-    entries = "native",
+    entries = "custom",
   },
-  -- This is throwing an error for some reason
-  -- experimental = {
-  --   ghost_text = true,
-  -- }
 })
