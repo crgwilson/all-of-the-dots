@@ -26,7 +26,19 @@ local servers = {
   -- "yamlls",
 }
 
-lspinstaller.ensure_installed(servers)
+-- mason-nvim-dap.nvim for some reason gives each debug adapter a unique
+-- name which is _different_ than the name of the mason package, and if you
+-- try to ensure_installed() the mason package name it will silently fail :)
+-- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
+local debug_adapters = {
+  "python",
+  "js",
+  "delve",
+}
+
+lspinstaller.setup()
+lspinstaller.install_lsp_servers(servers)
+lspinstaller.install_debuggers(debug_adapters)
 
 for _, server in pairs(servers) do
   local options = lsphandler.get_default_options()
@@ -48,5 +60,6 @@ local lsp_config = {
 
 -- vim.lsp.set_log_level("debug")
 vim.diagnostic.config(lsp_config)
-
 null_ls.setup()
+
+require("crgwilson.lsp.dap")

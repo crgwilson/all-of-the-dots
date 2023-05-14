@@ -1,5 +1,3 @@
--- TODO:
---  - nvim DAP for debugging
 local jdtls_ok, jdtls = pcall(require, "jdtls")
 local jdtls_setup_ok, jdtls_setup = pcall(require, "jdtls.setup")
 if not jdtls_ok or not jdtls_setup_ok then
@@ -8,14 +6,20 @@ end
 
 local lsphandler = require("crgwilson.lsp.handler")
 local lspinstaller = require("crgwilson.lsp.installer")
-local lsputils = require("crgwilson.lsp.utils")
 
-lspinstaller.ensure_installed({
+-- The java LSP stuff has special integrations with nvim-jdtls
+-- so it's easier to setup everything here than using my "normal"
+-- setup flow.
+lspinstaller.install_lsp_servers({
   "jdtls",
+})
+lspinstaller.install_debuggers({
+  "javadbg",
+  "javatest",
 })
 
 local home = vim.env.HOME
-local jdtls_dir = lsputils.get_install_path("jdtls")
+local jdtls_dir = lspinstaller.get_install_path("jdtls")
 local jdtls_plugins_dir = jdtls_dir .. "/plugins/"
 local eclipse_equinox_launcher = vim.fn.glob(jdtls_plugins_dir .. "org.eclipse.equinox.launcher_*.jar")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -42,6 +46,18 @@ if vim.fn.empty(vim.fn.glob(jdk_17_install_path)) > 0 then
     jdk_17_install_path
   )
 end
+
+-- Discover & merge all jars into a single table to be used below
+local bundles = {
+  vim.fn.glob(
+    lspinstaller.get_install_path("java-debug-adapter") .. "/extension/server/com.microsoft.java.debug.plugin-*.jar",
+    1
+  )
+}
+vim.list_extend(
+  bundles,
+  vim.split(vim.fn.glob(lspinstaller.get_install_path("java-test") .. "/extension/server/*.jar", 1), "\n")
+)
 
 local config = {
   cmd = {
@@ -151,7 +167,7 @@ local config = {
   --
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {}
+    bundles = bundles,
   },
 }
 
@@ -161,7 +177,21 @@ local default_handler = lsphandler.get_default_options()
 local default_on_attach = default_handler["on_attach"]
 local function on_attach_java(client, bufnr)
   default_on_attach(client, bufnr)
+  jdtls.setup_dap({ hotcoderplace = "auto" })
   jdtls_setup.add_commands()
+
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>bt",
+    "<cmd>lua require'jdtls'.test_class()<cr>",
+    { noremap = true}
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>bm",
+    "<cmd>lua require'jdtls'.test_nearest_method()<cr>",
+    { noremap = true}
+  )
 end
 
 jdtls.start_or_attach(vim.tbl_deep_extend(
@@ -172,4 +202,3 @@ jdtls.start_or_attach(vim.tbl_deep_extend(
   },
   config
 ))
-jdtls_setup.add_commands()

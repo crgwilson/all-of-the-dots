@@ -65,12 +65,24 @@ keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').git_branches()<
 keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>", options)
 keymap("n", "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>", options)
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", options)
--- TODO: Snippets, code actions, renames
 
 -- nvim-tree
 keymap("n", "<F1>", ":NvimTreeToggle<cr>", options)
 keymap("n", "<leader>t", ":NvimTreeToggle<cr>", options)
 
+-- Mason
+keymap("n", "<leader>M", ":Mason<cr>", options)
+
 -- lsp
 keymap("n", "<leader>lr", ":LspRestart<cr>", options)
 keymap("n", "<leader>li", ":LspInfo<cr>", options)
+
+-- dap
+keymap("n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", options)
+keymap("n", "<leader>bc", "<cmd>lua require'dap'.continue()<cr>", options)
+keymap("n", "<leader>bs", "<cmd>lua require'dap'.step_over()<cr>", options)
+keymap("n", "<leader>bS", "<cmd>lua require'dap'.step_into()<cr>", options)
+keymap("n", "<leader>bo", "<cmd>lua require'dap'.step_out()<cr>", options)
+keymap("n", "<leader>br", "<cmd>lua require'dap'.repl.open()<cr>", options)
+keymap("n", "<leader>bT", "<cmd>lua require'dap'.terminate()<cr>", options)
+keymap("n", "<leader>bu", "<cmd>lua require'dapui'.toggle()<cr>", options)

@@ -112,20 +112,8 @@ return require("packer").startup(function(use)
     commit="8356319af6e8012a5797b647e946b377d1ba3d9c"
   })
   use({
-    "williamboman/mason.nvim",
-    commit="a51391311e86c295fc7611be2beb58859e93f21b"
-  })
-  use({
-    "williamboman/mason-lspconfig.nvim",
-    commit="90a8bbf106b85b76951a34c542058ffa807de2b1"
-  })
-  use({
     "mfussenegger/nvim-jdtls",  -- Java is a special snowflake and jdtls doesn't work well with lsp-installer & lspconfig
     commit="355de7458fd63ccef9c6485d952ea118ba2cb46a"
-  })
-  use({
-    "mfussenegger/nvim-dap",
-    commit="6cedcb527e264c8f25e86afa8dae74c6692dee51"
   })
   use({
     "jose-elias-alvarez/null-ls.nvim",  -- language server providing formatting & linting
@@ -138,6 +126,34 @@ return require("packer").startup(function(use)
   use({
     "nvimdev/lspsaga.nvim",  -- code actions, hover docstrings, and other junk too
     commit="76696bed4397c3b58563c246dc1f7856ed4af023"
+  })
+  use({
+    "williamboman/mason.nvim",
+    commit="a51391311e86c295fc7611be2beb58859e93f21b"
+  })
+  use({
+    "williamboman/mason-lspconfig.nvim",
+    commit="90a8bbf106b85b76951a34c542058ffa807de2b1"
+  })
+  use({
+    "jay-babu/mason-nvim-dap.nvim",
+    commit="c836e511e796d2b6a25ad9f164f5b25d8b9ff705"
+  })
+  use({
+    "mfussenegger/nvim-dap",
+    commit="6cedcb527e264c8f25e86afa8dae74c6692dee51"
+  })
+  use({
+    "rcarriga/nvim-dap-ui",
+    commit="4ce7b97dd8f50b4f672948a34bf8f3a56214fdb8"
+  })
+  use({
+    "theHamsta/nvim-dap-virtual-text",
+    commit="ab988dbb7d20cdaebf9b3ef7554a89f6895de042"
+  })
+  use({
+    "mfussenegger/nvim-dap-python",
+    commit="51ecb08dbff57fca8add396b93dc765aba262e0a"
   })
   use({
     "simrat39/symbols-outline.nvim",  -- nerdtree like tree of symbols (I will probably never use this)

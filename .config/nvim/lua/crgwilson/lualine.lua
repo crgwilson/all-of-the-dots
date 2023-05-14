@@ -11,7 +11,15 @@ require('lualine').setup {
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
-      statusline = {},
+      statusline = {
+        "NvimTree",
+        "dapui_console",
+        "dap-repl",
+        "dapui_watches",
+        "dapui_stacks",
+        "dapui_breakpoints",
+        "dapui_scopes",
+      },
       winbar = {},
     },
     ignore_focus = {},
