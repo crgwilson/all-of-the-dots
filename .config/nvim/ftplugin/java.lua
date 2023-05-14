@@ -8,13 +8,15 @@ end
 
 local lsphandler = require("crgwilson.lsp.handler")
 local lspinstaller = require("crgwilson.lsp.installer")
+local lsputils = require("crgwilson.lsp.utils")
+
 lspinstaller.ensure_installed({
   "jdtls",
 })
 
 local home = vim.env.HOME
-local jdtls_dir = home .. "/.local/share/nvim/lsp_servers/jdtls/"
-local jdtls_plugins_dir = jdtls_dir .. "plugins/"
+local jdtls_dir = lsputils.get_install_path("jdtls")
+local jdtls_plugins_dir = jdtls_dir .. "/plugins/"
 local eclipse_equinox_launcher = vim.fn.glob(jdtls_plugins_dir .. "org.eclipse.equinox.launcher_*.jar")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local jdtls_workspace_dir = home .. "/.cache/jdtls/workspace/" .. project_name
@@ -23,13 +25,13 @@ local jdk_17_install_path = home .. "/.local/opt/jdk17"
 
 local jdk_17_install_url = "https://download.oracle.com/java/17/latest/jdk-17_macos-x64_bin.tar.gz"
 local jdk_17_java_bin = jdk_17_install_path .. "/Contents/Home/bin/java"
-local jdtls_config = "config_mac"
+local jdtls_config = "/config_mac"
 
 -- TODO: Move OS detecting into a utils module
 if vim.loop.os_uname().sysname == "Linux" then
   jdk_17_java_bin = jdk_17_install_path .. "/bin/java"
   jdk_17_install_url = "https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz"
-  jdtls_config = "config_linux"
+  jdtls_config = "/config_linux"
 end
 
 local installer = require("crgwilson.utils.installer")

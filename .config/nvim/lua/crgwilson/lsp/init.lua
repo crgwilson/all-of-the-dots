@@ -1,7 +1,8 @@
+require("crgwilson.lsp.cmp")
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 local lsphandler_ok, lsphandler = pcall(require, "crgwilson.lsp.handler")
 local lspinstaller_ok, lspinstaller = pcall(require, "crgwilson.lsp.installer")
-local null_ls_ok, null_ls = pcall(require, "crgwilson.lsp.null-ls")
+local null_ls = require("crgwilson.lsp.null-ls")
 
 if not lspconfig_ok or not lspinstaller_ok or not lsphandler_ok then
   return
@@ -45,7 +46,6 @@ local lsp_config = {
   severity_sort = true,
 }
 
--- Uncomment this for debug logging
 -- vim.lsp.set_log_level("debug")
 vim.diagnostic.config(lsp_config)
 

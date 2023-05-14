@@ -74,11 +74,3 @@ keymap("n", "<leader>t", ":NvimTreeToggle<cr>", options)
 -- lsp
 keymap("n", "<leader>lr", ":LspRestart<cr>", options)
 keymap("n", "<leader>li", ":LspInfo<cr>", options)
-
--- better whitespace
-function bop_better_whitespace()
-  -- Turn it off and on again
-  vim.cmd("ToggleWhitespace")
-  vim.cmd("ToggleWhitespace")
-end
-keymap("n", "<leader>bw", ":lua bop_better_whitespace()<cr>", options)
