@@ -20,6 +20,7 @@ lspinstaller.install_debuggers({
 
 local home = vim.env.HOME
 local jdtls_dir = lspinstaller.get_install_path("jdtls")
+local lombok_jar = jdtls_dir .. "/lombok.jar"
 local jdtls_plugins_dir = jdtls_dir .. "/plugins/"
 local eclipse_equinox_launcher = vim.fn.glob(jdtls_plugins_dir .. "org.eclipse.equinox.launcher_*.jar")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -62,6 +63,7 @@ vim.list_extend(
 local config = {
   cmd = {
     jdk_17_java_bin,
+    "-javaagent:" .. lombok_jar,
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
