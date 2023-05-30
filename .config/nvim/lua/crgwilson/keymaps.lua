@@ -56,6 +56,10 @@ keymap("v", ">", ">gv", options)
 -- easy way to save
 keymap("n", "<C-s>", ":w<cr>", options)
 
+-- quickfix list
+keymap("n", "<leader>q", ":copen<cr>", options)
+keymap("n", "<leader>Q", ":cclose<cr>", options)
+
 -- telescope.nvim
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", options)
 keymap("n", "<leader>fo", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", options)
