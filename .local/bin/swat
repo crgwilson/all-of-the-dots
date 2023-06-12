@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+import argparse
+import logging
+import os
+import glob
+from typing import List, Optional, Sequence
+
+SSH_BIN = "/usr/bin/ssh"
+JDB_BIN = "/usr/bin/jdb"
+LOCALHOST = "127.0.0.1"
+
+logging.basicConfig()
+LOGGER = logging.getLogger("swat")
+
+
+def get_src_paths(root: str) -> List[str]:
+    if not root.endswith("/"):
+        root = f"{root}/"
+
+    return glob.glob(f"{root}**/**src/main/java", recursive=True)
+
+
+def run_ssh(host:str, debug_port, ssh_port: int) -> None:
+    ssh_tunnel_str = f"{debug_port}:{LOCALHOST}:{debug_port}"
+    ssh_cmd = f"{SSH_BIN} -L {ssh_tunnel_str} {host} -p {ssh_port}"
+    LOGGER.debug(f"Executing command: {ssh_cmd}")
+    os.system(ssh_cmd)
+
+
+def run_debug(
+    host: str,
+    debug_port: int,
+    include_paths: List[str],
+) -> None:
+    source_paths_to_include = ["./"]
+    if include_paths:
+        source_paths_to_include += include_paths
+
+    source_path = ""
+    for p in source_paths_to_include:
+        if source_path:
+            source_path += ":"
+
+        source_path += ":".join(get_src_paths(p))
+
+    jdb_cmd = f"{JDB_BIN} -attach {host}:{debug_port} -sourcepath {source_path}"
+    LOGGER.debug(f"Executing command: {jdb_cmd}")
+    os.system(jdb_cmd)
+
+
+def main(argv: Optional[Sequence[str]] = None) -> int:
+    parser = argparse.ArgumentParser(description="jdb utility wrapper to swat all my bugs")
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        default=False,
+        help="logslogslogslogs",
+    )
+    subparsers = parser.add_subparsers(
+        help="Sub-commands to use",
+        dest="action",
+    )
+
+    ssh_parser = subparsers.add_parser("ssh")
+    ssh_parser.add_argument(
+        "-p",
+        "--port",
+        type=int,
+        required=True,
+        help="The debug port to forward to localhost",
+    )
+    ssh_parser.add_argument(
+        "-H",
+        "--host",
+        type=str,
+        required=True,
+        help="The host to SSH tunnel into",
+    )
+    ssh_parser.add_argument(
+        "-s",
+        "--ssh-port",
+        type=int,
+        required=False,
+        default=22,
+        help="The SSH port to use when tunneling",
+    )
+
+    debug_parser = subparsers.add_parser("debug")
+    debug_parser.add_argument(
+        "-p",
+        "--port",
+        type=int,
+        required=True,
+        help="The port number of the listening java debug process",
+    )
+    debug_parser.add_argument(
+        "-H",
+        "--host",
+        type=str,
+        required=False,
+        default=LOCALHOST,
+        help="The hostname of the listening java debug process",
+    )
+    debug_parser.add_argument(
+        "-i",
+        "--include",
+        type=str,
+        nargs="*",
+        required=False,
+        help="Space delimited directories to include in the -sourcepath",
+    )
+
+    args = parser.parse_args(argv)
+
+    if args.verbose:
+        LOGGER.setLevel(logging.DEBUG)
+
+    if args.action == "ssh":
+        LOGGER.debug("User passed in 'ssh' action")
+        run_ssh(
+            args.host,
+            args.port,
+            args.ssh_port,
+        )
+    elif args.action == "debug":
+        LOGGER.debug("User passed in 'debug' action")
+        run_debug(
+            args.host,
+            args.port,
+            args.include,
+        )
+    else:
+        LOGGER.debug(f"User passed in invalid action '{args.action}'")
+        parser.print_help()
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
