@@ -9,21 +9,21 @@ if not lspconfig_ok or not lspinstaller_ok or not lsphandler_ok then
 end
 
 local servers = {
-  -- "ansiblels",
   "bashls",
   "dockerls",
   "ember",
   "eslint",
-  -- "gopls",
+  "gopls",
   "gradle_ls",
   "html",
   "jsonls",
-  "pyright",
   "lua_ls",
+  "puppet",
+  "pyright",
+  "solargraph",
   "terraformls",
   "tsserver",
   "vimls",
-  -- "yamlls",
 }
 
 -- mason-nvim-dap.nvim for some reason gives each debug adapter a unique

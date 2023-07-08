@@ -43,8 +43,10 @@ vim.opt.writebackup = false
 -- Plugin specific sets
 --
 -- ansible-vim
+-- vim.g.ansible_name_highlight = "ob"
+-- vim.g.ansible_extra_keywords_highlight = "b"
 vim.g.ansible_unindent_after_newline = 1
-vim.g.ansible_attribute_highlight = "ob"
+-- vim.g.ansible_attribute_highlight = "ob"
 
 -- vim-go
 vim.g.go_code_completion_enabled = 0
@@ -73,20 +75,23 @@ vim.api.nvim_create_autocmd(
   }
 )
 
+-- Let's just try getting rid of better whitespace for a while
+vim.g.better_whitespace_enabled = 0
+
 -- For whatever reason whenever I trigger an lsp / cmp pop up (autocomplete, buf.hover(), etc)
 -- better whitespace gets confused and starts highlighting whitespace even in insert mode.
-local better_whitespace_and_lsp = vim.api.nvim_create_augroup("better_whitespace_and_lsp", { clear = true })
-vim.api.nvim_create_autocmd(
-  "InsertEnter", {
-    pattern = "*",
-    command = "if exists(':EnableWhitespace') | execute 'EnableWhitespace' | endif",
-    group = better_whitespace_and_lsp,
-  }
-)
-vim.api.nvim_create_autocmd(
-  "InsertLeave", {
-    pattern = "*",
-    command = "if exists(':DisableWhitespace') | execute 'DisableWhitespace' | endif",
-    group = better_whitespace_and_lsp,
-  }
-)
+-- local better_whitespace_and_lsp = vim.api.nvim_create_augroup("better_whitespace_and_lsp", { clear = true })
+-- vim.api.nvim_create_autocmd(
+--   "InsertEnter", {
+--     pattern = "*",
+--     command = "if exists(':EnableWhitespace') | execute 'EnableWhitespace' | endif",
+--     group = better_whitespace_and_lsp,
+--   }
+-- )
+-- vim.api.nvim_create_autocmd(
+--   "InsertLeave", {
+--     pattern = "*",
+--     command = "if exists(':DisableWhitespace') | execute 'DisableWhitespace' | endif",
+--     group = better_whitespace_and_lsp,
+--   }
+-- )
