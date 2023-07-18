@@ -33,8 +33,14 @@ cmp.setup({
       end
     end
   },
+  window = {
+    documentation = {
+      max_height = 15,
+      max_width = 60,
+    }
+  },
   formatting = {
-    fields = { "kind", "abbr", "menu" },
+    fields = { "abbr", "menu", "kind" },
     format = function(entry, vim_item)
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
