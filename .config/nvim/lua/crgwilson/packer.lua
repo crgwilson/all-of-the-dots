@@ -253,6 +253,10 @@ return require("packer").startup(function(use)
     "joukevandermaas/vim-ember-hbs",
     commit="c47e1958a6c190c9d79ac66cb812f1a1d3b4e968"
   })
+  use({
+    "rodjek/vim-puppet",
+    commit="81943d532dee24f8518f855dfb17160809abfdfb",
+  })
 
   -- nerdtree
   use({
