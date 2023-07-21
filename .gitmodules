@@ -1,3 +1,0 @@
-[submodule "submodules/fonts"]
-	path = submodules/fonts
-	url = https://github.com/powerline/fonts.git
