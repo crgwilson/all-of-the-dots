@@ -65,7 +65,7 @@ return require("packer").startup(function(use)
   -- status line
   use({
     "nvim-lualine/lualine.nvim",
-    commit="84ffb80e452d95e2c46fa29a98ea11a240f7843e"
+    commit="8912bea65de93a56b1f70cdb7c3c26f9cce30394"
   })
 
   -- snippets
