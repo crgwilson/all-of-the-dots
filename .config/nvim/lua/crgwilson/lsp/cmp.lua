@@ -61,4 +61,5 @@ cmp.setup({
   view = {
     entries = "custom",
   },
+  preselect = cmp.PreselectMode.None,
 })

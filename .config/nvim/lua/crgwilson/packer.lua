@@ -156,6 +156,10 @@ return require("packer").startup(function(use)
     commit="51ecb08dbff57fca8add396b93dc765aba262e0a"
   })
   use({
+    "leoluz/nvim-dap-go",
+    commit="eab43d63cef832801a701812913e4d1d726725e5"
+  })
+  use({
     "simrat39/symbols-outline.nvim",  -- nerdtree like tree of symbols (I will probably never use this)
     commit="512791925d57a61c545bc303356e8a8f7869763c"
   })
@@ -216,10 +220,6 @@ return require("packer").startup(function(use)
   use({
     "vim-ruby/vim-ruby",
     commit="a99282403445ac1d008b51d6edd820d5dc053ecb"
-  })
-  use({
-    "fatih/vim-go",
-    commit="b7506c6da8ea3a88e268a91aa6630be3e26a20a9"
   })
   use({
     "tpope/vim-markdown",

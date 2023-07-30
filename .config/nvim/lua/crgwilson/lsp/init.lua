@@ -18,7 +18,7 @@ local servers = {
   "html",
   "jsonls",
   "lua_ls",
-  "puppet",
+  -- "puppet",
   "pyright",
   "solargraph",
   "terraformls",
