@@ -29,7 +29,6 @@ workspace_debian_packages:
   - htop
   - tcpdump
   - grip
-  - python-openssl
   - build-essential
   - libssl-dev
   - zlib1g-dev
