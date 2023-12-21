@@ -1,0 +1,5 @@
+---
+# TODO(crgwilson): On M1 macs this moved to where it
+# should have been all along - /opt/homebrew/bin/brew
+brew_bin_dir: /usr/local/bin
+brew_bin_path: "{{ brew_bin_dir }}/brew"

@@ -1,0 +1,10 @@
+---
+- name: Check if brew is already installed
+  stat:
+    path: "{{ brew_bin_path }}"
+  register: brew_stat
+
+- name: Fail if brew isn't installed
+  fail:
+    msg: "Brew isn't installed on this machine, did you forget to install it?"
+  when: not brew_stat.stat.exists

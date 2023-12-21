@@ -1,0 +1,28 @@
+---
+- name: Get OS specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_system }}.yml"
+    - "{{ ansible_os_family }}.yml"
+
+- name: Check if starship is already installed
+  stat:
+    path: "{{ starship_install_prefix }}/starship"
+  register: starship_stat
+
+- name: Download starship
+  get_url:
+    url: "{{ starship_download_url }}"
+    dest: "{{ starship_tmp_dir }}/{{ starship_archive_name }}"
+    checksum: "{{ starship_checksum_algo }}:{{ starship_download_checksum }}"
+    owner: "{{ starship_user }}"
+    group: "{{ starship_group }}"
+  when: not starship_stat.stat.exists
+
+- name: Unpack starship archive
+  unarchive:
+    src: "{{ starship_tmp_dir }}/{{ starship_archive_name }}"
+    dest: "{{ starship_install_prefix }}"
+    owner: "{{ starship_user }}"
+    group: "{{ starship_group }}"
+  when: not starship_stat.stat.exists

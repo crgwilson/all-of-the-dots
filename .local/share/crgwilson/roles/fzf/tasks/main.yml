@@ -1,0 +1,26 @@
+---
+- name: Check is fzf is present
+  stat:
+    path: "{{ fzf_bin_dir }}/fzf"
+  register: fzf_stat
+
+- name: Clone the fzf repo
+  git:
+    repo: "{{ fzf_git_repo }}"
+    version: "{{ fzf_version }}"
+    dest: "{{ fzf_install_prefix }}/fzf"
+  when: not fzf_stat.stat.exists
+
+- name: Install fzf
+  command: "{{ fzf_install_prefix }}/fzf/install --bin"
+  when: not fzf_stat.stat.exists
+
+- name: Link fzf to user bin
+  file:
+    src: "{{ fzf_install_prefix }}/fzf/bin/{{ item }}"
+    dest: "{{ fzf_bin_dir }}/{{ item }}"
+    state: link
+  when: not fzf_stat.stat.exists
+  loop:
+    - fzf
+    - fzf-tmux

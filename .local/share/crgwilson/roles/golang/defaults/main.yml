@@ -1,0 +1,11 @@
+---
+golang_arch: amd64
+golang_repo_url: "https://dl.google.com/go"
+golang_checksum_algo: sha256
+
+golang_install_prefix: /usr/local/opt
+golang_bin_dir: /usr/local/bin
+golang_tmp_dir: /tmp
+
+golang_user: root
+golang_group: root

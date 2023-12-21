@@ -1,0 +1,23 @@
+---
+- name: Check if git_number is present
+  stat:
+    path: "{{ git_number_bin_dir }}/git-number"
+  register: git_number_stat
+
+- name: Clone git_number repo
+  git:
+    repo: "{{ git_number_git_repo }}"
+    version: "{{ git_number_version }}"
+    dest: "{{ git_number_install_prefix }}/git-number"
+  when: not git_number_stat.stat.exists
+
+- name: Link git_number to bin
+  file:
+    src: "{{ git_number_install_prefix }}/git-number/{{ item }}"
+    dest: "{{ git_number_bin_dir }}"
+    state: link
+  loop:
+    - git_number
+    - git-list
+    - git-id
+  when: not git_number_stat.stat.exists

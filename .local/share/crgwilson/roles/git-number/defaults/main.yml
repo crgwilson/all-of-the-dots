@@ -1,0 +1,5 @@
+---
+git_number_install_prefix: /opt
+git_number_bin_dir: /usr/local/bin
+git_number_git_repo: https://github.com/holygeek/git-number
+git_number_version: master

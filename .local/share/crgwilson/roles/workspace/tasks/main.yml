@@ -1,0 +1,29 @@
+---
+- name: Create my workspace directories
+  file:
+    path: "{{ item }}"
+    owner: "{{ workspace_user }}"
+    mode: 0755
+    state: directory
+  loop: "{{ workspace_dirs }}"
+
+- name: Install packages (Debian)
+  become: true
+  apt:
+    name: "{{ workspace_debian_packages }}"
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install packages (MacOS)
+  brew:
+    name: "{{ workspace_mac_packages }}"
+    state: present
+  when: ansible_os_family == "Darwin"
+
+# TODO(crgwilson): Apt won't allow this on new debian, gotta
+# look into it more
+# - name: Install Python packages
+#   pip:
+#     name: "{{ workspace_python_packages }}"
+#     executable: "{{ workspace_pip_path }}"
+#     extra_args: --user

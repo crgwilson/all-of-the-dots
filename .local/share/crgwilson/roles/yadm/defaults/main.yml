@@ -1,0 +1,13 @@
+---
+yadm_version: 3.1.1
+yadm_download_url: "https://github.com/TheLocehiliosan/yadm/archive/refs/tags/{{ yadm_version }}.tar.gz"
+yadm_checksum_algo: sha256
+yadm_download_checksum: 2c7c99bfbea61701aa2bf423caa4e4b2687c3f2d1898de6ca1a17167443730ab
+
+yadm_user: root
+yadm_group: root
+
+yadm_install_prefix: /usr/local/opt
+yadm_install_dir: "{{ yadm_install_prefix }}/yadm-{{ yadm_version }}"
+yadm_tmp_dir: /tmp
+yadm_bin_dir: /usr/local/bin

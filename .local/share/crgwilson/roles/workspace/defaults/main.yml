@@ -1,0 +1,64 @@
+---
+workspace_user: crgwilson
+workspace_group: crgwilson
+workspace_dirs:
+  - "{{ lookup('ansible.builtin.env', 'HOME') }}"  # /home/cwilson
+  - "{{ lookup('ansible.builtin.env', 'USER_LOCAL_BIN') }}"  # /home/cwilson/.local/bin
+  - "{{ lookup('ansible.builtin.env', 'USER_LOCAL_LIB') }}"  # /home/cwilson/.local/lib
+  - "{{ lookup('ansible.builtin.env', 'USER_LOCAL_OPT') }}"  # /home/cwilson/.local/opt
+  - "{{ lookup('ansible.builtin.env', 'USER_LOCAL_TMP') }}"  # /home/cwilson/.local/tmp
+  - "{{ lookup('ansible.builtin.env', 'XDG_DATA_HOME') }}"  # /home/cwilson/.local/share
+  - "{{ lookup('ansible.builtin.env', 'XDG_STATE_HOME') }}"  # /home/cwilson/.local/state
+  - "{{ lookup('ansible.builtin.env', 'XDG_CONFIG_HOME') }}"  # /home/cwilson/.config
+  - "{{ lookup('ansible.builtin.env', 'XDG_CACHE_HOME') }}"  # /home/cwilson/.cache
+  - "{{ user_home }}/workspace"
+  - "{{ user_workspace }}/mps"
+  - "{{ user_workspace }}/dashboards"
+
+workspace_debian_packages:
+  - git
+  - wget
+  - curl
+  - vim
+  - shellcheck
+  - awscli
+  - nmap
+  - tmux
+  - netcat
+  - tree
+  - htop
+  - tcpdump
+  - build-essential
+
+workspace_mac_packages:
+  - git
+  - wget
+  - curl
+  - vim
+  - shellcheck
+  - awscli
+  - nmap
+  - tmux
+  - netcat
+  - tree
+  - htop
+  - tcpdump
+  - openssl
+
+workspace_pip_path: /usr/bin/pip3
+workspace_python_packages:
+  - ansible
+  - ansible-lint
+  - tox
+  - black
+  - mypy
+  - isort
+  - flake8
+  - flake8-bandit
+  - flake8-black
+  - flake8-bugbear
+  - flake8-import-order
+  - flake8-docstrings
+  - pytest
+  - yamllint
+  - grip

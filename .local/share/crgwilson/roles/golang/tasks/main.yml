@@ -1,0 +1,45 @@
+---
+- name: Get OS specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_system }}.yml"
+    - "{{ ansible_os_family }}.yml"
+
+- name: Download Golang archive
+  get_url:
+    url: "{{ golang_repo_url }}/go{{ item.version }}.{{ golang_dist }}-{{ golang_arch }}.tar.gz"
+    dest: "{{ golang_tmp_dir }}"
+    checksum: "{{ item.checksum }}"
+    owner: "{{ golang_user }}"
+    group: "{{ golang_group }}"
+  loop: "{{ golang_versions }}"
+
+- name: Create necessary install dir
+  file:
+    path: "{{ golang_install_prefix }}/go{{ item.version }}"
+    owner: "{{ golang_user }}"
+    group: "{{ golang_group }}"
+    state: directory
+  loop: "{{ golang_versions }}"
+
+- name: Unpack Golang archive
+  unarchive:
+    src: "{{ golang_tmp_dir }}/go{{ item.version }}.{{ golang_dist }}-{{ golang_arch }}.tar.gz"
+    dest: "{{ golang_install_prefix }}/go{{ item.version }}"
+    creates: "{{ golang_install_prefix }}/go{{ item.version }}/bin/go"
+    owner: "{{ golang_user }}"
+    group: "{{ golang_group }}"
+    extra_opts:
+      - "--strip-components=1"
+  loop: "{{ golang_versions }}"
+
+- name: Link go binaries to user bin
+  file:
+    src: "{{ golang_install_prefix }}/go{{ golang_active_version }}/bin/{{ item }}"
+    dest: "{{ golang_bin_dir }}/{{ item }}"
+    owner: "{{ golang_user }}"
+    group: "{{ golang_group }}"
+    state: link
+  loop:
+    - go
+    - gofmt

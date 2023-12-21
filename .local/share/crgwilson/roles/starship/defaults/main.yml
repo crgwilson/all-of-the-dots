@@ -1,0 +1,13 @@
+---
+starship_version: 1.9.1
+starship_arch: x86_64
+starship_archive_name: "starship-{{ starship_arch }}-{{ starship_dist }}.tar.gz"
+
+starship_checksum_algo: sha256
+starship_download_url: "https://github.com/starship/starship/releases/download/v{{ starship_version }}/{{ starship_archive_name }}"
+
+starship_user: root
+starship_group: root
+
+starship_install_prefix: /usr/local/bin
+starship_tmp_dir: /tmp

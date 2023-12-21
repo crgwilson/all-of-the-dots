@@ -4,49 +4,59 @@
     username: "{{ ansible_user_id }}"
     user_group: "{{ username }}"
 
+    workspace_user: "{{ username }}"
+    workspace_group: "{{ user_group }}"
+
     user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"  # /home/cwilson
     user_bin: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_BIN') }}"  # /home/cwilson/.local/bin
     user_lib: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_LIB') }}"  # /home/cwilson/.local/lib
     user_opt: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_OPT') }}"  # /home/cwilson/.local/opt
     user_tmp: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_TMP') }}"  # /home/cwilson/.local/tmp
-
     xdg_data_home: "{{ lookup('ansible.builtin.env', 'XDG_DATA_HOME') }}"  # /home/cwilson/.local/share
     xdg_state_home: "{{ lookup('ansible.builtin.env', 'XDG_STATE_HOME') }}"  # /home/cwilson/.local/state
     xdg_config_home: "{{ lookup('ansible.builtin.env', 'XDG_CONFIG_HOME') }}"  # /home/cwilson/.config
     xdg_cache_home: "{{ lookup('ansible.builtin.env', 'XDG_CACHE_HOME') }}"  # /home/cwilson/.cache
-
-    user_workspace: "{{ user_home }}/workspace"
-    mps_workspace: "{{ user_workspace }}/mps"
-    dashboards_workspace: "{{ user_workspace }}/dashboards"
-
-    # Why was I so inconsistent with how all these roles work ;_;
-    brew_owner: "{{ username }}"
-    brew_group: "{{ user_group }}"
-    brew_tmp_dir: "{{ user_tmp }}"
-    brew_install_prefix: "{{ user_opt }}"
-
-    # TODO: yadm tmp dir variable
-    yadm_install_prefix: "{{ user_opt }}"
-    yadm_bin_dir: "{{ user_bin }}"
-    yadm_owner: "{{ username }}"
-    yadm_group: "{{ user_group }}"
+    user_workspace: "{{ user_home }}/workspace"  # /home/cwilson/workspace
+    mps_workspace: "{{ user_workspace }}/mps"  # /home/crwilson/workspace/mps
+    dashboards_workspace: "{{ user_workspace }}/dashboards"  # /home/cwilson/dashboards
+    workspace_dirs:
+      - "{{ user_home }}"
+      - "{{ user_bin }}"
+      - "{{ user_lib }}"
+      - "{{ user_opt }}"
+      - "{{ user_tmp }}"
+      - "{{ xdg_data_home }}"
+      - "{{ xdg_state_home }}"
+      - "{{ xdg_config_home }}"
+      - "{{ xdg_cache_home }}"
+      - "{{ user_workspace }}"
+      - "{{ mps_workspace }}"
+      - "{{ dashboards_workspace }}"
 
     starship_install_prefix: "{{ user_bin }}"
     starship_tmp_dir: "{{ user_tmp }}"
-    starship_owner: "{{ username }}"
+    starship_user: "{{ username }}"
     starship_group: "{{ user_group }}"
 
-    golang_owner: "{{ username }}"
-    golang_group: "{{ user_group }}"
-    golang_install_dir: "{{ user_opt }}"
-    golang_install_bin_dir: "{{ user_bin }}"
-    golang_tmp_dir: "{{ user_tmp }}"
+    yadm_install_prefix: "{{ user_opt }}"
+    yadm_tmp_dir: "{{ user_tmp }}"
+    yadm_bin_dir: "{{ user_bin }}"
+    yadm_user: "{{ username }}"
+    yadm_group: "{{ user_group }}"
 
-    pyenv_user: "{{ username }}"
-    pyenv_group: "{{ user_group }}"
-    pyenv_install_directory: "{{ user_opt }}/pyenv"
-    pyenv_version: v2.3.2
-    pyenv_plugins: {}
+    golang_install_prefix: "{{ user_opt }}"
+    golang_bin_dir: "{{ user_bin }}"
+    golang_tmp_dir: "{{ user_tmp }}"
+    golang_user: "{{ username }}"
+    golang_group: "{{ user_group }}"
+
+    antigen_install_prefix: "{{ xdg_data_home }}"
+
+    git_number_install_prefix: "{{ xdg_data_home }}"
+    git_number_bin_dir: "{{ user_bin }}"
+
+    fzf_install_prefix: "{{ user_opt }}"
+    fzf_bin_dir: "{{ user_bin }}"
 
     common_packages:
       - wget
@@ -61,156 +71,37 @@
       - htop
       - tcpdump
 
-  pre_tasks:
-    - name: Create necessary user directories
-      file:
-        path: "{{ item }}"
-        owner: "{{ username }}"
-        group: "{{ user_group }}"
-        mode: 0755
-        state: directory
-      loop:
-        - "{{ user_home }}"
-        - "{{ user_bin }}"
-        - "{{ user_lib }}"
-        - "{{ user_opt }}"
-        - "{{ user_tmp }}"
-        - "{{ xdg_data_home }}"
-        - "{{ xdg_state_home }}"
-        - "{{ xdg_config_home }}"
-        - "{{ xdg_cache_home }}"
-        - "{{ user_workspace }}"
-        - "{{ mps_workspace }}"
-        - "{{ dashboards_workspace }}"
-
   roles:
-    - role: crgwilson.brew
+    - role: brew
       when: ansible_system == "Darwin"
       tags:
         - brew
-    - role: crgwilson.starship
+    - role: workspace
+      tags:
+        - workspace
+    - role: starship
       tags:
         - starship
-    - role: crgwilson.yadm
+    - role: antigen
+      tags:
+        - antigen
+    - role: yadm  # will this work with macos???
       tags:
         - yadm
-    - role: crgwilson.golang
+    - role: golang
       tags:
         - go
-    - role: crgwilson.pyenv
-      become: true
+    - role: git-number
+    - role: fzf
 
   tasks:
-    - name: Install packages (Debian)
-      apt:
-        name: "{{ common_packages }} + {{ ['build-essential'] }}"
-        state: present
-      when: ansible_os_family == "Debian"
-
-    - name: Install packages (MacOS)
-      brew:
-        name: "{{ common_packages }} + {{ ['openssl'] }}"
-        state: present
-      when: ansible_os_family == "Darwin"
-
-    - name: Check if antigen is already there
-      stat:
-        path: "{{ xdg_data_home }}/antigen/bin/antigen.zsh"
-      register: antigen_stat
-
-    - name: Install antigen
-      git:
-        repo: https://github.com/zsh-users/antigen
-        version: v2.2.3
-        dest: "{{ xdg_data_home }}/antigen"
-      when: not antigen_stat.stat.exists
-
-    - name: Check if git-number is already there
-      stat:
-        path: "{{ user_bin }}/git-number"
-      register: git_number_stat
-
-    - name: Setup git-number
-      block:
-        - name: Clone the git-number repo
-          git:
-            repo: https://github.com/holygeek/git-number
-            version: master
-            dest: "{{ xdg_data_home }}/git-number"
-        - name: Link git-number to bin
-          file:
-            src: "{{ xdg_data_home }}/git-number/{{ item }}"
-            dest: "{{ user_bin }}/{{ item }}"
-            owner: "{{ username }}"
-            group: "{{ user_group }}"
-            state: link
-          loop:
-            - git-number
-            - git-list
-            - git-id
-      when: not git_number_stat.stat.exists
-
-
-    - name: Check if fzf is already there
-      stat:
-        path: "{{ user_bin }}/fzf"
-      register: fzf_stat
-
-    - name: Setup fzf
-      block:
-        - name: Clone the fzf repo
-          git:
-            repo: https://github.com/junegunn/fzf.git
-            version: 0.30.0
-            dest: "{{ xdg_data_home }}/fzf"
-        - name: Install fzf
-          command: "{{ xdg_data_home }}/fzf/install --bin"
-        - name: Link fzf to bin
-          file:
-            src: "{{ xdg_data_home }}/fzf/bin/{{ item }}"
-            dest: "{{ user_bin }}/{{ item }}"
-            owner: "{{ username }}"
-            group: "{{ user_group }}"
-            state: link
-          loop:
-            - fzf
-            - fzf-tmux
-      when: not fzf_stat.stat.exists
+    - name: Change my default shell to zsh
+      user:
+        name: "{{ username }}"
+        shell: "/usr/bin/zsh"
 
     - name: Install my dotfiles
       yadm:
         repo: git@github.com:crgwilson/all-of-the-dots.git
         dest: "{{ user_home }}"
         update: false
-
-    - name: Change my default shell to zsh
-      user:
-        name: "{{ username }}"
-        shell: "/usr/bin/zsh"
-
-    - name: Install python packages I tend to use a lot
-      pip:
-        name:
-          - ansible
-          - ansible-lint
-          - tox
-          - black
-          - mypy
-          - isort
-          - flake8
-          - flake8-bandit
-          - flake8-black
-          - flake8-bugbear
-          - flake8-import-order
-          - flake8-docstrings
-          - pytest
-          - yamllint
-          - grip
-        executable: pip3
-        extra_args: --user
-
-    - name: Clone neovim source
-      git:
-        repo: https://github.com/neovim/neovim
-        version: v0.7.2
-        dest: "{{ user_home }}/neovim"

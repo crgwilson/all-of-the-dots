@@ -1,0 +1,12 @@
+---
+- name: Check if antigen is already present
+  stat:
+    path: "{{ antigen_install_prefix }}/antigen/bin/antigen.zsh"
+  register: antigen_stat
+
+- name: Clone antigen repo
+  git:
+    repo: "{{ antigen_git_repo }}"
+    version: "v{{ antigen_version }}"
+    dest: "{{ antigen_install_prefix }}/antigen"
+  when: not antigen_stat.stat.exists
