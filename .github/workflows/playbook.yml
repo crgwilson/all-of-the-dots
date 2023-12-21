@@ -23,6 +23,9 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install -r .local/share/playbook/requirements.txt
+      - name: This is dumb
+        run: |
+          ls -alrt
       - name: Run ansible
         run: |
           ansible-playbook ./.local/share/playbook/site.yml
