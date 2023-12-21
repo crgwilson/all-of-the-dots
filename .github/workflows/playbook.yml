@@ -21,7 +21,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: This is dumb
         run: |
-          ls -alrt
+          ls -alrt ./all-of-the-dots
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
