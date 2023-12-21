@@ -28,7 +28,21 @@ workspace_debian_packages:
   - tree
   - htop
   - tcpdump
+  - grip
+  - python-openssl
   - build-essential
+  - libssl-dev
+  - zlib1g-dev
+  - libbz2-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - libncurses5-dev
+  - libncursesw5-dev
+  - libffi-dev
+  - liblzma-dev
+  - xz-utils
+  - tk-dev
+  - llvm
 
 workspace_mac_packages:
   - git
@@ -61,4 +75,3 @@ workspace_python_packages:
   - flake8-docstrings
   - pytest
   - yamllint
-  - grip
