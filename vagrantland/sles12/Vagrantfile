@@ -1,8 +1,0 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-Vagrant.configure("2") do |config|
-  config.vm.define "vm" do |vm|
-    vm.vm.box = "elastic/sles-12-x86_64"
-    vm.vm.hostname = "test-host"
-  end
-end
