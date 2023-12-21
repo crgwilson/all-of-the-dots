@@ -25,7 +25,7 @@ function M.setup()
       -- diagnostics.ansiblelint,
 
       -- python
-      -- diagnostics.flake8,
+      diagnostics.flake8,
       -- diagnostics.mypy,
       formatting.black.with({ extra_args = { "--fast" } }),
 
