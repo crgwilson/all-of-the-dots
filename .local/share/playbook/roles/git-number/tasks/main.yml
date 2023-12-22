@@ -17,7 +17,7 @@
     dest: "{{ git_number_bin_dir }}"
     state: link
   loop:
-    - git_number
+    - git-number
     - git-list
     - git-id
   when: not git_number_stat.stat.exists
