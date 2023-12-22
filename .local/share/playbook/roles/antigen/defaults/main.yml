@@ -1,4 +1,4 @@
 ---
 antigen_install_prefix: /opt
-antigen_git_repo_url: https://github.com/zsh-users/antigen
+antigen_git_repo: https://github.com/zsh-users/antigen
 antigen_version: 2.2.3
