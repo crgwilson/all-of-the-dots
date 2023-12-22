@@ -14,7 +14,7 @@
 - name: Link git_number to bin
   file:
     src: "{{ git_number_install_prefix }}/git-number/{{ item }}"
-    dest: "{{ git_number_bin_dir }}"
+    dest: "{{ git_number_bin_dir }}/{{ item }}"
     state: link
   loop:
     - git-number
