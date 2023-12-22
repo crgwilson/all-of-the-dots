@@ -47,4 +47,4 @@ jobs:
           python3 -m pip install -r ./all-of-the-dots/.local/share/playbook/requirements.txt
       - name: Run ansible
         run: |
-          ansible-playbook ./all-of-the-dots/.local/share/playbook/site.yml --extra-vars "username=runner user_group=docker"
+          ansible-playbook ./all-of-the-dots/.local/share/playbook/site.yml --extra-vars "username=runner user_group=staff"
