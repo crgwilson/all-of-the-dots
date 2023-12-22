@@ -28,4 +28,4 @@ jobs:
           ls -alrt ~/
       - name: Run ansible
         run: |
-          ansible-playbook ./all-of-the-dots/.local/share/playbook/site.yml
+          ansible-playbook ./all-of-the-dots/.local/share/playbook/site.yml --extra-vars "username=runner user_group=docker"
