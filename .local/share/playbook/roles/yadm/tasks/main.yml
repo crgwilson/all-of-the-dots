@@ -13,7 +13,7 @@
 
 - name: Install yadm
   unarchive:
-    src: "{{ yadm_install_prefix }}/yadm-{{ yadm_version }}.tar.gz"
+    src: "{{ yadm_tmp_dir }}/yadm-{{ yadm_version }}.tar.gz"
     dest: "{{ yadm_install_prefix }}"
     creates: "{{ yadm_install_prefix }}/yadm"
     owner: "{{ yadm_user }}"

@@ -8,14 +8,14 @@
     workspace_group: "{{ user_group }}"
 
     user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"  # /home/cwilson
-    user_bin: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_BIN') }}"  # /home/cwilson/.local/bin
-    user_lib: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_LIB') }}"  # /home/cwilson/.local/lib
-    user_opt: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_OPT') }}"  # /home/cwilson/.local/opt
-    user_tmp: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_TMP') }}"  # /home/cwilson/.local/tmp
-    xdg_data_home: "{{ lookup('ansible.builtin.env', 'XDG_DATA_HOME') }}"  # /home/cwilson/.local/share
-    xdg_state_home: "{{ lookup('ansible.builtin.env', 'XDG_STATE_HOME') }}"  # /home/cwilson/.local/state
-    xdg_config_home: "{{ lookup('ansible.builtin.env', 'XDG_CONFIG_HOME') }}"  # /home/cwilson/.config
-    xdg_cache_home: "{{ lookup('ansible.builtin.env', 'XDG_CACHE_HOME') }}"  # /home/cwilson/.cache
+    user_bin: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_BIN', default='~/.local/bin') }}"  # /home/cwilson/.local/bin
+    user_lib: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_LIB', default='~/.local/lib') }}"  # /home/cwilson/.local/lib
+    user_opt: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_OPT', default='~/.local/opt') }}"  # /home/cwilson/.local/opt
+    user_tmp: "{{ lookup('ansible.builtin.env', 'USER_LOCAL_TMP', default='~/.local/tmp') }}"  # /home/cwilson/.local/tmp
+    xdg_data_home: "{{ lookup('ansible.builtin.env', 'XDG_DATA_HOME', default='~/.local/share') }}"  # /home/cwilson/.local/share
+    xdg_state_home: "{{ lookup('ansible.builtin.env', 'XDG_STATE_HOME', default='~/.local/state') }}"  # /home/cwilson/.local/state
+    xdg_config_home: "{{ lookup('ansible.builtin.env', 'XDG_CONFIG_HOME', default='~/.config') }}"  # /home/cwilson/.config
+    xdg_cache_home: "{{ lookup('ansible.builtin.env', 'XDG_CACHE_HOME', default='~/.cache') }}"  # /home/cwilson/.cache
     user_workspace: "{{ user_home }}/workspace"  # /home/cwilson/workspace
     mps_workspace: "{{ user_workspace }}/mps"  # /home/crwilson/workspace/mps
     dashboards_workspace: "{{ user_workspace }}/dashboards"  # /home/cwilson/dashboards
@@ -99,9 +99,11 @@
       user:
         name: "{{ username }}"
         shell: "/usr/bin/zsh"
+      when: username != "runner"
 
     - name: Install my dotfiles
       yadm:
         repo: git@github.com:crgwilson/all-of-the-dots.git
         dest: "{{ user_home }}"
         update: false
+      when: username != "runner"

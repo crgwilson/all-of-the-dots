@@ -1,0 +1,28 @@
+---
+name: Test dotfile installer playbook
+on:
+  pull_request: ~
+
+jobs:
+  testit:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: ["3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: all-of-the-dots
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r ./all-of-the-dots/.local/share/playbook/requirements.txt
+      - name: Run ansible
+        run: |
+          ansible-playbook ./all-of-the-dots/.local/share/playbook/site.yml --extra-vars "username=runner user_group=docker"
