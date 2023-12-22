@@ -18,7 +18,9 @@
   brew:
     name: "{{ workspace_mac_packages }}"
     state: present
-  when: ansible_os_family == "Darwin"
+  # Brew commands fail in github actions because many packages are already present
+  # in the image. Thus, skipping this in CI for now.
+  when: ansible_os_family == "Darwin" and workspace_user != "runner"
 
 # TODO(crgwilson): Apt won't allow this on new debian, gotta
 # look into it more
