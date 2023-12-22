@@ -99,6 +99,7 @@
       user:
         name: "{{ username }}"
         shell: "/usr/bin/zsh"
+      when: username != "runner"
 
     - name: Install my dotfiles
       yadm:
