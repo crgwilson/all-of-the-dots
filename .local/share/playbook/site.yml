@@ -106,3 +106,4 @@
         repo: git@github.com:crgwilson/all-of-the-dots.git
         dest: "{{ user_home }}"
         update: false
+      when: username != "runner"
