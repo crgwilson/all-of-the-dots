@@ -29,6 +29,7 @@ workspace_debian_packages:
   - htop
   - tcpdump
   - grip
+  - npm
   - build-essential
   - libssl-dev
   - zlib1g-dev
@@ -57,6 +58,7 @@ workspace_mac_packages:
   - htop
   - tcpdump
   - openssl
+  - node
 
 workspace_pip_path: /usr/bin/pip3
 workspace_python_packages:
