@@ -58,19 +58,6 @@
     fzf_install_prefix: "{{ user_opt }}"
     fzf_bin_dir: "{{ user_bin }}"
 
-    common_packages:
-      - wget
-      - curl
-      - vim
-      - shellcheck
-      - awscli
-      - nmap
-      - tmux
-      - netcat
-      - tree
-      - htop
-      - tcpdump
-
   roles:
     - role: brew
       when: ansible_system == "Darwin"

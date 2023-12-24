@@ -30,6 +30,7 @@ workspace_debian_packages:
   - tcpdump
   - grip
   - npm
+  - ripgrep
   - build-essential
   - libssl-dev
   - zlib1g-dev
@@ -59,6 +60,7 @@ workspace_mac_packages:
   - tcpdump
   - openssl
   - node
+  - ripgrep
 
 workspace_pip_path: /usr/bin/pip3
 workspace_python_packages:
