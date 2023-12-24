@@ -39,7 +39,13 @@ return require("packer").startup(function(use)
   -- plugin manager (after first time bootstrap)
   use({
     "wbthomason/packer.nvim",
-    commit="ed2d5c9c17f4df2eeaca4878145fecc9669e0138"
+    commit="ea0cc3c59f67c440c5ff0bbe4fb9420f4350b9a3"
+  })
+
+  -- Several plugins require plenary as a dependency
+  use({
+    "nvim-lua/plenary.nvim",
+    commit="55d9fe89e33efd26f532ef20223e5f9430c8b0c0"
   })
 
   -- colorschemes
@@ -49,47 +55,46 @@ return require("packer").startup(function(use)
   })
   use({
     "morhetz/gruvbox",
-    commit="bf2885a95efdad7bd5e4794dd0213917770d79b7"
+    commit="f1ecde848f0cdba877acb0c740320568252cc482"
   })
   use({
     "folke/tokyonight.nvim",
-    commit="df13e3268a44f142999fa166572fe95a650a0b37"
+    commit="f247ee700b569ed43f39320413a13ba9b0aef0db"
   })
 
   -- icons
   use({
     "nvim-tree/nvim-web-devicons",
-    commit="986875b7364095d6535e28bd4aac3a9357e91bbe"
+    commit="78d41a9930532f9bba3ea075907aa92892b9a3eb"
   })
 
   -- status line
   use({
     "nvim-lualine/lualine.nvim",
-    commit="8912bea65de93a56b1f70cdb7c3c26f9cce30394"
+    commit="2248ef254d0a1488a72041cfb45ca9caada6d994"
   })
 
   -- snippets
   use({
     "L3MON4D3/LuaSnip",  -- my snippet engine
-    commit="b4bc24c4925aeb05fd47d2ee9b24b7f73f5d7e32"
+    commit="57c9f5c31b3d712376c704673eac8e948c82e9c1"
   })
   use({
     "rafamadriz/friendly-snippets",  -- general collection of snippets to use
-    commit="10f741908e56ce47cf6b3440e3f04b4fdc0da2f2"
+    commit="53d3df271d031c405255e99410628c26a8f0d2b0"
   })
   use({
-    "crgwilson/mysnips",
-    commit="c982b9b56dde600045be0f0825430d2994b02f9c"
+    "crgwilson/mysnips"
   })
 
   -- lsp
   use({
     "hrsh7th/nvim-cmp",  -- main completion engine
-    commit="935b4069ce73b60ba9075bf05ee6ab50ed3af1a9"
+    commit="538e37ba87284942c1d76ed38dd497e54e65b891"
   })
   use({
     "hrsh7th/cmp-nvim-lsp",  -- completion source for the built-in nvim lsp client
-    commit="0e6b2ed705ddcff9738ec4ea838141654f12eeef"
+    commit="5af77f54de1b16c34b23cba810150689a3a90312"
   })
   use({
     "hrsh7th/cmp-buffer",  -- completion source for words in current buffer
@@ -101,7 +106,7 @@ return require("packer").startup(function(use)
   })
   use({
     "saadparwaiz1/cmp_luasnip",  -- completion source for luasnip
-    commit="18095520391186d634a0045dacaa346291096566"
+    commit="05a9ab28b53f71d1aece421ef32fee2cb857a843"
   })
   use({
     "hrsh7th/cmp-nvim-lua",  -- completion source for nvim lua api
@@ -109,55 +114,55 @@ return require("packer").startup(function(use)
   })
   use({
     "neovim/nvim-lspconfig",  -- collection of nvim lsp client configs for various lsp servers
-    commit="8356319af6e8012a5797b647e946b377d1ba3d9c"
+    commit="9099871a7c7e1c16122e00d70208a2cd02078d80"
   })
   use({
     "mfussenegger/nvim-jdtls",  -- Java is a special snowflake and jdtls doesn't work well with lsp-installer & lspconfig
-    commit="355de7458fd63ccef9c6485d952ea118ba2cb46a"
+    commit="66b5ace68a5d1c45fdfb1afa8d847e87af2aa1f8"
   })
   use({
-    "jose-elias-alvarez/null-ls.nvim",  -- language server providing formatting & linting
-    commit="71797bb303ac99a4435592e15068f127970513d7"
+    "nvimtools/none-ls.nvim",  -- language server providing formatting & linting
+    commit="e7382de51b4cf629e56f1fa18192e716e5ba8145"
   })
   use({
     "onsails/lspkind-nvim",  -- inline symbols
-    commit="57610d5ab560c073c465d6faf0c19f200cb67e6e"
+    commit="d11d58c3fc3edbd8c0112b5850ef4ed553d98752"
   })
   use({
     "nvimdev/lspsaga.nvim",  -- code actions, hover docstrings, and other junk too
-    commit="76696bed4397c3b58563c246dc1f7856ed4af023"
+    commit="335805d4f591f5bb71cabb6aa4dc58ccef8e8617"
   })
   use({
     "williamboman/mason.nvim",
-    commit="a51391311e86c295fc7611be2beb58859e93f21b"
+    commit="41e75af1f578e55ba050c863587cffde3556ffa6"
   })
   use({
     "williamboman/mason-lspconfig.nvim",
-    commit="90a8bbf106b85b76951a34c542058ffa807de2b1"
+    commit="56e435e09f8729af2d41973e81a0db440f8fe9c9"
   })
   use({
     "jay-babu/mason-nvim-dap.nvim",
-    commit="c836e511e796d2b6a25ad9f164f5b25d8b9ff705"
+    commit="9e82ded0515186edd4f69e4ce6b1a5f1b55b47e9"
   })
   use({
     "mfussenegger/nvim-dap",
-    commit="6cedcb527e264c8f25e86afa8dae74c6692dee51"
+    commit="e64ebf3309154b578a03c76229ebf51c37898118"
   })
   use({
     "rcarriga/nvim-dap-ui",
-    commit="4ce7b97dd8f50b4f672948a34bf8f3a56214fdb8"
+    commit="34160a7ce6072ef332f350ae1d4a6a501daf0159"
   })
   use({
     "theHamsta/nvim-dap-virtual-text",
-    commit="ab988dbb7d20cdaebf9b3ef7554a89f6895de042"
+    commit="57f1dbd0458dd84a286b27768c142e1567f3ce3b"
   })
   use({
     "mfussenegger/nvim-dap-python",
-    commit="51ecb08dbff57fca8add396b93dc765aba262e0a"
+    commit="091e4ae00a12085f9ed4200a3cd04af7179b8a23"
   })
   use({
     "leoluz/nvim-dap-go",
-    commit="eab43d63cef832801a701812913e4d1d726725e5"
+    commit="a5cc8dcad43f0732585d4793deb02a25c4afb766"
   })
   use({
     "simrat39/symbols-outline.nvim",  -- nerdtree like tree of symbols (I will probably never use this)
@@ -183,11 +188,7 @@ return require("packer").startup(function(use)
   })
   use({
     "lukas-reineke/indent-blankline.nvim",
-    commit="8299fe7703dfff4b1752aeed271c3b95281a952d"
-  })
-  use({
-    "ntpeters/vim-better-whitespace",
-    commit="1b22dc57a2751c7afbc6025a7da39b7c22db635d"
+    commit="0dca9284bce128e60da18693d92999968d6cb523"
   })
   use({
     "AndrewRadev/splitjoin.vim",
@@ -199,7 +200,7 @@ return require("packer").startup(function(use)
   })  -- Don't use this one either
   use({
     "tomtom/tcomment_vim",
-    commit="7fb091aad8d824bef1d7bc9365921c65e26d82ad"
+    commit="90eaf759099bcd47aa0471f974109d7fd78e4eea"
   })  -- Replace this with comment.nvim?
   use({
     "psliwka/vim-smoothie",
@@ -207,23 +208,23 @@ return require("packer").startup(function(use)
   })
   use({
     "RRethy/vim-illuminate",
-    commit="c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5"
+    commit="3bd2ab64b5d63b29e05691e624927e5ebbf0fb86"
   })
 
   -- git integration
   use({
     "tpope/vim-fugitive",
-    commit="f809dde0e719f89a6fb5cb80f3be65f5cbc1d1fe"
+    commit="59659093581aad2afacedc81f009ed6a4bfad275"
   })
 
   -- language syntax (how many of these are necessary with treesitter?)
   use({
     "vim-ruby/vim-ruby",
-    commit="a99282403445ac1d008b51d6edd820d5dc053ecb"
+    commit="f06f069ce67bdda6f2cd408f8859cdf031e5b6b4"
   })
   use({
     "tpope/vim-markdown",
-    commit="b78bbce3371a2eb56c89f618cd4ab2baadc9ee61"
+    commit="f2b82b7884a3d8bde0c5de7793b27e07030eb2bc"
   })
   use({
     "elzr/vim-json",
@@ -231,15 +232,15 @@ return require("packer").startup(function(use)
   })
   use({
     "pearofducks/ansible-vim",
-    commit="93798e8c89c441d29d4678da0c0d5e1429eb43b0"
+    commit="afc739e505053a6143a1fc6cedac6fb4d7a1d4db"
   })
   use({
     "hashivim/vim-terraform",
-    commit="f0b17ac9f1bbdf3a29dba8b17ab429b1eed5d443"
+    commit="d37ae7e7828aa167877e338dea5d4e1653ed3eb1"
   })
   use({
     "ap/vim-css-color",
-    commit="8bf943681f92c81a8cca19762a1ccec8bc29098a"
+    commit="6cc65734bc7105d9677ca54e2255fcbc953ba6bf"
   })
   use({
     "ekalinin/Dockerfile.vim",
@@ -251,7 +252,7 @@ return require("packer").startup(function(use)
   })
   use({
     "joukevandermaas/vim-ember-hbs",
-    commit="c47e1958a6c190c9d79ac66cb812f1a1d3b4e968"
+    commit="777095c1b25f334cef9db5504c7d409d52843aa9"
   })
   use({
     "rodjek/vim-puppet",
@@ -261,20 +262,19 @@ return require("packer").startup(function(use)
   -- nerdtree
   use({
     "nvim-tree/nvim-tree.lua",
-    commit="270c95556cad96d18ca547d86ae65927334b108b"
+    commit="50f30bcd8c62ac4a83d133d738f268279f2c2ce2"
   })
 
   -- fuzzy finding
   use({
     "nvim-telescope/telescope.nvim",
-    commit="d77b37f4520e5fc2cf4c74c12e42ed4b589bd367",
-    requires={ {"nvim-lua/plenary.nvim"} }
+    commit="f336f8cfab38a82f9f00df380d28f0c2a572f862"
   })
 
   -- treesitter
   use({
     "nvim-treesitter/nvim-treesitter",
-    commit="6e8ad92031ff3b07db8980ab4a5491d1c40398ea",
+    commit="cd4de5f7b14b878ac8f5c459c9d579cc58ba1ac5",
     run=":TSUpdate"
   })
 

@@ -110,9 +110,6 @@ nvim_tree.setup({
   view = {
     adaptive_size = true,
     side = "left",
-    mappings = {
-      custom_only = false,
-    }
   },
   renderer = {
     highlight_git = true,
