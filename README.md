@@ -9,9 +9,9 @@ I mostly work in Java, Python, and Go, so everything is configured with that in 
 * [Zsh](./.config/zsh/)
 * [Alacritty](./.config/alacritty/alacritty.yml)
 * [Starship](./.config/starship/starship.toml)
-* [Tmux](./.tmux.conf)
+* [Tmux](./.config/tmux/tmux.conf)
 * [Neovim](./.config/nvim/)
-* [Git](./.gitconfig)
+* [Git](./.config/git/)
 * [Installer playbook](./.local/share/playbook/)
 * [~~Vagrant~~](./.vagrant.d/Vagrantfile)
 
@@ -56,7 +56,7 @@ I've tried to automate as much as I can, but there will also be some pieces miss
 
 ### How do I install a new version of Golang?
 
-The [golang ansible role](./local/share/playbook/roles/golang) handles installing different versions of Go, all versions are defined in the vars. To add a new version, simply update the `golang_versions` list with a new version, and matching sha256 checksum to be downloaded from the go.dev repo.
+The [golang ansible role](./.local/share/playbook/roles/golang) handles installing different versions of Go, all versions are defined in the vars. To add a new version, simply update the `golang_versions` list with a new version, and matching sha256 checksum to be downloaded from the go.dev repo.
 
 ```yaml
 # ./local/share/playbook/roles/golang/vars/<OS-Family>.yml
