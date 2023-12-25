@@ -10,14 +10,14 @@ vim.cmd([[
 ]])
 
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>T",
-  ":Pytest",
-  { noremap = true, silent = true }
+    "n",
+    "<leader>T",
+    ":Pytest",
+    { noremap = true, silent = true }
 )
 
 if not dap_python_ok then
-  return
+    return
 end
 
 local debugpy_dir = lspinstaller.get_install_path("debugpy")
@@ -25,20 +25,20 @@ dap_python.setup(debugpy_dir .. "/venv/bin/python")
 dap_python.test_runner = "pytest"
 
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>bt",
-  "<cmd>lua require'dap-python'.test_class()<cr>",
-  { noremap = true}
+    "n",
+    "<leader>bt",
+    "<cmd>lua require'dap-python'.test_class()<cr>",
+    { noremap = true }
 )
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>bm",
-  "<cmd>lua require'dap-python'.test_method()<cr>",
-  { noremap = true}
+    "n",
+    "<leader>bm",
+    "<cmd>lua require'dap-python'.test_method()<cr>",
+    { noremap = true }
 )
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>bs",
-  "<cmd>lua require'dap-python'.debug_selection()<cr>",
-  { noremap = true}
+    "n",
+    "<leader>bs",
+    "<cmd>lua require'dap-python'.debug_selection()<cr>",
+    { noremap = true }
 )

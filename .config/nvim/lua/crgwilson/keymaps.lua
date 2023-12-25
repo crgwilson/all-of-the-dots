@@ -3,8 +3,8 @@ local keymap = vim.api.nvim_set_keymap
 vim.g.mapleader = " "
 
 local options = {
-  noremap = true,
-  silent = true,
+    noremap = true,
+    silent = true,
 }
 
 -- -- Modes
@@ -19,16 +19,15 @@ local options = {
 keymap("t", "<Esc>", [[<C-\><C-n>]], options)
 
 -- start terminal in insert mode
-vim.api.nvim_create_autocmd(
-  "BufEnter", {
+vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
-    command = "if &buftype == 'terminal' | :startinsert | endif"
-  }
-)
+    command = "if &buftype == 'terminal' | :startinsert | endif",
+})
 function open_terminal()
-  vim.cmd("split term://zsh")
-  vim.cmd("resize 10")
+    vim.cmd("split term://zsh")
+    vim.cmd("resize 10")
 end
+
 keymap("n", "<C-n>", ":lua open_terminal()<CR>", options)
 
 -- navigate between splits with ctrl+movement keys
@@ -61,14 +60,54 @@ keymap("n", "<leader>q", ":copen<cr>", options)
 keymap("n", "<leader>Q", ":cclose<cr>", options)
 
 -- telescope.nvim
-keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", options)
-keymap("n", "<leader>fo", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", options)
-keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", options)
-keymap("n", "<leader>fG", "<cmd>lua require('telescope.builtin').git_commits()<cr>", options)
-keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').git_branches()<cr>", options)
-keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>", options)
-keymap("n", "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>", options)
-keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", options)
+keymap(
+    "n",
+    "<leader>ff",
+    "<cmd>lua require('telescope.builtin').find_files()<cr>",
+    options
+)
+keymap(
+    "n",
+    "<leader>fo",
+    "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
+    options
+)
+keymap(
+    "n",
+    "<leader>fg",
+    "<cmd>lua require('telescope.builtin').live_grep()<cr>",
+    options
+)
+keymap(
+    "n",
+    "<leader>fG",
+    "<cmd>lua require('telescope.builtin').git_commits()<cr>",
+    options
+)
+keymap(
+    "n",
+    "<leader>fb",
+    "<cmd>lua require('telescope.builtin').git_branches()<cr>",
+    options
+)
+keymap(
+    "n",
+    "<leader>fc",
+    "<cmd>lua require('telescope.builtin').commands()<cr>",
+    options
+)
+keymap(
+    "n",
+    "<leader>fk",
+    "<cmd>lua require('telescope.builtin').keymaps()<cr>",
+    options
+)
+keymap(
+    "n",
+    "<leader>fh",
+    "<cmd>lua require('telescope.builtin').help_tags()<cr>",
+    options
+)
 
 -- nvim-tree
 keymap("n", "<F1>", ":NvimTreeToggle<cr>", options)
@@ -82,7 +121,12 @@ keymap("n", "<leader>lr", ":LspRestart<cr>", options)
 keymap("n", "<leader>li", ":LspInfo<cr>", options)
 
 -- dap
-keymap("n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", options)
+keymap(
+    "n",
+    "<leader>bb",
+    "<cmd>lua require'dap'.toggle_breakpoint()<cr>",
+    options
+)
 keymap("n", "<leader>bc", "<cmd>lua require'dap'.continue()<cr>", options)
 keymap("n", "<leader>bs", "<cmd>lua require'dap'.step_over()<cr>", options)
 keymap("n", "<leader>bS", "<cmd>lua require'dap'.step_into()<cr>", options)

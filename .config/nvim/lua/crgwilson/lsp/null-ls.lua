@@ -1,47 +1,53 @@
 local M = {}
 
 function M.setup()
-  local null_ls_ok, null_ls = pcall(require, "null-ls")
-  if not null_ls_ok then
-    return
-  end
+    local null_ls_ok, null_ls = pcall(require, "null-ls")
+    local mason_null_ls_ok, mason_null_ls = pcall(require, "mason-null-ls")
+    if not null_ls_ok or not mason_null_ls_ok then
+        return
+    end
 
-  local formatting = null_ls.builtins.formatting
-  local diagnostics = null_ls.builtins.diagnostics
+    mason_null_ls.setup({
+        ensure_installed = {
+            "stylua",
+        },
+    })
 
-  null_ls.setup({
-    debug = false,
+    local formatting = null_ls.builtins.formatting
+    local diagnostics = null_ls.builtins.diagnostics
 
-    root_dir = require("null-ls.utils").root_pattern(
-      ".null-ls-root",
-      "setup.cfg",
-      "package.json",
-      "Makefile",
-      ".git"
-    ),
+    null_ls.setup({
+        debug = false,
 
-    sources = {
-      -- ansible
-      -- diagnostics.ansiblelint,
+        root_dir = require("null-ls.utils").root_pattern(
+            ".null-ls-root",
+            "setup.cfg",
+            "package.json",
+            "Makefile",
+            ".git"
+        ),
 
-      -- python
-      diagnostics.flake8,
-      -- diagnostics.mypy,
-      formatting.black.with({ extra_args = { "--fast" } }),
+        sources = {
+            -- python
+            diagnostics.flake8,
+            formatting.black.with({ extra_args = { "--fast" } }),
 
-      -- bash
-      diagnostics.shellcheck,
+            -- bash
+            diagnostics.shellcheck,
 
-      -- js / ts
-      diagnostics.eslint,
+            -- js / ts
+            diagnostics.eslint,
 
-      -- lua
-      -- formatting.stylua,
+            -- java
+            diagnostics.checkstyle,
 
-      -- yaml
-      diagnostics.yamllint,
-    }
-  })
+            -- lua
+            formatting.stylua,
+
+            -- yaml
+            diagnostics.yamllint,
+        },
+    })
 end
 
 return M
