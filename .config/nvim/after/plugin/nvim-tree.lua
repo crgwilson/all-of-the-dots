@@ -139,8 +139,13 @@ nvim_tree.setup({
     show_on_dirs = false,
   },
   filters = {
+    git_ignored = true,
     dotfiles = false,
-    custom = {},
+    custom = {
+      "venv",
+      "*.pyc",
+      "node_modules",
+    },
     exclude = {},
   },
   git = {
