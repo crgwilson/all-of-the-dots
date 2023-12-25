@@ -14,7 +14,7 @@
     group: "{{ golang_group }}"
   loop: "{{ golang_versions }}"
 
-- name: Create necessary install dir
+- name: Create install dir
   file:
     path: "{{ golang_install_prefix }}/go{{ item.version }}"
     owner: "{{ golang_user }}"
