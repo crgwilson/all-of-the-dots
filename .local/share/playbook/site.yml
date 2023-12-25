@@ -50,6 +50,11 @@
     golang_user: "{{ username }}"
     golang_group: "{{ user_group }}"
 
+    openjdk_install_prefix: "{{ user_opt }}"
+    openjdk_tmp_dir: "{{ user_tmp }}"
+    openjdk_user: "{{ username }}"
+    openjdk_group: "{{ user_group }}"
+
     antigen_install_prefix: "{{ xdg_data_home }}"
 
     git_number_install_prefix: "{{ xdg_data_home }}"
@@ -72,12 +77,15 @@
     - role: antigen
       tags:
         - antigen
-    - role: yadm  # will this work with macos???
+    - role: yadm
       tags:
         - yadm
     - role: golang
       tags:
         - go
+    - role: openjdk
+      tags:
+        - java
     - role: git-number
     - role: fzf
 

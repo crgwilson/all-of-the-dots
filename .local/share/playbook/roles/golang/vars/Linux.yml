@@ -4,6 +4,6 @@ golang_versions:
   - version: 1.21.5
     checksum: "{{ golang_checksum_algo }}:e2bc0b3e4b64111ec117295c088bde5f00eeed1567999ff77bc859d7df70078e"
   - version: 1.20.7
-    checksum: "{{ golang_checksum_algo}}:f0a87f1bcae91c4b69f8dc2bc6d7e6bfcd7524fceec130af525058c0c17b1b44"
+    checksum: "{{ golang_checksum_algo }}:f0a87f1bcae91c4b69f8dc2bc6d7e6bfcd7524fceec130af525058c0c17b1b44"
 
 golang_active_version: 1.21.5

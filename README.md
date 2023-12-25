@@ -54,6 +54,24 @@ I've tried to automate as much as I can, but there will also be some pieces miss
 (.venv) ~/all-of-the-dots ansible-playbook ./site.yml --ask-become-pass  # Run the playbook and hopefully it works :p
 ```
 
+### How do I install a new JDK?
+
+The [openjdk ansible role](./.local/share/playbook/roles/openjdk) handles installing different versions of the OpenJDK. To add a new version, you'll need to update the `openjdk_versions` list with what you want, adding the appropriate https://download.java.net url, and sha256 checksum.
+```yaml
+# ./local/share/playbook/roles/openjdk/vars/<OS-Family>.yml
+---
+openjdk_versions:
+openjdk_versions:
+  - version: 21.0.1
+    url: "{{ openjdk_repo_url }}/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_{{ openjdk_dist }}-{{ openjdk_arch }}_bin.tar.gz"
+    checksum: "{{ openjdk_checksum_algo }}:7e80146b2c3f719bf7f56992eb268ad466f8854d5d6ae11805784608e458343f"
+  - version: 17.0.2
+    url: "{{ openjdk_repo_url }}/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_{{ openjdk_dist }}-{{ openjdk_arch }}_bin.tar.gz"
+    checksum: "{{ openjdk_checksum_algo }}:0022753d0cceecacdd3a795dd4cea2bd7ffdf9dc06e22ffd1be98411742fbb44"
+```
+
+Versions specified will be installed into `~/.local/opt/jdk-<JDK-VERSION>`. Update your `JAVA_HOME` as necessary.
+
 ### How do I install a new version of Golang?
 
 The [golang ansible role](./.local/share/playbook/roles/golang) handles installing different versions of Go, all versions are defined in the vars. To add a new version, simply update the `golang_versions` list with a new version, and matching sha256 checksum to be downloaded from the go.dev repo.
@@ -61,11 +79,11 @@ The [golang ansible role](./.local/share/playbook/roles/golang) handles installi
 ```yaml
 # ./local/share/playbook/roles/golang/vars/<OS-Family>.yml
 ---
-golang:
+golang_versions:
   - version: 1.21.5
     checksum: "{{ golang_checksum_algo }}:e2bc0b3e4b64111ec117295c088bde5f00eeed1567999ff77bc859d7df70078e"
   - version: 1.2.345  # My new version
     checksum: "{{ golang_checksum_algo }}:justpretendthatthisisarealsha256checksumimtoolazytogogenerateone"
 ```
 
-Once that has been updated, just run the playbook again as described above.
+Versions specified will be installed into `~/.local/opt/go<VERSION-NUMBER>`, and if an "active version" is specified, that binary will be linked to `~/.local/bin/go`.

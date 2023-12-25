@@ -1,0 +1,10 @@
+---
+openjdk_arch: x64
+openjdk_repo_url: https://download.java.net
+openjdk_checksum_algo: sha256
+
+openjdk_install_prefix: /usr/local/opt
+openjdk_tmp_dir: /tmp
+
+openjdk_user: root
+openjdk_group: root

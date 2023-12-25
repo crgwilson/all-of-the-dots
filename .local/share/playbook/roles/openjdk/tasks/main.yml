@@ -1,0 +1,24 @@
+---
+- name: Get OS specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_system }}.yml"
+    - "{{ ansible_os_family }}.yml"
+
+- name: Download OpenJDK archive
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ openjdk_tmp_dir }}"
+    checksum: "{{ item.checksum }}"
+    owner: "{{ openjdk_user }}"
+    group: "{{ openjdk_group }}"
+  loop: "{{ openjdk_versions }}"
+
+- name: Unpack OpenJDK archive
+  unarchive:
+    src: "{{ openjdk_tmp_dir }}/openjdk-{{ item.version }}_{{ openjdk_dist }}-{{ openjdk_arch }}_bin.tar.gz"
+    dest: "{{ openjdk_install_prefix }}/"
+    creates: "{{ openjdk_install_prefix }}/jdk-{{ item.version }}/{{ openjdk_java_bin }}"
+    owner: "{{ openjdk_user }}"
+    group: "{{ openjdk_group }}"
+  loop: "{{ openjdk_versions }}"
