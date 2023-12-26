@@ -31,6 +31,7 @@ workspace_debian_packages:
   - grip
   - npm
   - ripgrep
+  - jq
   - build-essential
   - libssl-dev
   - zlib1g-dev
@@ -61,6 +62,7 @@ workspace_mac_packages:
   - openssl
   - node
   - ripgrep
+  - jq
 
 workspace_pip_path: /usr/bin/pip3
 workspace_python_packages:
