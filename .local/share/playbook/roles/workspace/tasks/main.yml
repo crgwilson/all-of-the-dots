@@ -3,7 +3,7 @@
   file:
     path: "{{ item }}"
     owner: "{{ workspace_user }}"
-    mode: 0755
+    mode: 0750
     state: directory
   loop: "{{ workspace_dirs }}"
 

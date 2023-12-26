@@ -7,18 +7,28 @@
 
 - name: Download OpenJDK archive
   get_url:
-    url: "{{ item.url }}"
-    dest: "{{ openjdk_tmp_dir }}"
+    url: "{{ openjdk_repo_url }}/microsoft-jdk-{{ item.version }}-{{ openjdk_dist }}-{{ openjdk_arch }}.tar.gz"
+    dest: "{{ openjdk_tmp_dir }}/microsoft-jdk-{{ item.version }}-{{ openjdk_dist }}-{{ openjdk_arch }}.tar.gz"
     checksum: "{{ item.checksum }}"
     owner: "{{ openjdk_user }}"
     group: "{{ openjdk_group }}"
   loop: "{{ openjdk_versions }}"
 
-- name: Unpack OpenJDK archive
-  unarchive:
-    src: "{{ openjdk_tmp_dir }}/openjdk-{{ item.version }}_{{ openjdk_dist }}-{{ openjdk_arch }}_bin.tar.gz"
-    dest: "{{ openjdk_install_prefix }}/"
-    creates: "{{ openjdk_install_prefix }}/jdk-{{ item.version }}/{{ openjdk_java_bin }}"
+- name: Create install dir
+  file:
+    path: "{{ openjdk_install_prefix }}/microsoft-jdk-{{ item.version }}"
     owner: "{{ openjdk_user }}"
     group: "{{ openjdk_group }}"
+    state: directory
+  loop: "{{ openjdk_versions }}"
+
+- name: Unpack OpenJDK archive
+  unarchive:
+    src: "{{ openjdk_tmp_dir }}/microsoft-jdk-{{ item.version }}-{{ openjdk_dist }}-{{ openjdk_arch }}.tar.gz"
+    dest: "{{ openjdk_install_prefix }}/microsoft-jdk-{{ item.version }}"
+    creates: "{{ openjdk_install_prefix }}/microsoft-jdk-{{ item.version }}/{{ openjdk_java_bin }}"
+    owner: "{{ openjdk_user }}"
+    group: "{{ openjdk_group }}"
+    extra_opts:
+      - "--strip-components=1"
   loop: "{{ openjdk_versions }}"

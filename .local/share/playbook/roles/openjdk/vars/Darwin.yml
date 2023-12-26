@@ -1,12 +1,8 @@
 ---
-openjdk_dist: macos
+openjdk_dist: macOS
 openjdk_java_bin: /Contents/Home/bin/java
-# This is inconsistent with how the go role works, but it seems OpenJDK download URLs are more difficult
-# to predict.
 openjdk_versions:
   - version: 21.0.1
-    url: "{{ openjdk_repo_url }}/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_{{ openjdk_dist }}-{{ openjdk_arch }}_bin.tar.gz"
-    checksum: "{{ openjdk_checksum_algo }}:1ca6db9e6c09752f842eee6b86a2f7e51b76ae38e007e936b9382b4c3134e9ea"
-  - version: 17.0.2
-    url: "{{ openjdk_repo_url }}/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_{{ openjdk_dist }}-{{ openjdk_arch }}_bin.tar.gz"
-    checksum: "{{ openjdk_checksum_algo }}:b85c4aaf7b141825ad3a0ea34b965e45c15d5963677e9b27235aa05f65c6df06"
+    checksum: "{{ openjdk_checksum_algo }}:1853c84eb8bc3b4f3077eaaa88b51b005232b151c662ba29429eb7b2984cf43c"
+  - version: 17.0.9
+    checksum: "{{ openjdk_checksum_algo }}:36050e3a2457c970ebc74c53ccd2cf116f9306c1649520fe3f31ad9cf63fbe62"
