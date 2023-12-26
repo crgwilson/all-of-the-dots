@@ -1,6 +1,6 @@
 ---
 openjdk_arch: x64
-openjdk_repo_url: https://download.java.net
+openjdk_repo_url: https://aka.ms/download-jdk
 openjdk_checksum_algo: sha256
 
 openjdk_install_prefix: /usr/local/opt

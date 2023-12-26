@@ -20,7 +20,6 @@
     mps_workspace: "{{ user_workspace }}/mps"  # /home/crwilson/workspace/mps
     dashboards_workspace: "{{ user_workspace }}/dashboards"  # /home/cwilson/dashboards
     workspace_dirs:
-      - "{{ user_home }}"
       - "{{ user_bin }}"
       - "{{ user_lib }}"
       - "{{ user_opt }}"

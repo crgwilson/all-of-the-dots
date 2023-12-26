@@ -39,7 +39,7 @@ function M.setup()
             diagnostics.eslint,
 
             -- java
-            diagnostics.checkstyle,
+            -- diagnostics.checkstyle,
 
             -- lua
             formatting.stylua,
