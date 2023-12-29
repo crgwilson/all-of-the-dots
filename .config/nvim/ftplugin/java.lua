@@ -4,6 +4,10 @@ if not jdtls_ok or not jdtls_setup_ok then
     return
 end
 
+vim.opt_local.shiftwidth = 4
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
+
 local lsphandler = require("crgwilson.lsp.handler")
 local lspinstaller = require("crgwilson.lsp.installer")
 
