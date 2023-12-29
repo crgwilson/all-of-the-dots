@@ -56,17 +56,14 @@ I've tried to automate as much as I can, but there will also be some pieces miss
 
 ### How do I install a new JDK?
 
-The [openjdk ansible role](./.local/share/playbook/roles/openjdk) handles installing different versions of the OpenJDK. To add a new version, you'll need to update the `openjdk_versions` list with what you want, adding the appropriate https://download.java.net url, and sha256 checksum.
+The [openjdk ansible role](./.local/share/playbook/roles/openjdk) handles installing different versions of the OpenJDK. To add a new version, you'll need to update the `openjdk_versions` list with what you want. Note that it installs [Microsoft's OpenJDK distribution](https://learn.microsoft.com/en-us/java/openjdk/download), so versions and checksums should be taken from there.
 ```yaml
 # ./local/share/playbook/roles/openjdk/vars/<OS-Family>.yml
 ---
 openjdk_versions:
-openjdk_versions:
   - version: 21.0.1
-    url: "{{ openjdk_repo_url }}/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_{{ openjdk_dist }}-{{ openjdk_arch }}_bin.tar.gz"
     checksum: "{{ openjdk_checksum_algo }}:7e80146b2c3f719bf7f56992eb268ad466f8854d5d6ae11805784608e458343f"
   - version: 17.0.2
-    url: "{{ openjdk_repo_url }}/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_{{ openjdk_dist }}-{{ openjdk_arch }}_bin.tar.gz"
     checksum: "{{ openjdk_checksum_algo }}:0022753d0cceecacdd3a795dd4cea2bd7ffdf9dc06e22ffd1be98411742fbb44"
 ```
 
