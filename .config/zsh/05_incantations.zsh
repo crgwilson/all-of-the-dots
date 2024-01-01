@@ -42,6 +42,23 @@ alias rungodoc='echo "Hosting docs on http://localhost:8000" && godoc -http ":80
 # java
 alias stop-gradle="./gradlew --stop"
 
+countryroads() {
+  set -e
+
+  local jdks=($(ls -d -1 ~/.local/opt/*jdk*))
+  local idx=1
+  echo "Pick a JAVA_HOME:"
+  for j in $jdks; do
+    echo "$idx - $j"
+    idx=$(expr $idx + 1)
+  done
+
+  vared -p 'Enter the number corresponding to the the JDK you want: ' -c choice_idx
+  local chosen="${jdks[$choice_idx]}"
+  echo "You picked index - $choice_idx - which is path - $chosen"
+  export JAVA_HOME="$chosen"
+}
+
 # terraform
 alias tf="terraform"
 
