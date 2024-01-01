@@ -56,9 +56,10 @@ countryroads() {
     idx=$(expr $idx + 1)
   done
 
-  vared -p 'Enter the number corresponding to the the JDK you want: ' -c choice_idx
-  local chosen="${jdks[$choice_idx]}"
-  echo "You picked index - $choice_idx - which is path - $chosen"
+  local jdk_choice_idx
+  vared -p 'Enter the number corresponding to the the JDK you want: ' -c jdk_choice_idx
+  local chosen="${jdks[$jdk_choice_idx]}"
+  echo "You picked index - $jdk_choice_idx - which is path - $chosen"
   export JAVA_HOME="$chosen"
 }
 
