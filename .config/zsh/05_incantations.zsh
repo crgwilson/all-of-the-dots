@@ -43,9 +43,12 @@ alias rungodoc='echo "Hosting docs on http://localhost:8000" && godoc -http ":80
 alias stop-gradle="./gradlew --stop"
 
 countryroads() {
-  set -e
+  if [[ $(uname) == "Darwin" ]]; then
+    local jdks=($(find . ~/.local/opt -maxdepth 3 -wholename "*jdk*/Contents/Home"))
+  else
+    local jdks=($(find . ~/.local/opt -maxdepth 1 -wholename "*jdk*"))
+  fi
 
-  local jdks=($(ls -d -1 ~/.local/opt/*jdk*))
   local idx=1
   echo "Pick a JAVA_HOME:"
   for j in $jdks; do
