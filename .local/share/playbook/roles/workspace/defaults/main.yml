@@ -15,23 +15,25 @@ workspace_dirs:
   - "{{ user_workspace }}/mps"
   - "{{ user_workspace }}/dashboards"
 
-workspace_debian_packages:
+workspace_common_packages:
   - git
   - wget
   - curl
   - vim
+  - tmux
   - shellcheck
   - awscli
   - nmap
-  - tmux
   - netcat
   - tree
   - htop
   - tcpdump
   - grip
-  - npm
   - ripgrep
   - jq
+
+workspace_debian_packages:
+  - npm
   - build-essential
   - libssl-dev
   - zlib1g-dev
@@ -47,22 +49,8 @@ workspace_debian_packages:
   - llvm
 
 workspace_mac_packages:
-  - git
-  - wget
-  - curl
-  - vim
-  - shellcheck
-  - awscli
-  - nmap
-  - tmux
-  - netcat
-  - tree
-  - htop
-  - tcpdump
   - openssl
   - node
-  - ripgrep
-  - jq
 
 workspace_pip_path: /usr/bin/pip3
 workspace_python_packages:
