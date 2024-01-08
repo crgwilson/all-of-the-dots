@@ -10,13 +10,13 @@
 - name: Install packages (Debian)
   become: true
   apt:
-    name: "{{ workspace_debian_packages }}"
+    name: "{{ workspace_common_packages + workspace_debian_packages }}"
     state: present
   when: ansible_os_family == "Debian"
 
 - name: Install packages (MacOS)
   brew:
-    name: "{{ workspace_mac_packages }}"
+    name: "{{ workspace_common_packages + workspace_mac_packages }}"
     state: present
   # Brew commands fail in github actions because many packages are already present
   # in the image. Thus, skipping this in CI for now.
