@@ -1,9 +1,9 @@
-if [ -d "$XDG_DATA_HOME/fzf" ]; then
+if [ -d "$USER_LOCAL_OPT/fzf" ]; then
   # Auto-completion
   # ---------------
-  [[ $- == *i* ]] && source "$XDG_DATA_HOME/fzf/shell/completion.zsh" 2> /dev/null
+  [[ $- == *i* ]] && source "$USER_LOCAL_OPT/fzf/shell/completion.zsh" 2> /dev/null
 
   # Key bindings
   # ------------
-  source "$XDG_DATA_HOME/fzf/shell/key-bindings.zsh"
+  source "$USER_LOCAL_OPT/fzf/shell/key-bindings.zsh"
 fi
