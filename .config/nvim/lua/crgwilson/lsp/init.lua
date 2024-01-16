@@ -18,12 +18,12 @@ local servers = {
     "html",
     "jsonls",
     "lua_ls",
-    -- "puppet",
     "pyright",
-    "solargraph",
     "terraformls",
     "tsserver",
     "vimls",
+    -- "puppet",
+    -- "solargraph",
 }
 
 -- mason-nvim-dap.nvim for some reason gives each debug adapter a unique

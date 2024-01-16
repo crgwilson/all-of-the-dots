@@ -29,7 +29,8 @@ function M.setup()
 
         sources = {
             -- python
-            diagnostics.flake8,
+            -- Ignored errors are already caught by pyright
+            diagnostics.flake8.with({ extra_args = { "--ignore=Q000,F401,F841" }}),
             formatting.black.with({ extra_args = { "--fast" } }),
 
             -- bash

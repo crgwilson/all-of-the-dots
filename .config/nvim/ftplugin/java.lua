@@ -72,6 +72,32 @@ vim.list_extend(
     )
 )
 
+-- This section needs to be repeated in both config and init config
+-- https://github.com/mfussenegger/nvim-jdtls/discussions/249#discussioncomment-3159367
+local import_options = {
+    gradle = {
+        wrapper = {
+            enabled = true,
+            checksums = {
+                {
+                    sha256 = "65e45cec6f57a53c6e0f03e0bd51930fd8f820732c6c6f3f6bc4ebb67382d553",
+                    allowed = true,
+                },
+            }
+        },
+    },
+    maven = {
+        enabled = false,
+    },
+    exclusions = {
+        "**/node_modules/**",
+        "**/.metadata/**",
+        "**/archtype-resources/**",
+        "**/META-INF/maven/**",
+        "/**/test/**",
+    },
+}
+
 local config = {
     cmd = {
         jdk_17_java_bin,
@@ -154,24 +180,7 @@ local config = {
             trace = {
                 server = "off", -- off, messages, or verbose
             },
-            import = {
-                gradle = {
-                    wrapper = {
-                        enabled = true,
-                        checksums = {},
-                    },
-                },
-                maven = {
-                    enabled = false,
-                },
-                exclusions = {
-                    "**/node_modules/**",
-                    "**/.metadata/**",
-                    "**/archtype-resources/**",
-                    "**/META-INF/maven/**",
-                    "/**/test/**",
-                },
-            },
+            imports = import_options,
             format = {
                 enabled = true,
             },
@@ -187,6 +196,11 @@ local config = {
     -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
     init_options = {
         bundles = bundles,
+        settings = {
+            java = {
+                imports = import_options,
+            }
+        }
     },
 }
 

@@ -124,7 +124,7 @@ return require("packer").startup(function(use)
     })
     use({
         "nvimtools/none-ls.nvim", -- language server providing formatting & linting
-        commit = "e7382de51b4cf629e56f1fa18192e716e5ba8145",
+        commit = "7e146f3a188853843bb4ca1bff24c912bb9b7177",
     })
     use({
         "onsails/lspkind-nvim", -- inline symbols
@@ -132,11 +132,11 @@ return require("packer").startup(function(use)
     })
     use({
         "nvimdev/lspsaga.nvim", -- code actions, hover docstrings, and other junk too
-        commit = "335805d4f591f5bb71cabb6aa4dc58ccef8e8617",
+        commit = "d3dfaea0125315110ea720c337ab88aa451d75e7",
     })
     use({
         "williamboman/mason.nvim",
-        commit = "41e75af1f578e55ba050c863587cffde3556ffa6",
+        commit = "e110bc3be1a7309617cecd77bfe4bf86ba1b8134",
     })
     use({
         "williamboman/mason-lspconfig.nvim",
@@ -148,7 +148,7 @@ return require("packer").startup(function(use)
     })
     use({
         "jay-babu/mason-nvim-dap.nvim",
-        commit = "9e82ded0515186edd4f69e4ce6b1a5f1b55b47e9",
+        commit = "3614a39aae98ccd34124b072939d6283853b3dd2",
     })
     use({
         "mfussenegger/nvim-dap",
