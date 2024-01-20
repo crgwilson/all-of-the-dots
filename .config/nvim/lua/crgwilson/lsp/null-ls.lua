@@ -10,6 +10,7 @@ function M.setup()
     mason_null_ls.setup({
         ensure_installed = {
             "stylua",
+            "golangci-lint",
         },
     })
 
@@ -32,6 +33,9 @@ function M.setup()
             -- Ignored errors are already caught by pyright
             diagnostics.flake8.with({ extra_args = { "--ignore=Q000,F401,F841" }}),
             formatting.black.with({ extra_args = { "--fast" } }),
+
+            -- golang
+            diagnostics.golangci_lint,
 
             -- bash
             diagnostics.shellcheck,
