@@ -74,6 +74,34 @@ local function set_lsp_keymaps(bufnr)
         "<cmd>lua lsp_format()<cr>",
         options
     )
+    api.nvim_buf_set_keymap(
+        bufnr,
+        "n",
+        "<leader>R",
+        "<cmd>lua vim.lsp.buf.rename()<cr>",
+        options
+    )
+    api.nvim_buf_set_keymap(
+        bufnr,
+        "n",
+        "<leader>ca",
+        "<cmd>lua vim.lsp.buf.code_action()<cr>",
+        options
+    )
+    api.nvim_buf_set_keymap(
+        bufnr,
+        "n",
+        "<leader>n",
+        "<cmd>lua vim.diagnostic.goto_next()<cr>",
+        options
+    )
+    api.nvim_buf_set_keymap(
+        bufnr,
+        "n",
+        "<leader>N",
+        "<cmd>lua vim.diagnostic.goto_prev()<cr>",
+        options
+    )
 end
 
 local function on_attach(client, bufnr)

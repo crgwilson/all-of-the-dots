@@ -38,6 +38,7 @@ local function on_attach(bufnr)
     --
     -- BEGIN_DEFAULT_ON_ATTACH
     vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
+    vim.keymap.set("n", "<C-c>", api.tree.change_root_to_node, opts("CD"))
     vim.keymap.set(
         "n",
         "<C-e>",

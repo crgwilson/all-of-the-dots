@@ -201,10 +201,6 @@ return require("packer").startup(function(use)
         commit = "5553f71bbac9f87a3a3f78d01de24a615744a4b3",
     }) -- gS & gJ to split and join, but I don't really use this one
     use({
-        "chrisbra/NrrwRgn",
-        commit = "e027db9d94f94947153cd7b5ac9abd04371ab2b0",
-    }) -- Don't use this one either
-    use({
         "tomtom/tcomment_vim",
         commit = "90eaf759099bcd47aa0471f974109d7fd78e4eea",
     }) -- Replace this with comment.nvim?

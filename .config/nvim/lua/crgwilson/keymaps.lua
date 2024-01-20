@@ -68,6 +68,12 @@ keymap(
 )
 keymap(
     "n",
+    "<leader>fF",
+    "<cmd>lua require('telescope.builtin').git_files()<cr>",
+    options
+)
+keymap(
+    "n",
     "<leader>fo",
     "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
     options
@@ -134,3 +140,12 @@ keymap("n", "<leader>bo", "<cmd>lua require'dap'.step_out()<cr>", options)
 keymap("n", "<leader>br", "<cmd>lua require'dap'.repl.open()<cr>", options)
 keymap("n", "<leader>bT", "<cmd>lua require'dap'.terminate()<cr>", options)
 keymap("n", "<leader>bu", "<cmd>lua require'dapui'.toggle()<cr>", options)
+
+-- fugitive
+keymap("n", "<leader>gb", "<cmd>Git blame<cr>", options)
+keymap("n", "<leader>ga", "<cmd>Git a<cr>", options)
+keymap("n", "<leader>gr", "<cmd>Git reset<cr>", options)
+keymap("n", "<leader>gc", "<cmd>Git commit<cr>", options)
+keymap("n", "<leader>gs", "<cmd>Git status<cr>", options)
+keymap("n", "<leader>gd", "<cmd>Git difftool<cr>", options)
+keymap("n", "<leader>gD", "<cmd>Gdiffsplit<cr>", options)
