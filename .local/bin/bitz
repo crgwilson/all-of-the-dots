@@ -9,6 +9,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     group.add_argument("-d", "--decimal", type=int, help="Decimal number")
     group.add_argument("-x", "--hex", type=str, help="Hexidecimal number")
     group.add_argument("-b", "--bin", type=str, help="Binary number")
+    group.add_argument("-B", "--bit", type=str, help="Value of a given bit")
     args = parser.parse_args()
 
     if args.decimal:
@@ -20,6 +21,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"Decimal: {h}")
     elif args.bin:
         dec = int(args.bin, 2)
+        print(f"Hex: {hex(dec)}")
+        print(f"Decimal: {dec}")
+    elif args.bit:
+        dec = 2**int(args.bit)
         print(f"Hex: {hex(dec)}")
         print(f"Decimal: {dec}")
     else:
