@@ -1,7 +1,9 @@
 ---
 golang_dist: darwin
 golang_versions:
+  - version: 1.22.0
+    checksum: "{{ golang_checksum_algo }}:ebca81df938d2d1047cc992be6c6c759543cf309d401b86af38a6aed3d4090f4"
   - version: 1.21.5
     checksum: "{{ golang_checksum_algo }}:a2e1d5743e896e5fe1e7d96479c0a769254aed18cf216cf8f4c3a2300a9b3923"
 
-golang_active_version: 1.21.5
+golang_active_version: 1.22.0

@@ -44,7 +44,9 @@ alias stop-gradle="./gradlew --stop"
 
 countryroads() {
   if [[ $(uname) == "Darwin" ]]; then
-    local jdks=($(find . ~/.local/opt -maxdepth 3 -wholename "*jdk*/Contents/Home"))
+    # for work
+    # local jdks=($(find . ~/.local/opt -maxdepth 3 -wholename "*jdk*/Contents/Home"))
+    local jdks=($(find . /Library/Java/JavaVirtualMachines -maxdepth 3 -wholename "*jdk*/Contents/Home"))
   else
     local jdks=($(find . ~/.local/opt -maxdepth 1 -wholename "*jdk*"))
   fi
@@ -61,6 +63,16 @@ countryroads() {
   local chosen="${jdks[$jdk_choice_idx]}"
   echo "You picked index - $jdk_choice_idx - which is path - $chosen"
   export JAVA_HOME="$chosen"
+}
+
+takemehome() {
+  if [ -f ./product-spec.json ]; then
+    local from_spec=$(jq -r '.build.versions.java' ./product-spec.json)
+    export JAVA_HOME=`find /Library/Java/JavaVirtualMachines -name "*$from_spec*"`
+    echo "Set JAVA_HOME=$JAVA_HOME"
+  else
+    echo "There is no product-spec here, you absolute fool."
+  fi
 }
 
 # terraform

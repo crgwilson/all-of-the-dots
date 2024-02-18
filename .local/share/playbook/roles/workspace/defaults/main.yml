@@ -24,11 +24,9 @@ workspace_common_packages:
   - shellcheck
   - awscli
   - nmap
-  - netcat
   - tree
   - htop
   - tcpdump
-  - grip
   - ripgrep
   - jq
 

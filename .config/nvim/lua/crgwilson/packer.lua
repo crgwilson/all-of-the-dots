@@ -205,10 +205,6 @@ return require("packer").startup(function(use)
         commit = "90eaf759099bcd47aa0471f974109d7fd78e4eea",
     }) -- Replace this with comment.nvim?
     use({
-        "psliwka/vim-smoothie",
-        commit = "df1e324e9f3395c630c1c523d0555a01d2eb1b7e",
-    })
-    use({
         "RRethy/vim-illuminate",
         commit = "3bd2ab64b5d63b29e05691e624927e5ebbf0fb86",
     })

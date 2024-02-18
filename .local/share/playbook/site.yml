@@ -87,6 +87,8 @@
         - java
     - role: git-number
     - role: fzf
+      tags:
+        - fzf
 
   tasks:
     - name: Change my default shell to zsh
