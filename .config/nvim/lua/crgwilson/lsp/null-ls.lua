@@ -31,7 +31,7 @@ function M.setup()
         sources = {
             -- python
             -- Ignored errors are already caught by pyright
-            diagnostics.flake8.with({ extra_args = { "--ignore=Q000,F401,F841" }}),
+            diagnostics.flake8.with({ extra_args = { "--ignore=Q000,F401,F841,W503" }}),
             formatting.black.with({ extra_args = { "--fast" } }),
 
             -- golang
