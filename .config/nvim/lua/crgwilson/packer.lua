@@ -237,10 +237,6 @@ return require("packer").startup(function(use)
         commit = "d37ae7e7828aa167877e338dea5d4e1653ed3eb1",
     })
     use({
-        "ap/vim-css-color",
-        commit = "6cc65734bc7105d9677ca54e2255fcbc953ba6bf",
-    })
-    use({
         "ekalinin/Dockerfile.vim",
         commit = "2a31e6bcea5977209c05c728c4253d82fd873c82",
     })

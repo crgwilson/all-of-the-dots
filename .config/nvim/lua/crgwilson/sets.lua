@@ -27,14 +27,7 @@ vim.opt.cursorline = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- create undo directory if doesnt exist
-local undodir = vim.fn.stdpath("data") .. "/undo"
-if vim.fn.empty(vim.fn.glob(undodir)) > 0 then
-    vim.fn.mkdir(undodir)
-end
-vim.opt.undodir = undodir
-vim.opt.undofile = true
-vim.opt.undoreload = 10000
+vim.opt.undofile = false
 
 -- no backups
 vim.opt.backup = false
