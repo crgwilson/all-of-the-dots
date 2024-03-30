@@ -10,7 +10,7 @@ function M.setup()
     mason_null_ls.setup({
         ensure_installed = {
             "stylua",
-            "golangci-lint",
+            -- "golangci-lint",
         },
     })
 
@@ -35,7 +35,7 @@ function M.setup()
             formatting.black.with({ extra_args = { "--fast" } }),
 
             -- golang
-            diagnostics.golangci_lint,
+            -- diagnostics.golangci_lint,
 
             -- bash
             diagnostics.shellcheck,
