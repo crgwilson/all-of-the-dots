@@ -31,25 +31,15 @@ local eclipse_equinox_launcher =
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local jdtls_workspace_dir = home .. "/.cache/jdtls/workspace/" .. project_name
 
-local jdk_17_install_path = home .. "/.local/opt/jdk17"
+local jdk_17_install_path = home .. "/.local/opt/microsoft-jdk-17.0.9"
 
-local jdk_17_install_url =
-    "https://download.oracle.com/java/17/latest/jdk-17_macos-x64_bin.tar.gz"
 local jdk_17_java_bin = jdk_17_install_path .. "/Contents/Home/bin/java"
 local jdtls_config = "/config_mac"
 
 -- TODO: Move OS detecting into a utils module
 if vim.loop.os_uname().sysname == "Linux" then
     jdk_17_java_bin = jdk_17_install_path .. "/bin/java"
-    jdk_17_install_url =
-        "https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz"
     jdtls_config = "/config_linux"
-end
-
-local installer = require("crgwilson.utils.installer")
-if vim.fn.empty(vim.fn.glob(jdk_17_install_path)) > 0 then
-    vim.notify("Could not find JDK 17, installing it")
-    installer.install_from_tar(jdk_17_install_url, jdk_17_install_path)
 end
 
 -- Discover & merge all jars into a single table to be used below
@@ -83,7 +73,7 @@ local import_options = {
                     sha256 = "65e45cec6f57a53c6e0f03e0bd51930fd8f820732c6c6f3f6bc4ebb67382d553",
                     allowed = true,
                 },
-            }
+            },
         },
     },
     maven = {
@@ -199,8 +189,8 @@ local config = {
         settings = {
             java = {
                 imports = import_options,
-            }
-        }
+            },
+        },
     },
 }
 
