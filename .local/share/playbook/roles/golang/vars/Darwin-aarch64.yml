@@ -1,0 +1,8 @@
+---
+golang_dist: darwin
+golang_arch: arm64
+golang_versions:
+  - version: 1.22.2
+    checksum: "{{ golang_checksum_algo }}:660298be38648723e783ba0398e90431de1cb288c637880cdb124f39bd977f0d"
+
+golang_active_version: 1.22.2
