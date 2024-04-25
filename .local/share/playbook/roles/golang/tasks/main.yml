@@ -2,6 +2,7 @@
 - name: Get OS specific vars
   include_vars: "{{ item }}"
   with_first_found:
+    - "{{ ansible_system }}-{{ ansible_architecture }}.yml"
     - "{{ ansible_system }}.yml"
     - "{{ ansible_os_family }}.yml"
 

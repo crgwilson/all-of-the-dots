@@ -1,6 +1,6 @@
 ---
 starship_version: 1.9.1
-starship_arch: x86_64
+starship_arch: "{{ ansible_architecture }}"
 starship_archive_name: "starship-{{ starship_arch }}-{{ starship_dist }}.tar.gz"
 
 starship_checksum_algo: sha256
