@@ -11,8 +11,6 @@ end
 local servers = {
     "bashls",
     "dockerls",
-    "ember",
-    "eslint",
     "gopls",
     "gradle_ls",
     "html",
@@ -22,6 +20,8 @@ local servers = {
     "terraformls",
     "tsserver",
     "vimls",
+    -- "ember",
+    -- "eslint",
     -- "puppet",
     -- "solargraph",
 }
