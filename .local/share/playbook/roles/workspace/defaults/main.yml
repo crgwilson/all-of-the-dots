@@ -47,6 +47,8 @@ workspace_debian_packages:
   - llvm
 
 workspace_mac_packages:
+  - gnu-tar
+  - coreutils
   - openssl
   - node
 

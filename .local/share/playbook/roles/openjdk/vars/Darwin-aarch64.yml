@@ -1,9 +1,0 @@
----
-openjdk_arch: aarch64
-openjdk_dist: macOS
-openjdk_java_bin: /Contents/Home/bin/java
-openjdk_versions:
-  - version: 21.0.1
-    checksum: "{{ openjdk_checksum_algo }}:e44086601c580bb7b2c5b77f14c0512f1715f6f90cb11ddb43c046322294f12b"
-  - version: 17.0.9
-    checksum: "{{ openjdk_checksum_algo }}:fe3c923b35dbc47177debc551dbadcd50c9c336c697b324ea8958af3ad8905b0"

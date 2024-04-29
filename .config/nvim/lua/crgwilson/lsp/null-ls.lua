@@ -10,7 +10,8 @@ function M.setup()
     mason_null_ls.setup({
         ensure_installed = {
             "stylua",
-            -- "golangci-lint",
+            "golangci-lint",
+            "prettier",
         },
     })
 
@@ -41,7 +42,8 @@ function M.setup()
             diagnostics.shellcheck,
 
             -- js / ts
-            diagnostics.eslint,
+            -- diagnostics.eslint,
+            formatting.prettier,
 
             -- java
             -- diagnostics.checkstyle,
