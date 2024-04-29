@@ -1,3 +1,4 @@
 ---
+starship_arch: aarch64
 starship_dist: apple-darwin
 starship_download_checksum: 7166b379a02df767e1e013d0dd3d5b409f10451963d55971518ff3830e462679
