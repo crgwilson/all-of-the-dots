@@ -13,6 +13,8 @@ telescope.setup({
         file_ignore_patterns = {
             "node_modules",
             "venv",
+            ".git",
+            ".yarn",
         },
     },
 })

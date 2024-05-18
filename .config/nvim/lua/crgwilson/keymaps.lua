@@ -63,7 +63,7 @@ keymap("n", "<leader>Q", ":cclose<cr>", options)
 keymap(
     "n",
     "<leader>ff",
-    "<cmd>lua require('telescope.builtin').find_files()<cr>",
+    "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>",
     options
 )
 keymap(

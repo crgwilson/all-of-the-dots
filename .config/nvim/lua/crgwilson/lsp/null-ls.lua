@@ -38,9 +38,6 @@ function M.setup()
             -- golang
             -- diagnostics.golangci_lint,
 
-            -- bash
-            diagnostics.shellcheck,
-
             -- js / ts
             -- diagnostics.eslint,
             formatting.prettier,
