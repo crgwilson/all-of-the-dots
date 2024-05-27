@@ -14,8 +14,7 @@ telescope.setup({
             "node_modules",
             "venv",
             ".git/",
-            ".yarn",
-            ".yarnrc",
+            ".yarn/",
         },
     },
 })
