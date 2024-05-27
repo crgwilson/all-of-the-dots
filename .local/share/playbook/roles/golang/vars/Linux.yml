@@ -1,11 +1,9 @@
 ---
 golang_dist: linux
 golang_versions:
+  - version: 1.22.3
+    checksum: "{{ golang_checksum_algo }}:8920ea521bad8f6b7bc377b4824982e011c19af27df88a815e3586ea895f1b36"
   - version: 1.22.0
     checksum: "{{ golang_checksum_algo }}:f6c8a87aa03b92c4b0bf3d558e28ea03006eb29db78917daec5cfb6ec1046265"
-  - version: 1.21.5
-    checksum: "{{ golang_checksum_algo }}:e2bc0b3e4b64111ec117295c088bde5f00eeed1567999ff77bc859d7df70078e"
-  - version: 1.20.7
-    checksum: "{{ golang_checksum_algo }}:f0a87f1bcae91c4b69f8dc2bc6d7e6bfcd7524fceec130af525058c0c17b1b44"
 
-golang_active_version: 1.22.0
+golang_active_version: 1.22.3
