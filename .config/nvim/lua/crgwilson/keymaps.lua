@@ -129,7 +129,7 @@ keymap("n", "<leader>li", ":LspInfo<cr>", options)
 -- dap
 keymap(
     "n",
-    "<leader>bb",
+    "<leader>B",
     "<cmd>lua require'dap'.toggle_breakpoint()<cr>",
     options
 )

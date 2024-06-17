@@ -54,12 +54,12 @@ dap_ui.setup({
         {
             elements = {
                 {
-                    id = "console",
-                    size = 0.75,
+                    id = "repl",
+                    size = 0.5,
                 },
                 {
-                    id = "repl",
-                    size = 0.25,
+                    id = "console",
+                    size = 0.5,
                 },
             },
             position = "bottom",
