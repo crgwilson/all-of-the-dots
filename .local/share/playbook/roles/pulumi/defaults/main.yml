@@ -1,0 +1,13 @@
+---
+pulumi_version: 3.121.0
+pulumi_arch: "{{ ansible_architecture }}"
+pulumi_archive_name: "pulumi-v{{ pulumi_version }}-{{ pulumi_dist }}-{{ pulumi_arch }}.tar.gz"
+
+pulumi_checksum_algo: sha256
+pulumi_download_url: "https://get.pulumi.com/releases/sdk/{{ pulumi_archive_name }}"
+
+pulumi_user: root
+pulumi_group: root
+
+pulumi_install_prefix: /usr/local/bin
+pulumi_tmp_dir: /tmp

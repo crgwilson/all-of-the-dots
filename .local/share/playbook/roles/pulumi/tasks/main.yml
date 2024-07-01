@@ -1,0 +1,30 @@
+---
+- name: Get OS specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_system }}-{{ ansible_architecture }}.yml"
+    - "{{ ansible_system }}.yml"
+    - "{{ ansible_os_family }}.yml"
+
+- name: Check if pulumi is already installed
+  stat:
+    path: "{{ pulumi_install_prefix }}/pulumi"
+  register: pulumi_stat
+
+- name: Download pulumi archive
+  get_url:
+    url: "{{ pulumi_download_url }}"
+    dest: "{{ pulumi_tmp_dir }}/{{ pulumi_archive_name }}"
+    checksum: "{{ pulumi_checksum_algo }}:{{ pulumi_download_checksum }}"
+    owner: "{{ pulumi_user }}"
+    group: "{{ pulumi_group }}"
+  when: not pulumi_stat.stat.exists
+
+- name: Unpack pulumi archive
+  unarchive:
+    src: "{{ pulumi_tmp_dir }}/{{ pulumi_archive_name }}"
+    dest: "{{ pulumi_install_prefix }}"
+    owner: "{{ pulumi_user }}"
+    group: "{{ pulumi_group }}"
+    extra_opts: ["--strip-components=1"]
+  when: not pulumi_stat.stat.exists

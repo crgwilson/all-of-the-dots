@@ -62,6 +62,11 @@
     fzf_install_prefix: "{{ user_opt }}"
     fzf_bin_dir: "{{ user_bin }}"
 
+    pulumi_install_prefix: "{{ user_bin }}"
+    pulumi_tmp_dir: "{{ user_tmp }}"
+    pulumi_user: "{{ username }}"
+    pulumi_group: "{{ user_group }}"
+
   roles:
     - role: brew
       when: ansible_system == "Darwin"
@@ -89,6 +94,9 @@
     - role: fzf
       tags:
         - fzf
+    - role: pulumi
+      tags:
+        - pulumi
 
   tasks:
     - name: Change my default shell to zsh
