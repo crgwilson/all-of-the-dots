@@ -1,0 +1,4 @@
+---
+pulumi_arch: arm64
+pulumi_dist: darwin
+pulumi_download_checksum: 7da0819582cfa29bbdd1561e9b296b0c0f7e0eb5c3b87f47b777892bd8841f30
