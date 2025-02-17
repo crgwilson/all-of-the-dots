@@ -5,6 +5,7 @@ vim.opt.hlsearch = false
 
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
+vim.opt.iskeyword:remove({ "↴" })
 
 vim.opt.tabstop = 4
 vim.opt.expandtab = true

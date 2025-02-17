@@ -59,7 +59,7 @@ local lsp_config = {
     severity_sort = true,
 }
 
--- vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("error")
 vim.diagnostic.config(lsp_config)
 null_ls.setup()
 

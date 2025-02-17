@@ -32,7 +32,6 @@ rules:
   new-lines:
     type: unix
   trailing-spaces: enable
-  truthy:
-    level: warning
+  truthy: disable
 
 ignore: molecule.yml

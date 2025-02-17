@@ -68,6 +68,7 @@ countryroads() {
 takemehome() {
   if [ -f ./product-spec.json ]; then
     local from_spec=$(jq -r '.build.versions.java' ./product-spec.json)
+    echo "Found ${from_spec} in product-spec."
     export JAVA_HOME=`find /Library/Java/JavaVirtualMachines -name "*$from_spec*"`
     echo "Set JAVA_HOME=$JAVA_HOME"
   else
@@ -87,6 +88,9 @@ alias md='molecule destroy --all'
 # aws
 alias ec2ls="aws ec2 describe-instances --query 'sort_by(Reservations[].Instances[].{Name:Tags[?Key==\`Name\`]|[0].Value, Environment:Tags[?Key==\`Environment\`]|[0].Value, Purpose:Tags[?Key==\`Purpose\`]|[0].Value, ID:InstanceId, AZ:Placement.AvailabilityZone, PrivateIP:PrivateIpAddress, PublicIP:PublicIpAddress, State:State.Name}, &Name)' --output table --region"
 alias ec2-reboot="aws ec2 reboot-instances"
+
+# Kubernetes
+alias k='kubectl'
 
 # docker
 alias start-docker='open --background -a Docker'
@@ -111,10 +115,6 @@ alias vs='vagrant status'
 alias vss='vagrant ssh'
 alias vgs='vagrant global-status'
 alias vagrant destroy='vagrant destroy -f'
-
-# puppet
-alias puppet='/opt/puppetlabs/bin/puppet'
-alias p='puppet'
 
 # misc utils
 alias cd..='cd ..'
@@ -142,7 +142,7 @@ case $(uname -s) in
       export PATH=/usr/local/opt/openssl@1.1/bin:/usr/local/lib/ruby/gems/2.7.0/bin:/usr/local/opt/sqlite/bin:$PATH
       alias t=todolist
       alias pgadmin='open /Applications/pgAdmin\ 4.app'
-      alias refresh-dns='sudo killall -HUP mDNSResponder'
+      alias fuckingdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 
       alias ls="ls -G"
 

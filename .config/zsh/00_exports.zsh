@@ -61,6 +61,11 @@ export PACKER_CACHE_DIR="$XDG_CACHE_HOME/packer_cache"
 export VOLTA_HOME="$USER_LOCAL_OPT/volta"
 export VOLTA_BIN="$VOLTA_HOME/bin"
 
+# Bundle
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle/config"
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle/cache"
+export BUNDLE_USER_PLUGIN="$XDG_CACHE_HOME/bundle/plugin"
+
 # Path
 export PATH="$USER_LOCAL_BIN:$VOLTA_BIN:$PATH"
 
