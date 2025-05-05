@@ -10,7 +10,7 @@ I mostly work in Java, Python, and Go, so everything is configured with that in 
 * [Alacritty](./.config/alacritty/alacritty.yml)
 * [Starship](./.config/starship/starship.toml)
 * [Tmux](./.config/tmux/tmux.conf)
-* [Neovim](./.config/nvim/) (Built off of tag `v0.9.5`)
+* [Neovim](./.config/nvim/) (Built off of tag `v0.11.1`)
 * [Git](./.config/git/)
 * [Installer playbook](./.local/share/playbook/)
 * [~~Vagrant~~](./.vagrant.d/Vagrantfile)
