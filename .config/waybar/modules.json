@@ -52,13 +52,13 @@
   },
 
   "pulseaudio": {
+    "format-source": " {volume}%",
+    "format-source-muted": " off",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+
     "format": "{icon}  {volume}%",
     "format-muted": "󰖁 Muted",
     "format-icons": {
-      "headphone": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
       "default": ["", "", ""]
     }
   },
