@@ -33,6 +33,11 @@ export ADOTDIR=$XDG_CACHE_HOME/antigen
 # Use nvim by default
 export EDITOR='nvim'
 
+# SSH agent
+if [ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
+
 # GPG
 export GPG_TTY=$(tty)
 
@@ -42,7 +47,7 @@ if [ -d "/usr/lib/jvm/java-11-openjdk-amd64" ]; then
 fi
 
 # pyenv
-export PYENV_ROOT="$USER_LOCAL_OPT/pyenv"
+# export PYENV_ROOT="$USER_LOCAL_OPT/pyenv"
 
 # AWS
 export AWS_PAGER=""  # I don't remember what this is for...
@@ -72,3 +77,6 @@ export PATH="$USER_LOCAL_BIN:$VOLTA_BIN:$PATH"
 # WORK
 export WORK_SHELL_HOST=""
 export WORK_DEV_HOST=""
+
+export QT_QPA_PLATFORMTHEME="qt6ct"
+export QT_QPA_PLATFORM="wayland"

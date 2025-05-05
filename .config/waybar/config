@@ -1,0 +1,29 @@
+{
+  "layer": "top",
+  "position": "top", 
+  "margin-top": 14,
+  "margin-bottom": 0,
+  "height": 38,
+
+  "include": ["~/.config/waybar/modules.json"],
+
+  "modules-left": [
+    "tray",
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-right": [
+    "custom/updates",
+    "cpu",
+    "memory",
+    "network",
+    "pulseaudio",
+    "custom/date",
+    "clock",
+    "custom/power"
+  ]
+}

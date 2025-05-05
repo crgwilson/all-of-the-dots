@@ -18,7 +18,7 @@ local servers = {
     "lua_ls",
     "pyright",
     "terraformls",
-    "tsserver",
+    "ts_ls",
     "vimls",
     -- "ember",
     -- "eslint",
