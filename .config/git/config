@@ -1,13 +1,16 @@
 [user]
   name = Craig Wilson
-  signingkey = 45298F5B71B4CB97FBEA0905BEF4430D07ACD478
   email = craigjwilson93@gmail.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNROWknUp0kmEvW0IAnmuwK0PrYQ6TM88OhRy7rOzW8
 
 [commit]
   gpgsign = true
 
 [gpg]
-  program = gpg
+  format = ssh
+
+[gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
 
 [alias]
   a = add -A

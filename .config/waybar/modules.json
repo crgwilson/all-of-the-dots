@@ -45,10 +45,11 @@
 
   "network": {
     "format-wifi": "  {essid}",
-    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "format-ethernet": "{ifname} ",
     "format-linked": "{ifname} (No IP) 󰈀",
     "format-disconnected": "󰤮 Disconnected",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "tooltip-format": "{ipaddr}/{cidr}",
+    "on-click": "nm-connection-editor"
   },
 
   "pulseaudio": {

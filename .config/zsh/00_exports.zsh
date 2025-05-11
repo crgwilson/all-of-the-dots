@@ -38,6 +38,11 @@ if [ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 
+if [ -d "$HOME/.1password" ]; then
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi
+
+
 # GPG
 export GPG_TTY=$(tty)
 
