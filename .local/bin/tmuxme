@@ -1,3 +1,4 @@
+# vim: set ft=bash:
 SESSION_NAME="Main"
 
 tmux has-session -t $SESSION_NAME 2>/dev/null
@@ -10,4 +11,4 @@ else
     echo "Session already exists, attaching..."
 fi
 
-tmux attach-session -t Main
+tmux attach-session -t $SESSION_NAME
