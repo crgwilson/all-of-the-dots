@@ -27,7 +27,9 @@
   },
 
   "clock": {
-    "format": "󰅐 {:%I:%m%p}",
+    "interval": 60,
+    "format": "󰅐 {:%I:%M%p}",
+    "locale": "C",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%Y-%m-%d}"
   },
