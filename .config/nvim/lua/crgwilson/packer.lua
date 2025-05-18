@@ -79,6 +79,7 @@ return require("packer").startup(function(use)
     })
     use({
         "crgwilson/mysnips",
+        commit = "f834f6348cd43b4e7292b5b980e35ad91a80fd24",
     })
 
     -- lsp
