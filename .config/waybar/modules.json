@@ -54,6 +54,15 @@
     "on-click": "nm-connection-editor"
   },
 
+  "custom/mic": {
+    "exec": "~/.config/waybar/modules/mic.sh",
+    "interval": 60,
+    "return-type": "json",
+    "on-click": "~/.config/waybar/modules/mic.sh click",
+    "on-scroll-up": "~/.config/waybar/modules/mic.sh scroll_up",
+    "on-scroll-down": "~/.config/waybar/modules/mic.sh scroll_down"
+  },
+
   "pulseaudio": {
     "format-source": " {volume}%",
     "format-source-muted": " off",

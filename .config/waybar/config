@@ -21,6 +21,7 @@
     "cpu",
     "memory",
     "network",
+    "custom/mic",
     "pulseaudio",
     "custom/date",
     "clock",
