@@ -15,6 +15,8 @@ telescope.setup({
             "venv",
             ".git/",
             ".yarn/",
+            ".terraform/",
+            ".+\\.class$",
         },
     },
 })

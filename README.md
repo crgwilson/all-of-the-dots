@@ -15,6 +15,11 @@ I mostly work in Java, Python, and Go, so everything is configured with that in 
 * [Installer playbook](./.local/share/playbook/)
 * [~~Vagrant~~](./.vagrant.d/Vagrantfile)
 
+*   **Desktop Environment & Window Management**: Hyprland as the Wayland compositor, Waybar for status display, Wofi for application launching, and SDDM as the display manager. Also various Qt and KDE-related libraries and applications (e.g., Dolphin file manager, Okular document viewer).
+*   **Terminal & Shell Utilities**: Alacritty as the terminal emulator, Zsh as the shell with Starship for a custom prompt, Tmux for terminal multiplexing, and Neovim for text editing. Essential command-line tools like Git, fzf, and dunst.
+*   **Development & Containerization**: Core development tools such as Go, Python, GCC, CMake, Node.js. Containerization is supported with Docker, OpenTofu and kubectl.
+*   **Security & Privacy**: 1Password for password management, GnuPG for encryption, OpenSSL, and cryptsetup for disk encryption.
+
 The font I use is SourceCodePro taken from NerdFont 3.0, in the case a newer version of the font is released, download the ttf from [nerd-fonts](https://github.com/ryanoasis/nerd-fonts), and stash it [here](./.local/share/myfonts/sauce_code_prod_nerd_font/).
 
 The config for my Iris Rev6b firmware is also stashed here. To rebuild that head on over to the [QMK configurator](https://config.qmk.fm/#/keebio/iris/rev6/LAYOUT).

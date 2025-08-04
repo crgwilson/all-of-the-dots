@@ -25,6 +25,8 @@ pyac() {
     source ./activate
   elif [ -d "./venv" ]; then
     source ./venv/bin/activate
+  elif [ -d "./.venv" ]; then
+    source ./.venv/bin/activate
   else
     local stripped_pwd="${PWD##*/}"
     local activate_script_path="${stripped_pwd//_trunk}/activate"
