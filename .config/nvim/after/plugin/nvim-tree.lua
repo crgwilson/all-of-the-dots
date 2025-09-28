@@ -267,6 +267,7 @@ nvim_tree.setup({
             ".git",
             ".mypy_cache",
             ".pytest_cache",
+            ".ruff_cache",
         },
         exclude = {},
     },

@@ -16,6 +16,7 @@ telescope.setup({
             ".git/",
             ".yarn/",
             ".terraform/",
+            ".ruff_cache/",
             ".+\\.class$",
         },
     },

@@ -31,14 +31,14 @@ local eclipse_equinox_launcher =
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local jdtls_workspace_dir = home .. "/.cache/jdtls/workspace/" .. project_name
 
-local jdk_17_install_path = home .. "/.local/opt/microsoft-jdk-17.0.9"
+local jdk_21_install_path = home .. "/.local/opt/microsoft-jdk-21.0.1"
 
-local jdk_17_java_bin = jdk_17_install_path .. "/Contents/Home/bin/java"
+local jdk_17_java_bin = jdk_21_install_path .. "/Contents/Home/bin/java"
 local jdtls_config = "/config_mac"
 
 -- TODO: Move OS detecting into a utils module
 if vim.loop.os_uname().sysname == "Linux" then
-    jdk_17_java_bin = jdk_17_install_path .. "/bin/java"
+    jdk_17_java_bin = jdk_21_install_path .. "/bin/java"
     jdtls_config = "/config_linux"
 end
 
